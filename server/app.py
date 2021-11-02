@@ -1,7 +1,6 @@
 from flask import Flask, request, Response, session
 from flask_pymongo import PyMongo
 
-import sqlite3
 import click
 from flask import current_app, g
 from flask.cli import with_appcontext
@@ -52,11 +51,6 @@ def signup():
         return "Email or Username already exist."
     enc_passwd = Authentication.encrypt(passwd_input)
     mongo.db.users.insert({"Username": username, "Email": email, "Password": enc_passwd})
-    conn = sqlite3.connect("./db/user_db.db")
-    cur = conn.cursor()
-    cur.execute("INSERT INTO user (uuid, email) VALUES (??)", (uuid, email))
-    conn.commit()
-    conn.close()
     return "Signed up"
 
 #@app.route('')
