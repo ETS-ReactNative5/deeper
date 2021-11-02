@@ -1,0 +1,10 @@
+.onboarding-1 {
+  align-items: center;
+  background-color: var(--palettewhite);
+  display: flex;
+  flex-direction: column;
+  height: 812px;
+  padding: 191px 0;
+  width: 375px;
+}
+
