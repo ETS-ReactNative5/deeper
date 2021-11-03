@@ -20,7 +20,6 @@ const Page_Splash  = ({navigation}) => {
 	}
 	return (
 	<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{height: Dimensions.get("window").height}}>
-	<ScrollView bounces={false} showsVerticalScrollIndicator={false} style={{height: Dimensions.get("window").height}}>
 		<Animated.View style={[{}, noneModeStyles._page1]}    >
 			<View style = {noneModeStyles._Bottom_Buttons}    >
 				<View style = {noneModeStyles._Sign_Up_Button}  onStartShouldSetResponder = {() => {return true}} onResponderGrant = {() => {}} onResponderRelease = {() => {onClick_Sign_Up_Button();}} onStartShouldSetResponderCapture = {() => true}>
@@ -48,7 +47,6 @@ const Page_Splash  = ({navigation}) => {
 				</View>
 			</View>
 		</Animated.View>
-	</ScrollView>
 	</KeyboardAvoidingView>
 )}
 export default Page_Splash

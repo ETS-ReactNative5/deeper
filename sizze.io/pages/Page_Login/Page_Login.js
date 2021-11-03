@@ -22,7 +22,6 @@ const Page_Login  = ({navigation}) => {
 	}
 	return (
 	<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{height: Dimensions.get("window").height}}>
-	<ScrollView bounces={false} showsVerticalScrollIndicator={false} style={{height: Dimensions.get("window").height}}>
 		<Animated.View style={[{}, noneModeStyles._page4]}    >
 			<View style = {noneModeStyles._Title_Lines}    >
 				<Text style = {noneModeStyles._Login}   >
@@ -93,7 +92,6 @@ const Page_Login  = ({navigation}) => {
 				</View>
 			</View>
 		</Animated.View>
-	</ScrollView>
 	</KeyboardAvoidingView>
 )}
 export default Page_Login

@@ -17,9 +17,11 @@ const Page_Login_1  = ({navigation}) => {
 	const onClick_Login_Button = () => {
 					navigation.navigate("Page_Onboarding___1")
 	}
+	const onClick_SignUp_Button = () => { 
+		navigation.navigate("Page_Sign_Up")
+	}
 	return (
 	<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{height: Dimensions.get("window").height}}>
-	<ScrollView bounces={false} showsVerticalScrollIndicator={false} style={{height: Dimensions.get("window").height}}>
 		<Animated.View style={[{}, noneModeStyles._page18]}    >
 			<View style = {noneModeStyles._Title_Lines}    >
 				<Text style = {noneModeStyles._Login}   >
@@ -33,12 +35,12 @@ const Page_Login_1  = ({navigation}) => {
 					</View>
 				</View>
 				<View style = {noneModeStyles._Login_Form}    >
+					<View style = {noneModeStyles._Email_Wrapper}    >
 					<View style = {[noneModeStyles._Email_Text_Box, {borderColor: focus0 ? "rgb(237, 236, 244)" : "rgb(237, 236, 244)",backgroundColor: focus0 ? "rgb(255, 255, 255)" : "rgb(255, 255, 255)"}]}    >
 						<View style = {noneModeStyles._Placeholder___Right_Icon}    >
-							<View style={noneModeStyles._label}>
 								<TextInput style = {[{flex: 1, outline: "none",color: "rgba(123,107,168,100)",}]} placeholderTextColor = {"rgb(123, 107, 168)"}  placeholder = "Email" onFocus = {() => setFocus0(true)} onBlur = {() => setFocus0(false)} />
-							</View>
 						</View>
+					</View>
 					</View>
 					<View style = {noneModeStyles._Password_Wrapper}    >
 						<View style = {[noneModeStyles._Password_Text_Box, {borderColor: focus1 ? "rgb(237, 236, 244)" : "rgb(237, 236, 244)",backgroundColor: focus1 ? "rgb(255, 255, 255)" : "rgb(255, 255, 255)"}]}    >
@@ -69,17 +71,16 @@ const Page_Login_1  = ({navigation}) => {
 						Sign In
 					</Text>
 				</View>
-				<View style = {noneModeStyles._Bottom_Link}    >
-					<Text style = {noneModeStyles._Don_t_have_an_account_}   >
+				<View style = {noneModeStyles._Bottom_Link}   >
+					<Text style = {noneModeStyles._Don_t_have_an_account_}  >
 						Don’t have an account?
 					</Text>
-					<Text style = {noneModeStyles._Sign_Up}   >
+					<Text style = {noneModeStyles._Sign_Up}  onStartShouldSetResponder = {() => {return true}} onResponderGrant = {() => {}} onResponderRelease = {() => {onClick_SignUp_Button();}} onStartShouldSetResponderCapture = {() => true}>
 						Sign Up
 					</Text>
 				</View>
 			</View>
 		</Animated.View>
-	</ScrollView>
 	</KeyboardAvoidingView>
 )}
 export default Page_Login_1
@@ -125,7 +126,7 @@ _Login_Data: {
 	justifyContent: "center",
 	position: "absolute",
 	left: 0,
-	top: 187,
+	top: 160,
 	right: 0,
 	paddingRight: 24,
 	paddingLeft: 24,
@@ -149,6 +150,16 @@ _Login_Form: {
 	flexShrink: 0,
 	marginBottom: 24,
 	},
+_Email_Wrapper: {
+		width: "100%",
+		height: "auto",
+		backgroundColor: "rgba(0, 0, 0, 0)",
+		display: "flex",
+		flexDirection: "column",
+		alignItems: "flex-end",
+		justifyContent: "flex-end",
+		flexShrink: 0,
+	},
 _Email_Text_Box: {
 	width: "100%",
 	height: "auto",
@@ -156,7 +167,7 @@ _Email_Text_Box: {
 	display: "flex",
 	flexDirection: "column",
 	flexShrink: 0,
-	marginBottom: 16,
+	marginBottom: 8,
 	paddingTop: 10,
 	paddingRight: 20,
 	paddingBottom: 10,
