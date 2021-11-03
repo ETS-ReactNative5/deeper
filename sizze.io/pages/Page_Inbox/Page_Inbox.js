@@ -352,7 +352,7 @@ _Lorem_ipsum_dolor_sit_amet__consectetur_Lorem_ipsum_dolor_sit_amet__ipsum_dolor
 	color: "rgb(123, 107, 168)",
 	fontSize: 14,
 	fontWeight: "400",
-	fontFamily: "Inter",
+	fontFamily: "Raleway",
 	textAlign: "left",
 	},
 _Notification_Card_2: {
@@ -413,7 +413,7 @@ _Lorem_ipsum_dolor_sit_amet__consectetur_Lorem_ipsum_dolor_sit_amet__ipsum_dolor
 	color: "rgb(123, 107, 168)",
 	fontSize: 14,
 	fontWeight: "400",
-	fontFamily: "Inter",
+	fontFamily: "Raleway",
 	textAlign: "left",
 	},
 _Notification_Card_3: {
@@ -474,7 +474,7 @@ _Lorem_ipsum_dolor_sit_amet__consectetur_Lorem_ipsum_dolor_sit_amet__ipsum_dolor
 	color: "rgb(123, 107, 168)",
 	fontSize: 14,
 	fontWeight: "400",
-	fontFamily: "Inter",
+	fontFamily: "Raleway",
 	textAlign: "left",
 	},
 _Notification_Card_4: {
@@ -534,7 +534,7 @@ _Lorem_ipsum_dolor_sit_amet__consectetur_Lorem_ipsum_dolor_sit_amet__ipsum_dolor
 	color: "rgb(123, 107, 168)",
 	fontSize: 14,
 	fontWeight: "400",
-	fontFamily: "Inter",
+	fontFamily: "Raleway",
 	textAlign: "left",
 	},
 _Floating_Action_Button: {

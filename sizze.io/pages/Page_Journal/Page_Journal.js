@@ -30,52 +30,6 @@ const Page_Journal  = ({navigation}) => {
 				<View style = {noneModeStyles._Home_Indicator_2}    >
 				</View>
 			</View>
-			<View style = {noneModeStyles._Navbar_Simple}    >
-				<View style = {noneModeStyles._Icon_Home_2}    >
-					<View style = {noneModeStyles._layer_09e994}    >
-					</View>
-					<View style = {noneModeStyles._layer_502857}    >
-						<View style = {noneModeStyles._layer_c15eec}   >
-							<Svg style={{height: 18, width: 18}} viewBox = "0 0 18 18">
-								<Path fill = {"#A095C1"}     d = "M1 10H7C7.55 10 8 9.55 8 9V1C8 0.45 7.55 0 7 0H1C0.45 0 0 0.45 0 1V9C0 9.55 0.45 10 1 10ZM1 18H7C7.55 18 8 17.55 8 17V13C8 12.45 7.55 12 7 12H1C0.45 12 0 12.45 0 13V17C0 17.55 0.45 18 1 18ZM11 18H17C17.55 18 18 17.55 18 17V9C18 8.45 17.55 8 17 8H11C10.45 8 10 8.45 10 9V17C10 17.55 10.45 18 11 18ZM10 1V5C10 5.55 10.45 6 11 6H17C17.55 6 18 5.55 18 5V1C18 0.45 17.55 0 17 0H11C10.45 0 10 0.45 10 1Z"/>
-							</Svg>
-						</View>
-					</View>
-				</View>
-				<View style = {noneModeStyles._Icon_Chart}    >
-					<View style = {noneModeStyles._layer_cdfe30}    >
-					</View>
-					<View style = {noneModeStyles._layer_6ad754}    >
-						<View style = {noneModeStyles._layer_b058c8}   >
-							<Svg style={{height: 18, width: 20}} viewBox = "0 0 20 18">
-								<Path fill = {"#A095C1"}     d = "M4.5 18H1C0.45 18 0 17.55 0 17V7C0 6.45 0.45 6 1 6H4.5C5.05 6 5.5 6.45 5.5 7V17C5.5 17.55 5.05 18 4.5 18ZM11.75 0H8.25C7.7 0 7.25 0.45 7.25 1V17C7.25 17.55 7.7 18 8.25 18H11.75C12.3 18 12.75 17.55 12.75 17V1C12.75 0.45 12.3 0 11.75 0ZM19 8H15.5C14.95 8 14.5 8.45 14.5 9V17C14.5 17.55 14.95 18 15.5 18H19C19.55 18 20 17.55 20 17V9C20 8.45 19.55 8 19 8Z"/>
-							</Svg>
-						</View>
-					</View>
-				</View>
-				<View style = {noneModeStyles._Icon_Bell}    >
-					<View style = {noneModeStyles._layer_11183e}    >
-					</View>
-					<View style = {noneModeStyles._layer_ba0ea5}    >
-						<View style = {noneModeStyles._layer_8735d6}   >
-							<Svg style={{height: 20, width: 16}} viewBox = "0 0 16 20">
-								<Path fill = {"#432C81"}     d = "M7.781 20C8.90921 20 9.83228 19.0769 9.83228 17.9487H5.72972C5.72972 19.0769 6.64254 20 7.781 20ZM13.9348 13.8462V8.71795C13.9348 5.56923 12.2528 2.93333 9.31946 2.2359V1.53846C9.31946 0.68718 8.63228 0 7.781 0C6.92972 0 6.24254 0.68718 6.24254 1.53846V2.2359C3.29895 2.93333 1.62716 5.55897 1.62716 8.71795V13.8462L0.304079 15.1692C-0.342075 15.8154 0.109207 16.9231 1.02203 16.9231H14.5297C15.4425 16.9231 15.9041 15.8154 15.2579 15.1692L13.9348 13.8462Z"/>
-							</Svg>
-						</View>
-					</View>
-				</View>
-				<View style = {noneModeStyles._Icon_Setting}    >
-					<View style = {noneModeStyles._layer_03d745}    >
-					</View>
-					<View style = {noneModeStyles._layer_31f474}    >
-						<View style = {noneModeStyles._layer_951995}   >
-							<Svg style={{height: 20, width: 20}} viewBox = "0 0 20 20">
-								<Path fill = {"#A095C1"}     d = "M17.1593 10.98C17.1993 10.66 17.2293 10.34 17.2293 10C17.2293 9.66 17.1993 9.34 17.1593 9.02L19.2693 7.37C19.4593 7.22 19.5093 6.95 19.3893 6.73L17.3893 3.27C17.2693 3.05 16.9993 2.97 16.7793 3.05L14.2893 4.05C13.7693 3.65 13.2093 3.32 12.5993 3.07L12.2193 0.42C12.1893 0.18 11.9793 0 11.7293 0H7.72933C7.47933 0 7.26933 0.18 7.23933 0.42L6.85933 3.07C6.24933 3.32 5.68933 3.66 5.16933 4.05L2.67933 3.05C2.44933 2.96 2.18933 3.05 2.06933 3.27L0.0693316 6.73C-0.0606684 6.95 -0.000668302 7.22 0.189332 7.37L2.29933 9.02C2.25933 9.34 2.22933 9.67 2.22933 10C2.22933 10.33 2.25933 10.66 2.29933 10.98L0.189332 12.63C-0.000668302 12.78 -0.0506684 13.05 0.0693316 13.27L2.06933 16.73C2.18933 16.95 2.45933 17.03 2.67933 16.95L5.16933 15.95C5.68933 16.35 6.24933 16.68 6.85933 16.93L7.23933 19.58C7.26933 19.82 7.47933 20 7.72933 20H11.7293C11.9793 20 12.1893 19.82 12.2193 19.58L12.5993 16.93C13.2093 16.68 13.7693 16.34 14.2893 15.95L16.7793 16.95C17.0093 17.04 17.2693 16.95 17.3893 16.73L19.3893 13.27C19.5093 13.05 19.4593 12.78 19.2693 12.63L17.1593 10.98ZM9.72933 13.5C7.79933 13.5 6.22933 11.93 6.22933 10C6.22933 8.07 7.79933 6.5 9.72933 6.5C11.6593 6.5 13.2293 8.07 13.2293 10C13.2293 11.93 11.6593 13.5 9.72933 13.5Z"/>
-							</Svg>
-						</View>
-					</View>
-				</View>
-			</View>
 			<View style = {noneModeStyles._Navbar_Simple_2}    >
 				<View style = {noneModeStyles._Icon_Home}    >
 					<View style = {noneModeStyles._layer_4246d3}    >
@@ -188,28 +142,6 @@ _Home_Indicator_2: {
 	],
 	borderRadius: 100,
 	},
-_Navbar_Simple: {
-	width: "auto",
-	height: "auto",
-	backgroundColor: "rgb(255, 255, 255)",
-	display: "flex",
-	flexDirection: "row",
-	justifyContent: "space-between",
-	position: "absolute",
-	left: 0,
-	top: 722,
-	right: 0,
-	paddingTop: 16,
-	paddingRight: 32,
-	paddingBottom: 16,
-	paddingLeft: 32,
-	shadowOffset: {
-		width: 0,
-		height: -1
-	},
-	shadowColor: "rgba(0,0,0,0.08)",
-	shadowRadius: 4,
-	},
 _Icon_Home_2: {
 	width: 24,
 	height: 24,
@@ -230,14 +162,6 @@ _layer_502857: {
 	},
 _layer_c15eec: {
 	},
-_Icon_Chart: {
-	width: 24,
-	height: 24,
-	backgroundColor: "rgba(255, 255, 255, 0)",
-	overflow: "hidden",
-	flexShrink: 0,
-	marginRight: 61,
-	},
 _layer_cdfe30: {
 	position: "absolute",
 	},
@@ -250,14 +174,6 @@ _layer_6ad754: {
 	},
 _layer_b058c8: {
 	},
-_Icon_Bell: {
-	width: 24,
-	height: 24,
-	backgroundColor: "rgba(255, 255, 255, 0)",
-	overflow: "hidden",
-	flexShrink: 0,
-	marginRight: 61,
-	},
 _layer_11183e: {
 	position: "absolute",
 	},
@@ -269,13 +185,6 @@ _layer_ba0ea5: {
 	],
 	},
 _layer_8735d6: {
-	},
-_Icon_Setting: {
-	width: 24,
-	height: 24,
-	backgroundColor: "rgba(255, 255, 255, 0)",
-	overflow: "hidden",
-	flexShrink: 0,
 	},
 _layer_03d745: {
 	position: "absolute",

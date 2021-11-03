@@ -358,7 +358,7 @@ _Lorem_ipsum_dolor_sit_amet__consectetur_Lorem_ipsum_dolor_sit_amet__ipsum_dolor
 	color: "rgb(123, 107, 168)",
 	fontSize: 14,
 	fontWeight: "400",
-	fontFamily: "Inter",
+	fontFamily: "Raleway",
 	textAlign: "left",
 	},
 _Notification_Card_2: {
@@ -419,7 +419,7 @@ _Lorem_ipsum_dolor_sit_amet__consectetur_Lorem_ipsum_dolor_sit_amet__ipsum_dolor
 	color: "rgb(123, 107, 168)",
 	fontSize: 14,
 	fontWeight: "400",
-	fontFamily: "Inter",
+	fontFamily: "Raleway",
 	textAlign: "left",
 	},
 _Notification_Card_3: {
@@ -480,7 +480,7 @@ _Lorem_ipsum_dolor_sit_amet__consectetur_Lorem_ipsum_dolor_sit_amet__ipsum_dolor
 	color: "rgb(123, 107, 168)",
 	fontSize: 14,
 	fontWeight: "400",
-	fontFamily: "Inter",
+	fontFamily: "Raleway",
 	textAlign: "left",
 	},
 _Notification_Card_4: {
@@ -540,7 +540,7 @@ _Lorem_ipsum_dolor_sit_amet__consectetur_Lorem_ipsum_dolor_sit_amet__ipsum_dolor
 	color: "rgb(123, 107, 168)",
 	fontSize: 14,
 	fontWeight: "400",
-	fontFamily: "Inter",
+	fontFamily: "Raleway",
 	textAlign: "left",
 	},
 _Nav_Bar: {
@@ -570,7 +570,7 @@ _Large_Header: {
 	paddingBottom: 8,
 	paddingLeft: 16,
 	},
-_Title: {
+_Title: { // "Feed from Community" title
 	width: "auto",
 	height: "auto",
 	flexGrow: 1,
@@ -579,7 +579,7 @@ _Title: {
 	color: "rgb(67, 44, 129)",
 	fontSize: 34,
 	fontWeight: "700",
-	fontFamily: "SF Pro Display",
+	fontFamily: "Raleway",
 	fontStyle: "normal",
 	textDecorationLine: "none",
 	letterSpacing: 0,
@@ -639,7 +639,7 @@ ___Search_Placeholder: {
 	color: "rgb(102, 102, 102)",
 	fontSize: 17,
 	fontWeight: "400",
-	fontFamily: "SF Pro Display",
+	fontFamily: "Raleway",
 	fontStyle: "normal",
 	textDecorationLine: "none",
 	letterSpacing: 0,
