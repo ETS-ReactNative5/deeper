@@ -1,0 +1,28 @@
+:root { 
+  --alabaster: #fafafaed;
+  --black: #000000;
+  --inkink-01: #422c81;
+  --inkink-02: #56418f;
+  --inkink-03: #7b6ba8;
+  --inkink-06: #edebf3;
+  --paletteblue: #28c8fa;
+  --palettewhite: #ffffff;
+  --royal-blue: #5d5fef;
+  --ship-gray: #3c3c4399;
+  --snuff: #e0dde9;
+  --waterloo-: #82789d;
+ 
+  --font-size-12px: 12px;
+  --font-size-l: 16px;
+  --font-size-m: 14px;
+  --font-size-xl: 17px;
+  --font-size-xxl: 18px;
+  --font-size-xxxl: 20px;
+  --font-size-xxxxl: 24px;
+  --font-size-xxxxxl: 32px;
+ 
+  --font-family-inter: "Inter", Helvetica;
+  --font-family-raleway: "Raleway", Helvetica;
+  --font-family-sf_pro_display-medium: "SF Pro Display-Medium", Helvetica;
+  --font-family-sf_pro_text-regular: "SF Pro Text-Regular", Helvetica;
+}

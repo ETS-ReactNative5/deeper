@@ -1,0 +1,11 @@
+.community {
+  align-items: center;
+  background-color: var(--palettewhite);
+  display: flex;
+  flex-direction: column;
+  height: 812px;
+  padding: 68px 0;
+  position: relative;
+  width: 375px;
+}
+

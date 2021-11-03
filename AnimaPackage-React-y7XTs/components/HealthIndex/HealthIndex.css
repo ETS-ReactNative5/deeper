@@ -1,0 +1,12 @@
+.health-index {
+  align-items: flex-start;
+  background-color: var(--palettewhite);
+  display: flex;
+  flex-direction: column;
+  height: 812px;
+  overflow: hidden;
+  padding: 56px 0;
+  position: relative;
+  width: 375px;
+}
+
