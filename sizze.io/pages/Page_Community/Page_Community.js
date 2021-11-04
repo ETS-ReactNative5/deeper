@@ -193,6 +193,7 @@ _Navbar_Simple: {
 	flexDirection: "row",
 	justifyContent: "space-between",
 	position: "absolute",
+	bottom: 0,
 	left: 0,
 	top: 722,
 	right: 0,
