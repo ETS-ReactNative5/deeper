@@ -123,13 +123,6 @@ _page17: {
 	minHeight: Dimensions.get("window").height,
 	backgroundColor: "rgb(255, 255, 255)",
 	},
-_Home_Indicator: {
-	width: 375,
-	height: 34,
-	backgroundColor: "rgb(255, 255, 255)",
-	position: "absolute",
-	top: 778,
-	},
 _Home_Indicator_2: {
 	width: 134,
 	height: 5,
