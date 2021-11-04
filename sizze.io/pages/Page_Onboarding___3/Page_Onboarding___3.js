@@ -19,8 +19,8 @@ const Page_Onboarding___3  = ({navigation}) => {
 					navigation.navigate("Page_Home")
 	}
 	return (
-	<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{height: Dimensions.get("window").height}}>
-	<ScrollView bounces={false} showsVerticalScrollIndicator={false} style={{height: Dimensions.get("window").height}}>
+	//<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{height: Dimensions.get("window").height}}>
+	//<ScrollView bounces={false} showsVerticalScrollIndicator={false} style={{height: Dimensions.get("window").height}}>
 		<Animated.View style={[{}, noneModeStyles._page8]}    >
 			<View style = {noneModeStyles._Text}    >
 				<View style = {noneModeStyles._Indicators}    >
@@ -49,8 +49,8 @@ const Page_Onboarding___3  = ({navigation}) => {
 				</View>
 			</View>
 		</Animated.View>
-	</ScrollView>
-	</KeyboardAvoidingView>
+	//</ScrollView>
+	//</KeyboardAvoidingView>
 )}
 export default Page_Onboarding___3
 
@@ -67,8 +67,8 @@ _Text: {
 	backgroundColor: "rgba(0, 0, 0, 0)",
 	display: "flex",
 	flexDirection: "column",
-	position: "absolute",
-	left: 16,
+	//position: "absolute",
+	left: -1,
 	top: 476,
 	right: 16,
 	},
@@ -105,6 +105,7 @@ _Message_and_connect: {
 	width: "100%",
 	height: "auto",
 	flexShrink: 0,
+	marginTop: -40, 
 	marginBottom: 16,
 	color: "rgb(67, 44, 129)",
 	fontSize: 32,
@@ -157,9 +158,9 @@ _Lifesavers___Videocall_1_container: {
 _Lifesavers___Videocall_1: {
 	width: "100%",
 	height: "100%",
-	transform: [
-		{translateX: 39},
-	],
+	flexShrink: 0,
+	alignSelf: "flex-start",
+	position: "relative",
 	},
 })
 

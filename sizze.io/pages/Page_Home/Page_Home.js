@@ -32,8 +32,8 @@ const Page_Home  = ({navigation}) => {
 					navigation.navigate("Page_Inbox")
 	}
 	return (
-	<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{height: Dimensions.get("window").height}}>
-	<ScrollView bounces={false} showsVerticalScrollIndicator={false} style={{height: Dimensions.get("window").height}}>
+	//<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{height: Dimensions.get("window").height}}>
+	//<ScrollView bounces={false} showsVerticalScrollIndicator={false} style={{height: Dimensions.get("window").height}}>
 		<Animated.View style={[{}, noneModeStyles._page9]}    >
 			<View style = {noneModeStyles._Home_Container}    >
 				<View style = {noneModeStyles._Title___User_Profile}    >
@@ -144,8 +144,8 @@ const Page_Home  = ({navigation}) => {
 				</View>
 			</View>
 		</Animated.View>
-	</ScrollView>
-	</KeyboardAvoidingView>
+	//</ScrollView>
+	//</KeyboardAvoidingView>
 )}
 export default Page_Home
 
@@ -415,9 +415,7 @@ _Navbar_Simple: {
 	left: 0,
 	top: 722,
 	right: 0,
-	transform: [
-		{translateY: 34},
-	],
+	marginTop: -60,
 	paddingTop: 16,
 	paddingRight: 32,
 	paddingBottom: 16,

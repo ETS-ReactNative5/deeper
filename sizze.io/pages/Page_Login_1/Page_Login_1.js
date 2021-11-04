@@ -21,7 +21,7 @@ const Page_Login_1  = ({navigation}) => {
 		navigation.navigate("Page_Sign_Up")
 	}
 	return (
-	<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{height: Dimensions.get("window").height}}>
+	//<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{height: Dimensions.get("window").height}}>
 		<Animated.View style={[{}, noneModeStyles._page18]}    >
 			<View style = {noneModeStyles._Title_Lines}    >
 				<Text style = {noneModeStyles._Login}   >
@@ -71,17 +71,17 @@ const Page_Login_1  = ({navigation}) => {
 						Sign In
 					</Text>
 				</View>
-				<View style = {noneModeStyles._Bottom_Link}   >
+				<View style = {noneModeStyles._Bottom_Link}  >
 					<Text style = {noneModeStyles._Don_t_have_an_account_}  >
 						Don’t have an account?
 					</Text>
-					<Text style = {noneModeStyles._Sign_Up}  onStartShouldSetResponder = {() => {return true}} onResponderGrant = {() => {}} onResponderRelease = {() => {onClick_SignUp_Button();}} onStartShouldSetResponderCapture = {() => true}>
+					<Text style = {noneModeStyles._Sign_Up}  onPress={() => navigation.navigate('Page_Sign_Up')}>
 						Sign Up
 					</Text>
 				</View>
 			</View>
 		</Animated.View>
-	</KeyboardAvoidingView>
+	//</KeyboardAvoidingView>
 )}
 export default Page_Login_1
 

@@ -16,14 +16,13 @@ const Page_Sign_Up  = ({navigation}) => {
 	useEffect(() => {
 	}, []);
 	const onClick_Sign_Up_Button = () => {
-					navigation.navigate("Page_Login")
+					navigation.navigate("Page_Login_1")
 	}
 	const onClick_Sign_Up = () => {
 					navigation.navigate("Page_Login_1")
 	}
 	return (
-	<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{height: Dimensions.get("window").height}}>
-	<ScrollView bounces={false} showsVerticalScrollIndicator={false} style={{height: Dimensions.get("window").height}}>
+	//<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{height: Dimensions.get("window").height}}>
 		<Animated.View style={[{}, noneModeStyles._page2]}    >
 			<View style = {noneModeStyles._Sign_Up_Data}    >
 				<View style = {noneModeStyles._Lifesavers___Bust_2_container}    >
@@ -90,8 +89,7 @@ const Page_Sign_Up  = ({navigation}) => {
 				</Text>
 			</View>
 		</Animated.View>
-	</ScrollView>
-	</KeyboardAvoidingView>
+	//</KeyboardAvoidingView>
 )}
 export default Page_Sign_Up
 
@@ -121,7 +119,8 @@ _Lifesavers___Bust_2_container: {
 	width: 176,
 	height: 263,
 	flexShrink: 0,
-	marginBottom: 24,
+	marginTop: -15,
+	marginBottom: 15,
 	},
 _Lifesavers___Bust_2: {
 	width: "100%",
@@ -143,6 +142,7 @@ _Full_Name_Tex_Box: {
 	display: "flex",
 	flexDirection: "column",
 	flexShrink: 0,
+	marginTop: -15,
 	marginBottom: 16,
 	paddingTop: 10,
 	paddingRight: 20,
@@ -317,6 +317,7 @@ _Sign_Up_Button: {
 	alignItems: "center",
 	justifyContent: "center",
 	flexShrink: 0,
+	marginTop: -20,
 	marginBottom: 24,
 	paddingTop: 12,
 	paddingRight: 24,

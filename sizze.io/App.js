@@ -349,10 +349,6 @@ const Stack = createStackNavigator();
 							iconStyle: {width: "100%", height: "100%"},
 						}}>
 						<Tab.Screen
-							name = "Page_No_Connection_Error__1"
-							component = {ScreenForPage_No_Connection_Error__1}
-							options = {{tabBarVisible: false}}						/> 
-						<Tab.Screen
 							name = "Page_Splash"
 							component = {ScreenForPage_Splash}
 							options = {{tabBarVisible: false}}						/> 

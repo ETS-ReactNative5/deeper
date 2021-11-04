@@ -19,8 +19,8 @@ const Page_Onboarding___1  = ({navigation}) => {
 					navigation.navigate("Page_Onboarding___2")
 	}
 	return (
-	<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{height: Dimensions.get("window").height}}>
-	<ScrollView bounces={false} showsVerticalScrollIndicator={false} style={{height: Dimensions.get("window").height}}>
+	//<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{height: Dimensions.get("window").height}}>
+	//<ScrollView bounces={false} showsVerticalScrollIndicator={false} style={{height: Dimensions.get("window").height}}>
 		<Animated.View style={[{}, noneModeStyles._page5]}    >
 			<View style = {noneModeStyles._Text}    >
 				<View style = {noneModeStyles._Indicators}    >
@@ -49,8 +49,8 @@ const Page_Onboarding___1  = ({navigation}) => {
 				</View>
 			</View>
 		</Animated.View>
-	</ScrollView>
-	</KeyboardAvoidingView>
+	//</ScrollView>
+	//</KeyboardAvoidingView>
 )}
 export default Page_Onboarding___1
 
@@ -67,10 +67,10 @@ _Text: {
 	backgroundColor: "rgba(0, 0, 0, 0)",
 	display: "flex",
 	flexDirection: "column",
-	position: "absolute",
-	left: 16,
+	//position: "absolute",
+	left: -1,
 	top: 476,
-	right: 16,
+	right: 20,
 	},
 _Indicators: {
 	width: "100%",
@@ -105,6 +105,7 @@ _Ask_and_share: {
 	width: "100%",
 	height: "auto",
 	flexShrink: 0,
+	marginTop: -50,
 	marginBottom: 16,
 	color: "rgb(67, 44, 129)",
 	fontSize: 32,
@@ -155,14 +156,14 @@ _Lifesavers___Online_1_container: {
 	height: 245,
 	position: "absolute",
 	left: 24,
-	top: 191,
+	top: 160,
 	},
 _Lifesavers___Online_1: {
 	width: "100%",
 	height: "100%",
-	transform: [
-		{translateX: 38.5},
-	],
+	flexShrink: 0,
+	alignSelf: "flex-start",
+	position: "relative",
 	},
 })
 

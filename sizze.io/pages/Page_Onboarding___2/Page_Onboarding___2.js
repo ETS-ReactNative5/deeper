@@ -19,8 +19,8 @@ const Page_Onboarding___2  = ({navigation}) => {
 					navigation.navigate("Page_Home")
 	}
 	return (
-	<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{height: Dimensions.get("window").height}}>
-	<ScrollView bounces={false} showsVerticalScrollIndicator={false} style={{height: Dimensions.get("window").height}}>
+	//<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{height: Dimensions.get("window").height}}>
+	//<ScrollView bounces={false} showsVerticalScrollIndicator={false} style={{height: Dimensions.get("window").height}}>
 		<Animated.View style={[{}, noneModeStyles._page7]}    >
 			<View style = {noneModeStyles._Lifesavers___Sitting_1_container}  onStartShouldSetResponder = {() => {return true}} onResponderGrant = {() => {}} onResponderRelease = {() => {onClick_Lifesavers___Sitting_1_container();}} onStartShouldSetResponderCapture = {() => true}>
 				<View style = {noneModeStyles._Lifesavers___Sitting_1}   >
@@ -49,8 +49,8 @@ const Page_Onboarding___2  = ({navigation}) => {
 				</View>
 			</View>
 		</Animated.View>
-	</ScrollView>
-	</KeyboardAvoidingView>
+	//</ScrollView>
+	//</KeyboardAvoidingView>
 )}
 export default Page_Onboarding___2
 
@@ -67,16 +67,13 @@ _Lifesavers___Sitting_1_container: {
 	position: "absolute",
 	left: 46,
 	top: 120,
-	transform: [
-		{translateX: 41},
-	],
 	},
 _Lifesavers___Sitting_1: {
 	width: "100%",
 	height: "100%",
-	transform: [
-		{translateX: 24},
-	],
+	flexShrink: 0,
+	alignSelf: "flex-start",
+	position: "relative",
 	},
 _Text: {
 	width: "auto",
@@ -84,8 +81,8 @@ _Text: {
 	backgroundColor: "rgba(0, 0, 0, 0)",
 	display: "flex",
 	flexDirection: "column",
-	position: "absolute",
-	left: 16,
+	//position: "absolute",
+	left: 0,
 	top: 476,
 	right: 16,
 	},
@@ -122,6 +119,7 @@ _Express_your_feelings: {
 	width: "100%",
 	height: "auto",
 	flexShrink: 0,
+	marginTop: -40,
 	marginBottom: 16,
 	color: "rgb(67, 44, 129)",
 	fontSize: 32,
