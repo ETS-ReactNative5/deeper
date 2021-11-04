@@ -123,13 +123,6 @@ _page17: {
 	minHeight: Dimensions.get("window").height,
 	backgroundColor: "rgb(255, 255, 255)",
 	},
-_Home_Indicator: {
-	width: 375,
-	height: 34,
-	backgroundColor: "rgb(255, 255, 255)",
-	position: "absolute",
-	top: 778,
-	},
 _Home_Indicator_2: {
 	width: 134,
 	height: 5,
@@ -206,9 +199,13 @@ _Navbar_Simple_2: {
 	flexDirection: "row",
 	justifyContent: "space-between",
 	position: "absolute",
+	bottom: 0,
 	left: 0,
 	top: 722,
 	right: 0,
+	transform: [
+		{translateY: 34},
+	],
 	paddingTop: 16,
 	paddingRight: 32,
 	paddingBottom: 16,
