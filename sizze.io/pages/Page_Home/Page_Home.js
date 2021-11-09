@@ -175,7 +175,7 @@ _Home_Container: {
 	},
 _Title___User_Profile: {
 	width: "100%",
-	height: Dimensions.get('window').height/13,
+	height: Dimensions.get('window').height/11,
 	backgroundColor: "rgba(0, 0, 0, 0)",
 	display: "flex",
 	flexDirection: "row",
@@ -191,7 +191,7 @@ _Hi__Kristin_: {
 	flexShrink: 0,
 	marginRight: 16,
 	color: "rgb(67, 44, 129)",
-	fontSize: 24,
+	fontSize: Dimensions.get('window').width/15,
 	fontWeight: "700",
 	fontFamily: "Raleway",
 	textAlign: "left",
