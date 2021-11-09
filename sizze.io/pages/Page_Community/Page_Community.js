@@ -186,19 +186,30 @@ _Notch: {
 	top: -2,
 	},
 _Navbar_Simple: {
+	width: "auto",
+	height: "auto",
+	backgroundColor: "rgb(255, 255, 255)",
+	display: "flex",
 	flexDirection: "row",
 	justifyContent: "space-between",
+	position: "absolute",
+	bottom: 0,
+	left: 0,
+	top: 722,
+	right: 0,
+	transform: [
+		{translateY: 34},
+	],
+	paddingTop: 16,
+	paddingRight: 32,
+	paddingBottom: 16,
+	paddingLeft: 32,
 	shadowOffset: {
 		width: 0,
 		height: -1
 	},
 	shadowColor: "rgba(0,0,0,0.08)",
 	shadowRadius: 4,
-	bottom: -Dimensions.get('window').height+(Dimensions.get('window').height/9),
-	paddingTop: 16,
-	paddingRight: 32,
-	paddingBottom: 16,
-	paddingLeft: 32,
 	},
 _Icon_Home: {
 	width: 24,
@@ -659,4 +670,3 @@ _layer_4f5fb8: {
 	bottom: 128,
 	},
 })
-
