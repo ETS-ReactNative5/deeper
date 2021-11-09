@@ -311,7 +311,7 @@ _Card_List: {
 	},
 _Notification_Card: {
 	width: "100%",
-	height: 519,
+	height: Dimensions.get('window').height/1.45,
 	backgroundColor: "rgb(255, 255, 255)",
 	display: "flex",
 	flexDirection: "row",
