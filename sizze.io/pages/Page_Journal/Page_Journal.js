@@ -23,8 +23,8 @@ const Page_Journal  = ({navigation}) => {
 					navigation.navigate("Page_Inbox")
 	}
 	return (
-	<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{height: Dimensions.get("window").height}}>
-	<ScrollView bounces={false} showsVerticalScrollIndicator={false} style={{height: Dimensions.get("window").height}}>
+	// <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{height: Dimensions.get("window").height}}>
+	// <ScrollView bounces={false} showsVerticalScrollIndicator={false} style={{height: Dimensions.get("window").height}}>
 		<Animated.View style={[{}, noneModeStyles._page17]}    >
 			<View style = {noneModeStyles._Home_Indicator}    >
 				<View style = {noneModeStyles._Home_Indicator_2}    >
@@ -80,6 +80,9 @@ const Page_Journal  = ({navigation}) => {
 				Journal
 			</Text>
 			<View style = {[noneModeStyles._Card_List, {borderColor: focus0 ? "#7E58FF" : "",backgroundColor: focus0 ? "rgba(0, 0, 0, 0)" : "rgba(0, 0, 0, 0)"}]}    >
+
+
+
 				<View style = {noneModeStyles._Notification_Card}    >
 					<View style = {[noneModeStyles._Main_Container, {borderColor: focus0 ? "#7E58FF" : "",backgroundColor: focus0 ? "rgba(0, 0, 0, 0)" : "rgba(0, 0, 0, 0)"}]}    >
 						<View style = {noneModeStyles._Title___Text}    >
@@ -89,6 +92,9 @@ const Page_Journal  = ({navigation}) => {
 						</View>
 					</View>
 				</View>
+
+
+
 			</View>
 			<View style = {noneModeStyles._Screen_Shot_2021_10_17_at_5_21_1_container}    >
 				<View style = {noneModeStyles._Screen_Shot_2021_10_17_at_5_21_1}   >
@@ -111,8 +117,8 @@ const Page_Journal  = ({navigation}) => {
 				</View>
 			</View>
 		</Animated.View>
-	</ScrollView>
-	</KeyboardAvoidingView>
+	// </ScrollView>
+	// </KeyboardAvoidingView>
 )}
 export default Page_Journal
 
@@ -299,8 +305,8 @@ _Journal: {
 	textAlign: "left",
 	},
 _Card_List: {
-	width: "auto",
-	height: 519,
+	width: Dimensions.get("window").width-36,
+	height: Dimensions.get("window").height/2,
 	backgroundColor: "rgba(0, 0, 0, 0)",
 	display: "flex",
 	flexDirection: "column",

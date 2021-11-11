@@ -22,8 +22,8 @@ const Page_Community  = ({navigation}) => {
 					navigation.navigate("Page_Inbox")
 	}
 	return (
-	<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{height: Dimensions.get("window").height}}>
-	<ScrollView bounces={false} showsVerticalScrollIndicator={false} style={{height: Dimensions.get("window").height}}>
+	// <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{height: Dimensions.get("window").height}}>
+	// <ScrollView bounces={false} showsVerticalScrollIndicator={false} style={{height: Dimensions.get("window").height}}>
 		<Animated.View style={[{}, noneModeStyles._page15]}    >
 			<View style = {noneModeStyles._IPhone_X__or_newer_}    >
 				<View style = {noneModeStyles._Notch}    >
@@ -158,8 +158,8 @@ const Page_Community  = ({navigation}) => {
 				</View>
 			</View>
 		</Animated.View>
-	</ScrollView>
-	</KeyboardAvoidingView>
+	// </ScrollView>
+	// </KeyboardAvoidingView>
 )}
 export default Page_Community
 
@@ -280,8 +280,8 @@ _layer_5d1ed2: {
 _layer_a8065d: {
 	},
 _Card_List: {
-	width: 426,
-	height: 505,
+	width: "auto",
+	height: "auto",
 	backgroundColor: "rgba(0, 0, 0, 0)",
 	display: "flex",
 	flexDirection: "column",
