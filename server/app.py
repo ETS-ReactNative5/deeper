@@ -34,10 +34,10 @@ def login():
         if user["Password"] == Authentication.encrypt(passwd_input):
             #resp = Flask.make_response("123")
             #resp = {"key": "SID", "value": ["success"]} #need to change later
-            resp = Flask.make_response()
-            resp.set_cookie('current_usr', value= user["Username"], max_age= 604800)
-            return resp
-            #return "Success"
+            #resp = Flask.make_response()
+            #resp.set_cookie('current_usr', value= user["Username"], max_age= 604800)
+            #return resp
+            return "Success"
             #return Response(status=200)
         return "password incorrect"
         #return Response(status=400)
@@ -56,13 +56,17 @@ def signup():
     mongo.db.users.insert({"Username": username, "Email": email, "Password": enc_passwd})
     return "Signed up"
 
-#@app.route('/forgot_password', method=['GET'])
-#def password_reset():
-#    new_passwd = request.form['new_password']
-#    confirm_new = request.form['confirm_new']
-#    if (new_passwd == confirm_new):
-#        mongo.db.users.
-
+@app.route('/forgot_password', methods=['GET'])
+def password_reset():
+    email = request.form['email']
+    new_passwd = request.form['new_password']
+    confirm_new = request.form['confirm_new']
+    if (new_passwd == confirm_new):
+        enc_passwd = Authentication.encrypt(confirm_new)
+        mongo.db.users.update_one({'Email': email}, { '$set': {"Password": enc_passwd}})
+        return "Successfully changed"
+    else:
+        return "Error"
 #@app.route('')
 
 if __name__ == "__main__":
