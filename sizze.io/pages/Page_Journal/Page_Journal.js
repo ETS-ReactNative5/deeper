@@ -80,21 +80,13 @@ const Page_Journal  = ({navigation}) => {
 				Journal
 			</Text>
 			<View style = {[noneModeStyles._Card_List, {borderColor: focus0 ? "#7E58FF" : "",backgroundColor: focus0 ? "rgba(0, 0, 0, 0)" : "rgba(0, 0, 0, 0)"}]}    >
-
-
-
 				<View style = {noneModeStyles._Notification_Card}    >
 					<View style = {[noneModeStyles._Main_Container, {borderColor: focus0 ? "#7E58FF" : "",backgroundColor: focus0 ? "rgba(0, 0, 0, 0)" : "rgba(0, 0, 0, 0)"}]}    >
 						<View style = {noneModeStyles._Title___Text}    >
-							<View style={noneModeStyles._Notification_Title}>
-								<TextInput style = {[{flex: 1, outline: "none",color: "rgba(67,44,129,100)",}]} placeholderTextColor = {"rgb(67, 44, 129)"}  placeholder = "Start writing here..." onFocus = {() => setFocus0(true)} onBlur = {() => setFocus0(false)} />
-							</View>
+							<TextInput style = {[{outline: "none",color: "rgba(67,44,129,100)",}]} placeholderTextColor = {"rgb(67, 44, 129)"}  placeholder = "Start writing here..." onFocus = {() => setFocus0(true)} onBlur = {() => setFocus0(false)} />
 						</View>
 					</View>
 				</View>
-
-
-
 			</View>
 			<View style = {noneModeStyles._Screen_Shot_2021_10_17_at_5_21_1_container}    >
 				<View style = {noneModeStyles._Screen_Shot_2021_10_17_at_5_21_1}   >
@@ -353,8 +345,11 @@ _Title___Text: {
 	flexGrow: 1,
 	flexBasis: 0,
 	flexShrink: 0,
+	fontSize: 16,
+	fontWeight: "500",
+	fontFamily: "Raleway",
 	},
-_Notification_Title: {
+/* _Notification_Title: {
 	width: "100%",
 	height: "auto",
 	flexShrink: 0,
@@ -366,7 +361,7 @@ _Notification_Title: {
 	textDecorationLine: "none",
 	letterSpacing: 0,
 	textAlign: "left",
-	},
+	}, */
 _Screen_Shot_2021_10_17_at_5_21_1_container: {
 	width: 34,
 	height: 32,
