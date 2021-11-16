@@ -23,8 +23,8 @@ const Page_Journal  = ({navigation}) => {
 					navigation.navigate("Page_Inbox")
 	}
 	return (
-	<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{height: Dimensions.get("window").height}}>
-	<ScrollView bounces={false} showsVerticalScrollIndicator={false} style={{height: Dimensions.get("window").height}}>
+	// <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{height: Dimensions.get("window").height}}>
+	// <ScrollView bounces={false} showsVerticalScrollIndicator={false} style={{height: Dimensions.get("window").height}}>
 		<Animated.View style={[{}, noneModeStyles._page17]}    >
 			<View style = {noneModeStyles._Home_Indicator}    >
 				<View style = {noneModeStyles._Home_Indicator_2}    >
@@ -83,9 +83,7 @@ const Page_Journal  = ({navigation}) => {
 				<View style = {noneModeStyles._Notification_Card}    >
 					<View style = {[noneModeStyles._Main_Container, {borderColor: focus0 ? "#7E58FF" : "",backgroundColor: focus0 ? "rgba(0, 0, 0, 0)" : "rgba(0, 0, 0, 0)"}]}    >
 						<View style = {noneModeStyles._Title___Text}    >
-							<View style={noneModeStyles._Notification_Title}>
-								<TextInput style = {[{flex: 1, outline: "none",color: "rgba(67,44,129,100)",}]} placeholderTextColor = {"rgb(67, 44, 129)"}  placeholder = "Start writing here..." onFocus = {() => setFocus0(true)} onBlur = {() => setFocus0(false)} />
-							</View>
+							<TextInput style = {[{outline: "none",color: "rgba(67,44,129,100)",}]} placeholderTextColor = {"rgb(67, 44, 129)"}  placeholder = "Start writing here..." onFocus = {() => setFocus0(true)} onBlur = {() => setFocus0(false)} />
 						</View>
 					</View>
 				</View>
@@ -111,8 +109,8 @@ const Page_Journal  = ({navigation}) => {
 				</View>
 			</View>
 		</Animated.View>
-	</ScrollView>
-	</KeyboardAvoidingView>
+	// </ScrollView>
+	// </KeyboardAvoidingView>
 )}
 export default Page_Journal
 
@@ -192,30 +190,19 @@ _layer_31f474: {
 _layer_951995: {
 	},
 _Navbar_Simple_2: {
-	width: "auto",
-	height: "auto",
-	backgroundColor: "rgb(255, 255, 255)",
-	display: "flex",
 	flexDirection: "row",
 	justifyContent: "space-between",
-	position: "absolute",
-	bottom: 0,
-	left: 0,
-	top: 722,
-	right: 0,
-	transform: [
-		{translateY: 34},
-	],
-	paddingTop: 16,
-	paddingRight: 32,
-	paddingBottom: 16,
-	paddingLeft: 32,
 	shadowOffset: {
 		width: 0,
 		height: -1
 	},
 	shadowColor: "rgba(0,0,0,0.08)",
 	shadowRadius: 4,
+	bottom: -Dimensions.get('window').height+(Dimensions.get('window').height/9),
+	paddingTop: 16,
+	paddingRight: 32,
+	paddingBottom: 16,
+	paddingLeft: 32,
 	},
 _Icon_Home: {
 	width: 24,
@@ -310,8 +297,8 @@ _Journal: {
 	textAlign: "left",
 	},
 _Card_List: {
-	width: "auto",
-	height: 519,
+	width: Dimensions.get("window").width-36,
+	height: Dimensions.get("window").height/2,
 	backgroundColor: "rgba(0, 0, 0, 0)",
 	display: "flex",
 	flexDirection: "column",
@@ -322,7 +309,7 @@ _Card_List: {
 	},
 _Notification_Card: {
 	width: "100%",
-	height: 519,
+	height: Dimensions.get('window').height/1.45,
 	backgroundColor: "rgb(255, 255, 255)",
 	display: "flex",
 	flexDirection: "row",
@@ -358,8 +345,11 @@ _Title___Text: {
 	flexGrow: 1,
 	flexBasis: 0,
 	flexShrink: 0,
+	fontSize: 16,
+	fontWeight: "500",
+	fontFamily: "Raleway",
 	},
-_Notification_Title: {
+/* _Notification_Title: {
 	width: "100%",
 	height: "auto",
 	flexShrink: 0,
@@ -371,7 +361,7 @@ _Notification_Title: {
 	textDecorationLine: "none",
 	letterSpacing: 0,
 	textAlign: "left",
-	},
+	}, */
 _Screen_Shot_2021_10_17_at_5_21_1_container: {
 	width: 34,
 	height: 32,

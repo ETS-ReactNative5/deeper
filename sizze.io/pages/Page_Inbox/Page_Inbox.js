@@ -10,6 +10,7 @@ import {AccordionItem} from "../../customComponents/AccordionItem.js";
 import {Map} from "../../customComponents/Map.js";
 import {image_Screen_Shot_2021_10_17_at_5_21_2_link} from './assets/imageLinks.js'
 const Page_Inbox  = ({navigation}) => {
+	const [focus0, setFocus0] = useState(false);
 	useEffect(() => {
 	}, []);
 	const onClick_layer_ec99ae = () => {
@@ -22,8 +23,8 @@ const Page_Inbox  = ({navigation}) => {
 					navigation.navigate("Page_Journal")
 	}
 	return (
-	<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{height: Dimensions.get("window").height}}>
-	<ScrollView bounces={false} showsVerticalScrollIndicator={false} style={{height: Dimensions.get("window").height}}>
+	// <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{height: Dimensions.get("window").height}}>
+	// <ScrollView bounces={false} showsVerticalScrollIndicator={false} style={{height: Dimensions.get("window").height}}>
 		<Animated.View style={[{}, noneModeStyles._page16]}    >
 			<View style = {noneModeStyles._Navbar_Simple}    >
 				<View style = {noneModeStyles._Icon_Home}    >
@@ -148,7 +149,7 @@ const Page_Inbox  = ({navigation}) => {
 					</Text>
 				</View>
 				<View style = {noneModeStyles._Search_Bar}    >
-					<View style = {noneModeStyles._Right_Search_Field}    >
+					<View style = {[noneModeStyles._Right_Search_Field, {borderColor: focus0 ? "#7E58FF" : "",backgroundColor: focus0 ? "rgb(244, 244, 244)" : "rgb(244, 244, 244)"}]}    >
 						<View style = {noneModeStyles._Search_Icon}    >
 							<View style = {noneModeStyles._layer_119d00}    >
 								<View style = {noneModeStyles._layer_95b4a0}   >
@@ -158,17 +159,17 @@ const Page_Inbox  = ({navigation}) => {
 								</View>
 							</View>
 						</View>
-						<Text style = {noneModeStyles.___Search_Placeholder}   >
-							Search
-						</Text>
+						<View style={noneModeStyles.___Search_Placeholder}>
+							<TextInput style = {[{flex: 1, outline: "none",color: "rgba(126,88,255,100)",}]} placeholderTextColor = {"rgb(102, 102, 102)"}  placeholder = "Search" onFocus = {() => setFocus0(true)} onBlur = {() => setFocus0(false)} />
+						</View>
 					</View>
 				</View>
 				<View style = {noneModeStyles._Separator}    >
 				</View>
 			</View>
 		</Animated.View>
-	</ScrollView>
-	</KeyboardAvoidingView>
+	// </ScrollView>
+	// </KeyboardAvoidingView>
 )}
 export default Page_Inbox
 
@@ -180,30 +181,19 @@ _page16: {
 	backgroundColor: "rgb(255, 255, 255)",
 	},
 _Navbar_Simple: {
-	width: "auto",
-	height: "auto",
-	backgroundColor: "rgb(255, 255, 255)",
-	display: "flex",
 	flexDirection: "row",
 	justifyContent: "space-between",
-	position: "absolute",
-	bottom: 0,
-	left: 0,
-	top: 722,
-	right: 0,
-	transform: [
-		{translateY: 34},
-	],
-	paddingTop: 16,
-	paddingRight: 32,
-	paddingBottom: 16,
-	paddingLeft: 32,
 	shadowOffset: {
 		width: 0,
 		height: -1
 	},
 	shadowColor: "rgba(0,0,0,0.08)",
 	shadowRadius: 4,
+	bottom: -Dimensions.get('window').height+(Dimensions.get('window').height/9),
+	paddingTop: 16,
+	paddingRight: 32,
+	paddingBottom: 16,
+	paddingLeft: 32,
 	},
 _Icon_Home: {
 	width: 24,

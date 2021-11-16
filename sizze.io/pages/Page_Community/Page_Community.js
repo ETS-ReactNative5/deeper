@@ -22,8 +22,8 @@ const Page_Community  = ({navigation}) => {
 					navigation.navigate("Page_Inbox")
 	}
 	return (
-	<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{height: Dimensions.get("window").height}}>
-	<ScrollView bounces={false} showsVerticalScrollIndicator={false} style={{height: Dimensions.get("window").height}}>
+	// <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{height: Dimensions.get("window").height}}>
+	// <ScrollView bounces={false} showsVerticalScrollIndicator={false} style={{height: Dimensions.get("window").height}}>
 		<Animated.View style={[{}, noneModeStyles._page15]}    >
 			<View style = {noneModeStyles._IPhone_X__or_newer_}    >
 				<View style = {noneModeStyles._Notch}    >
@@ -158,8 +158,8 @@ const Page_Community  = ({navigation}) => {
 				</View>
 			</View>
 		</Animated.View>
-	</ScrollView>
-	</KeyboardAvoidingView>
+	// </ScrollView>
+	// </KeyboardAvoidingView>
 )}
 export default Page_Community
 
@@ -186,30 +186,19 @@ _Notch: {
 	top: -2,
 	},
 _Navbar_Simple: {
-	width: "auto",
-	height: "auto",
-	backgroundColor: "rgb(255, 255, 255)",
-	display: "flex",
 	flexDirection: "row",
 	justifyContent: "space-between",
-	position: "absolute",
-	bottom: 0,
-	left: 0,
-	top: 722,
-	right: 0,
-	transform: [
-		{translateY: 34},
-	],
-	paddingTop: 16,
-	paddingRight: 32,
-	paddingBottom: 16,
-	paddingLeft: 32,
 	shadowOffset: {
 		width: 0,
 		height: -1
 	},
 	shadowColor: "rgba(0,0,0,0.08)",
 	shadowRadius: 4,
+	bottom: -Dimensions.get('window').height+(Dimensions.get('window').height/9),
+	paddingTop: 16,
+	paddingRight: 32,
+	paddingBottom: 16,
+	paddingLeft: 32,
 	},
 _Icon_Home: {
 	width: 24,
@@ -291,8 +280,8 @@ _layer_5d1ed2: {
 _layer_a8065d: {
 	},
 _Card_List: {
-	width: 426,
-	height: 505,
+	width: "auto",
+	height: "auto",
 	backgroundColor: "rgba(0, 0, 0, 0)",
 	display: "flex",
 	flexDirection: "column",
@@ -302,8 +291,8 @@ _Card_List: {
 	right: 15,
 	},
 _Notification_Card: {
-	width: "100%",
-	height: "auto",
+	width: Dimensions.get('window').width-32,
+	height: Dimensions.get('window').height/10,
 	backgroundColor: "rgb(255, 255, 255)",
 	display: "flex",
 	flexDirection: "row",
@@ -316,7 +305,7 @@ _Notification_Card: {
 	borderTopWidth: 1,
 	borderRightWidth: 1,
 	borderBottomWidth: 1,
-	borderLeftWidth: 1,
+	borderLeftWidth: 1, 
 	borderStyle: "solid",
 	borderColor: "rgb(237, 236, 244)",
 	borderRadius: 8,
@@ -363,8 +352,8 @@ _Lorem_ipsum_dolor_sit_amet__consectetur_Lorem_ipsum_dolor_sit_amet__ipsum_dolor
 	textAlign: "left",
 	},
 _Notification_Card_2: {
-	width: "100%",
-	height: "auto",
+	width: Dimensions.get('window').width-32,
+	height: Dimensions.get('window').height/10,
 	backgroundColor: "rgb(255, 255, 255)",
 	display: "flex",
 	flexDirection: "row",
@@ -424,8 +413,8 @@ _Lorem_ipsum_dolor_sit_amet__consectetur_Lorem_ipsum_dolor_sit_amet__ipsum_dolor
 	textAlign: "left",
 	},
 _Notification_Card_3: {
-	width: "100%",
-	height: "auto",
+	width: Dimensions.get('window').width-32,
+	height: Dimensions.get('window').height/10,
 	backgroundColor: "rgb(255, 255, 255)",
 	display: "flex",
 	flexDirection: "row",
@@ -485,8 +474,8 @@ _Lorem_ipsum_dolor_sit_amet__consectetur_Lorem_ipsum_dolor_sit_amet__ipsum_dolor
 	textAlign: "left",
 	},
 _Notification_Card_4: {
-	width: "100%",
-	height: "auto",
+	width: Dimensions.get('window').width-32,
+	height: Dimensions.get('window').height/10,
 	backgroundColor: "rgb(255, 255, 255)",
 	display: "flex",
 	flexDirection: "row",
@@ -562,7 +551,7 @@ _Nav_Bar: {
 	},
 _Large_Header: {
 	width: "100%",
-	height: "auto",
+	height: Dimensions.get('window').height/13,
 	display: "flex",
 	flexDirection: "row",
 	flexShrink: 0,
@@ -578,7 +567,7 @@ _Title: { // "Feed from Community" title
 	flexBasis: 0,
 	flexShrink: 0,
 	color: "rgb(67, 44, 129)",
-	fontSize: 34,
+	fontSize: Dimensions.get('window').width/14,
 	fontWeight: "700",
 	fontFamily: "Raleway",
 	fontStyle: "normal",

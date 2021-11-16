@@ -13,6 +13,7 @@ import {image_Lifesavers_Serum_Bag_link} from './assets/imageLinks.js'
 import {image_Lifesavers_Electrocardiogram_link} from './assets/imageLinks.js'
 import {image_Lifesavers_Bust_link} from './assets/imageLinks.js'
 import {image_Lifesavers_Stethoscope_link} from './assets/imageLinks.js'
+
 const Page_Home  = ({navigation}) => {
 	useEffect(() => {
 	}, []);
@@ -174,7 +175,7 @@ _Home_Container: {
 	},
 _Title___User_Profile: {
 	width: "100%",
-	height: "auto",
+	height: Dimensions.get('window').height/11,
 	backgroundColor: "rgba(0, 0, 0, 0)",
 	display: "flex",
 	flexDirection: "row",
@@ -183,14 +184,14 @@ _Title___User_Profile: {
 	marginBottom: 16,
 	},
 _Hi__Kristin_: {
-	width: "auto",
+	width: "100%",
 	height: "auto",
 	flexGrow: 1,
 	flexBasis: 0,
 	flexShrink: 0,
 	marginRight: 16,
 	color: "rgb(67, 44, 129)",
-	fontSize: 24,
+	fontSize: Dimensions.get('window').width/15,
 	fontWeight: "700",
 	fontFamily: "Raleway",
 	textAlign: "left",
@@ -219,7 +220,7 @@ _Lifesavers_Avatar: {
 	},
 _Horizontal_Card: {
 	width: "100%",
-	height: 135,
+	height: Dimensions.get('window').height/6.5,
 	backgroundColor: "rgb(237, 236, 244)",
 	display: "flex",
 	flexDirection: "row",
@@ -229,6 +230,22 @@ _Horizontal_Card: {
 	paddingRight: 16,
 	paddingLeft: 16,
 	borderRadius: 12,
+
+	/* flexDirection: "row",
+	justifyContent: "space-between",
+	shadowOffset: {
+		width: 0,
+		height: -1
+	},
+	shadowColor: "rgba(0,0,0,0.08)",
+	shadowRadius: 4,
+	bottom: -Dimensions.get('window').height+(Dimensions.get('window').height/9),
+	paddingTop: 16,
+	paddingRight: 32,
+	paddingBottom: 16,
+	paddingLeft: 32, */
+
+
 	},
 _Your_Diet_Chart: {
 	width: "auto",
@@ -266,7 +283,7 @@ _Lifesavers_Serum_Bag: {
 	},
 _Horizontal_Card_2: {
 	width: "100%",
-	height: 135,
+	height: Dimensions.get('window').height/6.5,
 	backgroundColor: "rgb(237, 236, 244)",
 	display: "flex",
 	flexDirection: "row",
@@ -313,7 +330,7 @@ _Lifesavers_Electrocardiogram: {
 	},
 _Horizontal_Card_3: {
 	width: "100%",
-	height: 135,
+	height: Dimensions.get('window').height/6.5,
 	backgroundColor: "rgb(237, 236, 244)",
 	display: "flex",
 	flexDirection: "row",
@@ -359,8 +376,9 @@ _Lifesavers_Bust: {
 	height: "100%",
 	},
 _Horizontal_Card_4: {
+	justifyContent: "flex-start",
 	width: "100%",
-	height: 135,
+	height: Dimensions.get('window').height/6.5,
 	backgroundColor: "rgb(237, 236, 244)",
 	display: "flex",
 	flexDirection: "row",
@@ -405,30 +423,19 @@ _Lifesavers_Stethoscope: {
 	height: "100%",
 	},
 _Navbar_Simple: {
-	width: "auto",
-	height: "auto",
-	backgroundColor: "rgb(255, 255, 255)",
-	display: "flex",
 	flexDirection: "row",
 	justifyContent: "space-between",
-	position: "absolute",
-	bottom: 0,
-	left: 0,
-	top: 722,
-	right: 0, 
-	transform: [
-		{translateY: 34},
-	],
-	paddingTop: 16,
-	paddingRight: 32,
-	paddingBottom: 16,
-	paddingLeft: 32,
 	shadowOffset: {
 		width: 0,
 		height: -1
 	},
 	shadowColor: "rgba(0,0,0,0.08)",
 	shadowRadius: 4,
+	bottom: -Dimensions.get('window').height+(Dimensions.get('window').height/9),
+	paddingTop: 16,
+	paddingRight: 32,
+	paddingBottom: 16,
+	paddingLeft: 32,
 	},
 _Icon_Home: {
 	width: 24,
