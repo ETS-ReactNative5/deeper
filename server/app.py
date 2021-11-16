@@ -1,4 +1,4 @@
-from flask import Flask, request, Response, session
+from flask import Flask, request, Response, session, make_response, jsonify
 from flask_pymongo import PyMongo
 
 import click
@@ -26,6 +26,9 @@ def hello():
 
 @app.route('/login', methods=['GET'])
 def login():
+    get_cookie = request.cookies.get('current_usr')
+    if(get_cookie is not None):
+        return "Already Signed in"
     name = request.form['email']
     passwd_input = request.form['password']
     user = mongo.db.users.find_one({'Email': name})
@@ -34,10 +37,10 @@ def login():
         if user["Password"] == Authentication.encrypt(passwd_input):
             #resp = Flask.make_response("123")
             #resp = {"key": "SID", "value": ["success"]} #need to change later
-            #resp = Flask.make_response()
-            #resp.set_cookie('current_usr', value= user["Username"], max_age= 604800)
-            #return resp
-            return "Success"
+            resp = make_response("setting_cookie")
+            resp.set_cookie('current_usr', value= (user["Email"]), max_age= 604800)
+            return resp
+            #return "Success"
             #return Response(status=200)
         return "password incorrect"
         #return Response(status=400)
