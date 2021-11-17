@@ -9,7 +9,9 @@ import {Select} from "../../customComponents/Select.js";
 import {AccordionItem} from "../../customComponents/AccordionItem.js";
 import {Map} from "../../customComponents/Map.js";
 import {image_Lifesavers___Bust_2_link} from './assets/imageLinks.js'
-const Page_Login_1  = ({navigation}) => {
+const Page_Login_1 = ({ navigation }) => {
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
 	const [focus0, setFocus0] = useState(false);
 	const [focus1, setFocus1] = useState(false);
 	useEffect(() => {
@@ -38,7 +40,14 @@ const Page_Login_1  = ({navigation}) => {
 					<View style = {noneModeStyles._Email_Wrapper}    >
 					<View style = {[noneModeStyles._Email_Text_Box, {borderColor: focus0 ? "rgb(237, 236, 244)" : "rgb(237, 236, 244)",backgroundColor: focus0 ? "rgb(255, 255, 255)" : "rgb(255, 255, 255)"}]}    >
 						<View style = {noneModeStyles._Placeholder___Right_Icon}    >
-								<TextInput style = {[{flex: 1, outline: "none",color: "rgba(123,107,168,100)",}]} placeholderTextColor = {"rgb(123, 107, 168)"}  placeholder = "Email" onFocus = {() => setFocus0(true)} onBlur = {() => setFocus0(false)} />
+								<TextInput style={[{ flex: 1, outline: "none", color: "rgba(123,107,168,100)", }]}
+									placeholderTextColor={"rgb(123, 107, 168)"}
+									placeholder="Email"
+									value={email}
+									onChangeText={(email) => setEmail(email)}
+									onFocus={() => setFocus0(true)}
+									onBlur={() => setFocus0(false)}
+								/>
 						</View>
 					</View>
 					</View>
@@ -46,7 +55,14 @@ const Page_Login_1  = ({navigation}) => {
 						<View style = {[noneModeStyles._Password_Text_Box, {borderColor: focus1 ? "rgb(237, 236, 244)" : "rgb(237, 236, 244)",backgroundColor: focus1 ? "rgb(255, 255, 255)" : "rgb(255, 255, 255)"}]}    >
 							<View style = {noneModeStyles._Placeholder___Right_Icon_2}    >
 								<View style={noneModeStyles._label_2}>
-									<TextInput style = {[{flex: 1, outline: "none",color: "rgba(123,107,168,100)",}]} placeholderTextColor = {"rgb(123, 107, 168)"}  placeholder = "Password" onFocus = {() => setFocus1(true)} onBlur = {() => setFocus1(false)} />
+									<TextInput style={[{ flex: 1, outline: "none", color: "rgba(123,107,168,100)", }]}
+										placeholderTextColor={"rgb(123, 107, 168)"}
+										placeholder="Password"
+										value={password}
+										onChangeText={(password) => setPassword(password)}
+										onFocus={() => setFocus1(true)}
+										onBlur={() => setFocus1(false)}
+									/>
 								</View>
 								<View style = {noneModeStyles._Icon_Eye}    >
 									<View style = {noneModeStyles._layer_4e709d}    >
