@@ -29,7 +29,12 @@ import Page_Settings_V1 from "./pages/Page_Settings_V1/Page_Settings_V1.js";
 import Page_Community from "./pages/Page_Community/Page_Community.js";
 import Page_Inbox from "./pages/Page_Inbox/Page_Inbox.js";
 import Page_Journal from "./pages/Page_Journal/Page_Journal.js";
+
+
+// added extra/duplicate screens
 import Page_Login_1 from "./pages/Page_Login_1/Page_Login_1.js";
+import Page_Sign_Up_1 from "./pages/Page_Sign_Up_1/Page_Sign_Up_1.js";
+
 const Tab = createBottomTabNavigator();
 const Page_No_Connection_Error__1StackNavigator = createStackNavigator();
 const ScreenForPage_No_Connection_Error__1 = () => {
@@ -283,6 +288,8 @@ const ScreenForPage_Journal = () => {
 		</Page_JournalStackNavigator.Navigator>
 	)
 };
+
+//additional navigation for duplicate screens
 const Page_Login_1StackNavigator = createStackNavigator();
 const ScreenForPage_Login_1 = () => {
 	return (
@@ -297,6 +304,23 @@ const ScreenForPage_Login_1 = () => {
 		</Page_Login_1StackNavigator.Navigator>
 	)
 };
+const Page_Sign_Up_1StackNavigator = createStackNavigator();
+const ScreenForPage_Sign_Up_1 = () => {
+	return (
+		<Page_Sign_Up_1StackNavigator.Navigator>
+			<Page_Sign_UpStackNavigator.Screen
+				name = "Page_Sign_Up_1"
+				component = {Page_Sign_Up_1}
+				options = {{
+					headerShown: false
+				}}
+			/>
+		</Page_Sign_Up_1StackNavigator.Navigator>
+	)
+};
+
+
+
 const App = () => {
 	let [fontsLoaded] = useFonts(fonts);
 const Stack = createStackNavigator();
@@ -416,17 +440,23 @@ const Stack = createStackNavigator();
 							name = "Page_Journal"
 							component = {ScreenForPage_Journal}
 							options = {{tabBarVisible: false}}						/> 
+
+						{/* additional duplicate screens */}
 						<Tab.Screen
 							name = "Page_Login_1"
 							component = {ScreenForPage_Login_1}
+							options = {{tabBarVisible: false}}						/> 
+						<Tab.Screen
+							name = "Page_Sign_Up_1"
+							component = {ScreenForPage_Sign_Up_1}
 							options = {{tabBarVisible: false}}						/> 
 					</Tab.Navigator>
 	)};
 	return (
 				<NavigationContainer>
 					<Stack.Navigator>
-					<Stack.Screen name = "main" options={{headerShown: false}} component={mainScreen}/>
-</Stack.Navigator>
+						<Stack.Screen name = "main" options={{headerShown: false}} component={mainScreen}/>
+					</Stack.Navigator>
 				</NavigationContainer>
 )};
 
