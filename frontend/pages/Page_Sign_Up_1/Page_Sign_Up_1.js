@@ -27,7 +27,8 @@ import {
     ExtraText,
     ExtraView,
     TextLink,
-    TextLinkContent
+    TextLinkContent,
+    WelcomeImage
 
 } from "../../styles/global";
 // colors
@@ -75,11 +76,17 @@ const Page_Sign_Up_1  = ({navigation}) => {
             <StyledContainer>
                 <StatusBar style="dark"/>
                 <InnerContainer>
-                    <PageTitle> deeper </PageTitle>
-                    <SubTitle>Account Signup</SubTitle>
+                    <PageTitle> Account Signup </PageTitle>
+                    <View style = {noneModeStyles._Lifesavers___Bust_2_container}    >
+					    <View style = {noneModeStyles._Lifesavers___Bust_2}   >
+						    <Image style={{height: "100%", width: "100%"}} source = {{uri: image_Lifesavers___Bust_2_link}}/>
+					    </View>
+				    </View>
+                    {/* <WelcomeImage resizeMode='cover' source={{uri: image_Lifesavers___Bust_2_link}} /> */}
+                    {/* <SubTitle>Account Signup</SubTitle> */}
 
                     <Formik
-                        initialValues={{email: '', password: ''}}
+                        initialValues={{email: '', password: '', username: ''}}
 
                         onSubmit ={ (values) => {
                             auth.createUserWithEmailAndPassword(values.email, values.password)
@@ -107,6 +114,19 @@ const Page_Sign_Up_1  = ({navigation}) => {
                         }}
 
                     >{({handleChange, handleBlur, handleSubmit, values}) => (<StyledFormArea> 
+                            
+                            <MyTextInput 
+                                label="Username" 
+                                icon="person"
+                                autoCapitalize="none"
+                                placeholder="John Doe"
+                                placeholderTextColor={darkLight}
+                                onChangeText = {handleChange('username')}
+                                onBlur={handleBlur('username')}
+                                value={values.username}
+                                keyboardType="default"
+
+                            /> 
 
                             <MyTextInput 
                                 label="Email Address" 
@@ -183,3 +203,17 @@ const MyTextInput = ({label, icon, isPassword, hidePassword, setHidePassword, ..
 
     );
 };
+
+const noneModeStyles = StyleSheet.create({
+_Lifesavers___Bust_2_container: {
+	width: 176,
+	height: 263,
+	flexShrink: 0,
+	marginTop: -15,
+	marginBottom: 15,
+	},
+_Lifesavers___Bust_2: {
+	width: "100%",
+	height: "100%",
+	},
+})

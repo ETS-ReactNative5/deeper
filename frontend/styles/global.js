@@ -29,6 +29,8 @@ export const StyledContainer = styled.SafeAreaView`
 
 export const InnerContainer = styled.View`
   flex: 1;
+  flexDirection: column;
+  justifyContent: space-between;
   width: 100%;
   align-items: center;
 `;
@@ -40,9 +42,14 @@ export const WelcomeContainer = styled(InnerContainer)`
 `;
 
 export const PageLogo = styled.Image`
-  width: 250px;
-  height: 250px;
+  width: 400px;
+  height: 300px;
 `;
+
+// export const PageLogo = styled.Image`
+//   width: 250px;
+//   height: 250px;
+// `;
 
 export const Avatar = styled.Image`
   width: 100px;
@@ -148,6 +155,7 @@ export const ButtonText = styled.Text`
 
   ${(props) => props.google == true && `
     padding: 25px;
+    padding-top: 10px;
   `}
 `;
 

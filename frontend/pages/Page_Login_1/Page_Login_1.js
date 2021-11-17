@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
-import { TouchableOpacity, Text, View, TextInput, Image, ActivityIndicator, Button, StyleSheet } from "react-native";
+import { TouchableOpacity, Text, View, TextInput, Image, ActivityIndicator, Button, StyleSheet, Dimensions} from "react-native";
 import {image_Lifesavers___Bust_2_link} from './assets/imageLinks.js'
+import {image_Untitled_drawing__3__1_link} from './assets/deeper.js'
 
 // Byron added code
 import { StatusBar } from "expo-status-bar";
@@ -106,9 +107,10 @@ const Page_Login_1  = ({navigation}) => {
 			<StyledContainer>
                 <StatusBar style="dark" />
                 <InnerContainer>
-                    <PageLogo resizeMode='cover' source={{uri: image_Lifesavers___Bust_2_link}} />
+                    {/* <PageLogo resizeMode='cover' source={{uri: image_Lifesavers___Bust_2_link}} /> */}
+                    <PageLogo resizeMode='cover' source={{uri: image_Untitled_drawing__3__1_link}} />
                     {/* <PageTitle> ScanToKnow </PageTitle> */}
-                    <SubTitle>Account Login</SubTitle>
+                    {/* <SubTitle>Account Login</SubTitle> */}
 
                     <Formik
                         initialValues={{ email: '', password: '' }}
