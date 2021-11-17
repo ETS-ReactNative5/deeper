@@ -9,6 +9,7 @@ import {Select} from "../../customComponents/Select.js";
 import {AccordionItem} from "../../customComponents/AccordionItem.js";
 import {Map} from "../../customComponents/Map.js";
 import {image_Lifesavers___Bust_2_link} from './assets/imageLinks.js'
+
 const Page_Login  = ({navigation}) => {
 	const [focus0, setFocus0] = useState(false);
 	const [focus1, setFocus1] = useState(false);

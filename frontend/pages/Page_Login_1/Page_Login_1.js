@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
-import { View, Text, Image, ScrollView, TextInput, StyleSheet, Animated, Dimensions, Vibration, Alert, KeyboardAvoidingView, Platform} from "react-native";
+import React, { useState, useRef, useEffect, useContext } from "react";
+import { View, Text, Image, ScrollView, TextInput, Animated, Dimensions, Vibration, Alert, KeyboardAvoidingView, Platform, TouchableOpacity, ActivityIndicator, Button, StyleSheet} from "react-native";
 import { Svg, Path } from "react-native-svg";
 import axios from 'axios';
 import SwitchSZ from "../../customComponents/SwitchSZ.js";
@@ -9,81 +9,232 @@ import {Select} from "../../customComponents/Select.js";
 import {AccordionItem} from "../../customComponents/AccordionItem.js";
 import {Map} from "../../customComponents/Map.js";
 import {image_Lifesavers___Bust_2_link} from './assets/imageLinks.js'
+
+// Byron added code
+import { StatusBar } from "expo-status-bar";
+// icons
+import { Octicons, Ionicons, Fontisto } from '@expo/vector-icons';
+// formik 
+import { Formik } from "formik";
+import {
+    Colors,
+    StyledContainer,
+    InnerContainer,
+    PageLogo,
+    PageTitle,
+    SubTitle,
+    StyledFormArea,
+    LeftIcon,
+    RightIcon,
+    StyledInputLabel,
+    StyledTextInput,
+    StyledButton,
+    ButtonText,
+    MsgBox,
+    Line,
+    ExtraText,
+    ExtraView,
+    TextLink,
+    TextLinkContent
+
+} from "../../styles/global";
+// colors
+const { brand, darkLight, primary } = Colors;
+import KeyboardAvoidingWrapper from "../../styles/keyboardavoid";
+// Google
+import * as Google from 'expo-google-app-auth';
+// authentication with firevbase
+import auth from "../../firebase/config";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { CredentialsContext } from '../../styles/CredentialContext';
+
+
 const Page_Login_1  = ({navigation}) => {
-	const [focus0, setFocus0] = useState(false);
-	const [focus1, setFocus1] = useState(false);
-	useEffect(() => {
-	}, []);
-	const onClick_Login_Button = () => {
-					navigation.navigate("Page_Onboarding___1")
-	}
-	const onClick_SignUp_Button = () => { 
-		navigation.navigate("Page_Sign_Up")
-	}
+
+	// Byron's Constants
+    const [hidePassword, setHidePassword] = useState(true);
+    const [message, setMessage] = useState();
+    const [messageType, setmessageType] = useState();
+    const [googleSubmitting, setGoogleSubmitting] = useState(false);
+    const {storedCredentials, setStoredCredentials} = useContext(CredentialsContext);
+
+	const handleMessage = (message, type = 'FAILED') => {
+        setMessage(message);
+        setmessageType(type);
+    }
+
+    // Google Sign In 
+    const handleGoogleSignIn = () => {
+
+        setGoogleSubmitting(true);
+
+        const config = {
+            iosClientId: '986150548370-k9kc9u0mus6gfhig8u8be42g116lr2la.apps.googleusercontent.com',
+            scopes: ['profile', 'email']
+        };
+
+        Google
+            .logInAsync(config)
+            .then((result) => {
+                const { type, user } = result;
+
+                if (type == 'success') {
+                    const { email, name, photoUrl } = user;
+                    persistLogin({ email, name, photoUrl }, 'Google signin successful', 'SUCCESS');
+					navigation.navigate("Page_Onboarding___1");
+                } else {
+                    handleMessage('Google signin was cancelled.');
+                }
+
+                setGoogleSubmitting(false);
+            })
+            .catch(error => {
+                console.log(error);
+                handleMessage('An error occurred. Check your network and try again');
+                setGoogleSubmitting(false);
+            });
+    }
+
+    // to be kept logged in 
+    const persistLogin = (credentials, message, status) => {
+        AsyncStorage
+            .setItem('ScanToKnowCredentials', JSON.stringify(credentials))
+            .then(() => {
+                handleMessage(message, status);
+                setStoredCredentials(credentials);
+            })
+            .catch((error) => {
+                console.log(error);
+                handleMessage('Persisting Login failed');
+            })
+    }
+
 	return (
-	//<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{height: Dimensions.get("window").height}}>
-		<Animated.View style={[{}, noneModeStyles._page18]}    >
-			<View style = {noneModeStyles._Title_Lines}    >
-				<Text style = {noneModeStyles._Login}   >
-					Sign In
-				</Text>
-			</View>
-			<View style = {noneModeStyles._Login_Data}    >
-				<View style = {noneModeStyles._Lifesavers___Bust_2_container}    >
-					<View style = {noneModeStyles._Lifesavers___Bust_2}   >
-						<Image style={{height: "100%", width: "100%"}} source = {{uri: image_Lifesavers___Bust_2_link}}/>
-					</View>
-				</View>
-				<View style = {noneModeStyles._Login_Form}    >
-					<View style = {noneModeStyles._Email_Wrapper}    >
-					<View style = {[noneModeStyles._Email_Text_Box, {borderColor: focus0 ? "rgb(237, 236, 244)" : "rgb(237, 236, 244)",backgroundColor: focus0 ? "rgb(255, 255, 255)" : "rgb(255, 255, 255)"}]}    >
-						<View style = {noneModeStyles._Placeholder___Right_Icon}    >
-								<TextInput style = {[{flex: 1, outline: "none",color: "rgba(123,107,168,100)",}]} placeholderTextColor = {"rgb(123, 107, 168)"}  placeholder = "Email" onFocus = {() => setFocus0(true)} onBlur = {() => setFocus0(false)} />
-						</View>
-					</View>
-					</View>
-					<View style = {noneModeStyles._Password_Wrapper}    >
-						<View style = {[noneModeStyles._Password_Text_Box, {borderColor: focus1 ? "rgb(237, 236, 244)" : "rgb(237, 236, 244)",backgroundColor: focus1 ? "rgb(255, 255, 255)" : "rgb(255, 255, 255)"}]}    >
-							<View style = {noneModeStyles._Placeholder___Right_Icon_2}    >
-								<View style={noneModeStyles._label_2}>
-									<TextInput style = {[{flex: 1, outline: "none",color: "rgba(123,107,168,100)",}]} placeholderTextColor = {"rgb(123, 107, 168)"}  placeholder = "Password" onFocus = {() => setFocus1(true)} onBlur = {() => setFocus1(false)} />
-								</View>
-								<View style = {noneModeStyles._Icon_Eye}    >
-									<View style = {noneModeStyles._layer_4e709d}    >
-									</View>
-									<View style = {noneModeStyles._layer_37f1d2}    >
-										<View style = {noneModeStyles._layer_21ebd6}   >
-											<Svg style={{height: 15, width: 22}} viewBox = "0 0 22 15">
-												<Path fill = {"#A095C1"}     d = "M11 0C6 0 1.73 3.11 0 7.5C1.73 11.89 6 15 11 15C16 15 20.27 11.89 22 7.5C20.27 3.11 16 0 11 0ZM11 12.5C8.24 12.5 6 10.26 6 7.5C6 4.74 8.24 2.5 11 2.5C13.76 2.5 16 4.74 16 7.5C16 10.26 13.76 12.5 11 12.5ZM11 4.5C9.34 4.5 8 5.84 8 7.5C8 9.16 9.34 10.5 11 10.5C12.66 10.5 14 9.16 14 7.5C14 5.84 12.66 4.5 11 4.5Z"/>
-											</Svg>
-										</View>
-									</View>
-								</View>
-							</View>
-						</View>
-						<Text style = {noneModeStyles._Forgot_Password_link}   >
-							Forgot Password?
-						</Text>
-					</View>
-				</View>
-				<View style = {noneModeStyles._Login_Button}  onStartShouldSetResponder = {() => {return true}} onResponderGrant = {() => {}} onResponderRelease = {() => {onClick_Login_Button();}} onStartShouldSetResponderCapture = {() => true}>
-					<Text style = {noneModeStyles._label_3}   >
-						Sign In
-					</Text>
-				</View>
-				<View style = {noneModeStyles._Bottom_Link}  >
-					<Text style = {noneModeStyles._Don_t_have_an_account_}  >
-						Don’t have an account?
-					</Text>
-					<Text style = {noneModeStyles._Sign_Up}  onPress={() => navigation.navigate('Page_Sign_Up')}>
-						Sign Up
-					</Text>
-				</View>
-			</View>
-		</Animated.View>
-	//</KeyboardAvoidingView>
-)}
+		<KeyboardAvoidingWrapper>
+			<StyledContainer>
+                <StatusBar style="dark" />
+                <InnerContainer>
+                    <PageLogo resizeMode='cover' source={{uri: image_Lifesavers___Bust_2_link}} />
+                    {/* <PageTitle> ScanToKnow </PageTitle> */}
+                    <SubTitle>Account Login</SubTitle>
+
+                    <Formik
+                        initialValues={{ email: '', password: '' }}
+
+                        onSubmit={(values) => {
+                            auth.signInWithEmailAndPassword(values.email, values.password)
+                                .then((userCredential) => {
+                                    // Signed in 
+                                    const user = userCredential.user;
+                                    // navigation.navigate('Welcome');
+                                    persistLogin(userCredential, message, 'SUCCESS');
+									navigation.navigate("Page_Onboarding___1");
+                                })
+                                .catch((error) => {
+                                    const errorCode = error.code;
+                                    const errorMessage = error.message;
+                                    console.log(errorCode, errorMessage);
+                                    alert(
+                                        errorMessage,
+                                        'Please try again',
+                                        [{
+                                            text: 'Try Again',
+                                            onPress: () => console.log('error message displayed')
+                                        }]
+                                    )
+                                });
+                        }}
+
+                    >{({ handleChange, handleBlur, handleSubmit, values }) => (<StyledFormArea>
+
+                        <MyTextInput
+                            label="Email Address"
+                            icon="mail"
+                            autoCapitalize="none"
+                            placeholder="john@doe.com"
+                            placeholderTextColor={darkLight}
+                            onChangeText={handleChange('email')}
+                            onBlur={handleBlur('email')}
+                            value={values.email}
+                            keyboardType="email-address"
+
+                        />
+
+                        <MyTextInput
+                            label="Password"
+                            icon="lock"
+                            placeholder="* * * * * * * * *"
+                            autoCapitalize="none"
+                            placeholderTextColor={darkLight}
+                            onChangeText={handleChange('password')}
+                            onBlur={handleBlur('password')}
+                            value={values.password}
+                            secureTextEntry={hidePassword}
+                            isPassword={true}
+                            hidePassword={hidePassword}
+                            setHidePassword={setHidePassword}
+                        />
+
+                        <MsgBox type={messageType}>{message}</MsgBox>
+
+                        <StyledButton onPress={handleSubmit}>
+                            <ButtonText>Login</ButtonText>
+
+                        </StyledButton>
+
+                        <Line />
+
+                        {!googleSubmitting && (
+                            <StyledButton google={true} onPress={handleGoogleSignIn}>
+                                <Fontisto name="google" color={primary} size={25} />
+                                <ButtonText google={true}>Sign in with Google</ButtonText>
+                            </StyledButton>
+                        )}
+
+                        {googleSubmitting && (
+                            <StyledButton google={true} disable={true}>
+                                <ActivityIndicator size="large" color={primary} />
+                            </StyledButton>
+                        )}
+
+                        <ExtraView>
+                            <ExtraText>Don't have an account already? </ExtraText>
+                            <TextLink onPress={() => navigation.navigate("Page_Sign_Up")}>
+                                <TextLinkContent>Signup</TextLinkContent>
+                            </TextLink>
+
+                        </ExtraView>
+
+                    </StyledFormArea>)}
+                    </Formik>
+                </InnerContainer>
+            </StyledContainer>
+
+		</KeyboardAvoidingWrapper>
+	);
+}
 export default Page_Login_1
+
+const MyTextInput = ({ label, icon, isPassword, hidePassword, setHidePassword, ...props }) => {
+
+    return (
+        <View>
+            <LeftIcon>
+                <Octicons name={icon} size={30} color={brand} />
+
+            </LeftIcon>
+            <StyledInputLabel>{label}</StyledInputLabel>
+            <StyledTextInput {...props} />
+            {isPassword && (
+                <RightIcon onPress={() => setHidePassword(!hidePassword)}>
+                    <Ionicons name={hidePassword ? 'md-eye-off' : 'md-eye'} size={30} color={darkLight} />
+                </RightIcon>
+            )}
+
+        </View>
+
+    );
+};
 
 const noneModeStyles = StyleSheet.create({
 _page18: {
