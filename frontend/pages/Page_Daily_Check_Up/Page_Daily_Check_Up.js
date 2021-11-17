@@ -217,7 +217,7 @@ _Card_List: {
 	},
 _Note_Card: {
 	width: "100%",
-	height: 172,
+	height: 150,
 	backgroundColor: "rgb(255, 255, 255)",
 	display: "flex",
 	flexDirection: "column",
@@ -252,10 +252,9 @@ _Screen_Shot_2021_10_17_at_4_50_1_container: {
 	flexShrink: 0,
 	},
 _Screen_Shot_2021_10_17_at_4_50_1: {
-	width: "100%",
-	height: "100%",
+	width: Dimensions.get('window').width/1.2,
+	height: Dimensions.get('window').height/10,
 	top: 0,
-	right: 75,
 	},
 _Note_Card_2: {
 	width: "100%",

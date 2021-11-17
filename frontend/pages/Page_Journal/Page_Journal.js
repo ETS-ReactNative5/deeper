@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { View, Text, Image, ScrollView, TextInput, StyleSheet, Animated, Dimensions, Vibration, Alert, KeyboardAvoidingView, Platform} from "react-native";
+import { View, Text, Image, ScrollView, TextInput, StyleSheet, Animated, Dimensions, Vibration, Alert, KeyboardAvoidingView, Platform, StatusBar} from "react-native";
 import { Svg, Path } from "react-native-svg";
 import axios from 'axios';
 import SwitchSZ from "../../customComponents/SwitchSZ.js";
@@ -198,7 +198,7 @@ _Navbar_Simple_2: {
 	},
 	shadowColor: "rgba(0,0,0,0.08)",
 	shadowRadius: 4,
-	bottom: -Dimensions.get('window').height+(Dimensions.get('window').height/9),
+	bottom: -(Dimensions.get('window').height+StatusBar.currentHeight)+(Dimensions.get('window').height/10),
 	paddingTop: 16,
 	paddingRight: 32,
 	paddingBottom: 16,

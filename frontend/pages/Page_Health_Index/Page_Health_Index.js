@@ -251,10 +251,9 @@ _image_1_container: {
 	flexShrink: 0,
 	},
 _image_1: {
-	width: "100%",
-	height: "100%",
+	width: Dimensions.get('window').width/1.2,
+	height: Dimensions.get('window').height/3,
 	top: 0,
-	right: 106,
 	},
 _Note_Card_2: {
 	width: "100%",
