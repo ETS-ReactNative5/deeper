@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { View, Text, Image, ScrollView, TextInput, StyleSheet, Animated, Dimensions, Vibration, Alert, KeyboardAvoidingView, Platform} from "react-native";
+import { View, Text, Image, ScrollView, TextInput, StyleSheet, Animated, Dimensions, Vibration, Alert, Platform} from "react-native";
 import { Svg, Path } from "react-native-svg";
 import axios from 'axios';
 import SwitchSZ from "../../customComponents/SwitchSZ.js";
@@ -9,17 +9,21 @@ import {Select} from "../../customComponents/Select.js";
 import {AccordionItem} from "../../customComponents/AccordionItem.js";
 import {Map} from "../../customComponents/Map.js";
 import {image_Untitled_drawing__3__1_link} from './assets/imageLinks.js'
+
+// Byron's Added Code
+import KeyboardAvoidingWrapper from "../../styles/keyboardavoid";
+
 const Page_Splash  = ({navigation}) => {
 	useEffect(() => {
 	}, []);
 	const onClick_Sign_Up_Button = () => {
-					navigation.navigate("Page_Sign_Up")
+					navigation.navigate("Page_Sign_Up_1")
 	}
 	const onClick_Login_Button = () => {
 					navigation.navigate("Page_Login_1")
 	}
 	return (
-	<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{height: Dimensions.get("window").height}}>
+	<KeyboardAvoidingWrapper>
 		<Animated.View style={[{}, noneModeStyles._page1]}    >
 			<View style = {noneModeStyles._Bottom_Buttons}    >
 				<View style = {noneModeStyles._Sign_Up_Button}  onStartShouldSetResponder = {() => {return true}} onResponderGrant = {() => {}} onResponderRelease = {() => {onClick_Sign_Up_Button();}} onStartShouldSetResponderCapture = {() => true}>
@@ -47,7 +51,7 @@ const Page_Splash  = ({navigation}) => {
 				</View>
 			</View>
 		</Animated.View>
-	</KeyboardAvoidingView>
+	</KeyboardAvoidingWrapper>
 )}
 export default Page_Splash
 
