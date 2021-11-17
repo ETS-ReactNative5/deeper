@@ -41,7 +41,7 @@ const Page_Sign_Up  = ({navigation}) => {
 					<View style = {[noneModeStyles._Email_Text_Box, {borderColor: focus1 ? "rgb(237, 236, 244)" : "rgb(237, 236, 244)",backgroundColor: focus1 ? "rgb(255, 255, 255)" : "rgb(255, 255, 255)"}]}    >
 						<View style = {noneModeStyles._Placeholder___Right_Icon_2}    >
 							<View style={noneModeStyles._label_2}>
-								<TextInput style = {[{flex: 1, outline: "none",}]} placeholderTextColor = {"rgb(123, 107, 168)"}  placeholder = "Email" onFocus = {() => setFocus1(true)} onBlur = {() => setFocus1(false)} />
+							<TextInput style = {[{flex: 1, outline: "none",color: "rgba(123,107,168,100)",}]} placeholderTextColor = {"rgb(123, 107, 168)"}  placeholder = "Email" onFocus = {() => setFocus0(true)} onBlur = {() => setFocus0(false)} />
 							</View>
 						</View>
 					</View>
