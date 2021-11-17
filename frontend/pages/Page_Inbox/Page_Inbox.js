@@ -160,7 +160,7 @@ const Page_Inbox  = ({navigation}) => {
 							</View>
 						</View>
 						<View style={noneModeStyles.___Search_Placeholder}>
-							<TextInput style = {[{flex: 1, outline: "none",color: "rgba(126,88,255,100)",}]} placeholderTextColor = {"rgb(102, 102, 102)"}  placeholder = "Search" onFocus = {() => setFocus0(true)} onBlur = {() => setFocus0(false)} />
+							<TextInput style = {[{flex: 1, color: "rgba(126,88,255,100)",}]} placeholderTextColor = {"rgb(102, 102, 102)"}  placeholder = "Search" onFocus = {() => setFocus0(true)} onBlur = {() => setFocus0(false)} />
 						</View>
 					</View>
 				</View>

@@ -83,7 +83,7 @@ const Page_Journal  = ({navigation}) => {
 				<View style = {noneModeStyles._Notification_Card}    >
 					<View style = {[noneModeStyles._Main_Container, {borderColor: focus0 ? "#7E58FF" : "",backgroundColor: focus0 ? "rgba(0, 0, 0, 0)" : "rgba(0, 0, 0, 0)"}]}    >
 						<View style = {noneModeStyles._Title___Text}    >
-							<TextInput style = {[{outline: "none",color: "rgba(67,44,129,100)",}]} placeholderTextColor = {"rgb(67, 44, 129)"}  placeholder = "Start writing here..." onFocus = {() => setFocus0(true)} onBlur = {() => setFocus0(false)} />
+							<TextInput style = {[{color: "rgba(67,44,129,100)",}]} placeholderTextColor = {"rgb(67, 44, 129)"}  placeholder = "Start writing here..." onFocus = {() => setFocus0(true)} onBlur = {() => setFocus0(false)} />
 						</View>
 					</View>
 				</View>
