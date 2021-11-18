@@ -36,13 +36,12 @@ const { brand, darkLight, primary } = Colors;
 import KeyboardAvoidingWrapper from "../../styles/keyboardavoid";
 // Google
 import * as Google from 'expo-google-app-auth';
-// authentication with firevbase
+// authentication with firebase
 import auth from "../../firebase/config";
+import * as firebase from 'firebase';
+
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { CredentialsContext } from '../../styles/CredentialContext';
-
-
-
 
 const Page_Sign_Up_1  = ({navigation}) => {
 
@@ -86,46 +85,90 @@ const Page_Sign_Up_1  = ({navigation}) => {
                     {/* <SubTitle>Account Signup</SubTitle> */}
 
                     <Formik
-                        initialValues={{email: '', password: '', username: ''}}
+                        initialValues={{email: '', password: '',confirm: '', firstName: '', lastName: ''}}
 
                         onSubmit ={ (values) => {
-                            auth.createUserWithEmailAndPassword(values.email, values.password)
-                            .then( (userCredential) => {
-                                // Signed in 
-                                const user = userCredential.user;
-                                console.log(user);
-                                persistLogin(userCredential, message, 'SUCCESS');
-								navigation.navigate("Page_Login_1")
-                            })
-                            .catch( (error) => {
-                                const errorCode = error.code;
-                                const errorMessage = error.message;
-                                console.log(errorCode, errorMessage);
-                                Alert.alert(
-                                    errorMessage,
-                                    'Please try again',
-                                    [{
-                                        text: 'Try Again',
-                                        onPress: () => console.log('error message displayed')
-                                    }]
-                                )
-                                // ..
-                            });
+                            
+                            if (!values.firstName) {
+                                Alert.alert('Name is required');
+                            } else if (!values.email) {
+                                Alert.alert('Email field is required.');
+                            } else if (!values.password) {
+                                Alert.alert('Password field is required.');
+                            } else if (!values.confirm) {
+                                Alert.alert('Confirm password field is required.');
+                            } else if (values.password !== values.confirm) {
+                                Alert.alert('Password does not match!');
+                            } else {
+                                auth.createUserWithEmailAndPassword(values.email, values.password)
+                                .then( (userCredential) => {
+                                    // Signed in 
+                                    const user = userCredential.user;
+                                    // console.log(user);
+                                    persistLogin(userCredential, message, 'SUCCESS');
+                                    const db = firebase.firestore();
+                                    db.collection('users')
+                                        .doc(user.uid)
+                                        .set({
+                                            email: values.email,
+                                            name: values.firstName,
+                                            // lastName: values.lastName,
+                                        });
+                                    navigation.navigate("Page_Login_1")
+                                })
+                                .catch( (error) => {
+                                    const errorCode = error.code;
+                                    const errorMessage = error.message;
+                                    console.log(errorCode, errorMessage);
+                                    Alert.alert(
+                                        errorMessage,
+                                        'Please try again',
+                                        [{
+                                            text: 'Try Again',
+                                            onPress: () => console.log('error message displayed')
+                                        }]
+                                    )
+                                    // ..
+                                });
+                            }
                         }}
 
                     >{({handleChange, handleBlur, handleSubmit, values}) => (<StyledFormArea> 
                             
+                            {/* <MyTextInput 
+                                label="First Name" 
+                                icon="person"
+                                autoCapitalize="none"
+                                placeholder="John"
+                                placeholderTextColor={darkLight}
+                                onChangeText = {handleChange('firstName')}
+                                onBlur={handleBlur('firstName')}
+                                value={values.firstName}
+                                keyboardType="default"
+                            /> 
+
                             <MyTextInput 
-                                label="Username" 
+                                label="Last Name" 
+                                icon="person"
+                                autoCapitalize="none"
+                                placeholder="Doe"
+                                placeholderTextColor={darkLight}
+                                onChangeText = {handleChange('lastName')}
+                                onBlur={handleBlur('lastName')}
+                                value={values.lastName}
+                                keyboardType="default"
+                            />  */}
+
+                            <MyTextInput 
+                                label="Name" 
                                 icon="person"
                                 autoCapitalize="none"
                                 placeholder="John Doe"
                                 placeholderTextColor={darkLight}
-                                onChangeText = {handleChange('username')}
-                                onBlur={handleBlur('username')}
-                                value={values.username}
+                                onChangeText = {handleChange('firstName')}
+                                onBlur={handleBlur('firstName')}
+                                value={values.firstName}
                                 keyboardType="default"
-
                             /> 
 
                             <MyTextInput 
@@ -150,6 +193,21 @@ const Page_Sign_Up_1  = ({navigation}) => {
                                 onChangeText = {handleChange('password')}
                                 onBlur={handleBlur('password')}
                                 value={values.password}
+                                secureTextEntry={hidePassword}
+                                isPassword={true}
+                                hidePassword={hidePassword}
+                                setHidePassword={setHidePassword}
+                            />
+
+                            <MyTextInput 
+                                label="Confirm Password" 
+                                icon="lock"
+                                placeholder="* * * * * * * * *"
+                                autoCapitalize="none"
+                                placeholderTextColor={darkLight}
+                                onChangeText = {handleChange('confirm')}
+                                onBlur={handleBlur('confirm')}
+                                value={values.confirm}
                                 secureTextEntry={hidePassword}
                                 isPassword={true}
                                 hidePassword={hidePassword}

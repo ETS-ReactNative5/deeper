@@ -69,7 +69,7 @@ _Text: {
 	flexDirection: "column",
 	//position: "absolute",
 	left: -1,
-	top: 476,
+	top: 425,
 	right: 20,
 	},
 _Indicators: {
@@ -118,15 +118,16 @@ _Ask_and_share: {
 	},
 _With_the_community_tab__you_can_ask_questions_anonymously_or_unanonymously_to_our_diverse_and_open_minded_community__as_well_as_join_conversations_to_share_your_own_thoughts_: {
 	width: "100%",
-	height: 116,
+	height: 115,
 	flexShrink: 0,
 	marginBottom: 16,
 	color: "rgb(130, 121, 157)",
-	fontSize: 16,
+	fontSize: 15,
 	fontWeight: "500",
 	lineHeight: 26,
 	fontFamily: "Raleway",
 	textAlign: "center",
+	paddingHorizontal: 10,
 	},
 _Skip_Button: {
 	width: "100%",

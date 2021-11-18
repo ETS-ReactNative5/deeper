@@ -124,6 +124,7 @@ _With_the_inbox_tab__you_can_draw_or_write_letters_of_reassurance_to_your_loved_
 	lineHeight: 26,
 	fontFamily: "Raleway",
 	textAlign: "center",
+	paddingHorizontal: 10,
 	},
 _Skip_Button: {
 	width: "100%",

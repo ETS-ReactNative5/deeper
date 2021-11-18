@@ -138,6 +138,7 @@ _With_the_journal_tab__you_can_write_about_your_day_or_whatever_you_want_to_expr
 	lineHeight: 26,
 	fontFamily: "Raleway",
 	textAlign: "center",
+	paddingHorizontal: 10,
 	},
 _Skip_Button: {
 	width: "100%",

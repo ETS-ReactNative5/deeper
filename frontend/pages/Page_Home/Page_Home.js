@@ -14,7 +14,11 @@ import {image_Lifesavers_Electrocardiogram_link} from './assets/imageLinks.js'
 import {image_Lifesavers_Bust_link} from './assets/imageLinks.js'
 import {image_Lifesavers_Stethoscope_link} from './assets/imageLinks.js'
 
-const Page_Home  = ({navigation}) => {
+const Page_Home  = ({navigation, route}) => {
+	// Byron Added Code
+	// console.log('hello')
+	// const { name } = route.params;
+
 	useEffect(() => {
 	}, []);
 	const onClick_Horizontal_Card = () => {
@@ -39,7 +43,7 @@ const Page_Home  = ({navigation}) => {
 			<View style = {noneModeStyles._Home_Container}    >
 				<View style = {noneModeStyles._Title___User_Profile}    >
 					<Text style = {noneModeStyles._Hi__Kristin_}   >
-						Hi, Kristin!
+						Hi, Kristy!
 					</Text>
 					<View style = {noneModeStyles._Profile_Image}    >
 						<View style = {noneModeStyles._Lifesavers_Avatar_container}    >
