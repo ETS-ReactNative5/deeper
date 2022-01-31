@@ -70,7 +70,22 @@ def password_reset():
         return "Successfully changed"
     else:
         return "Error"
-#@app.route('')
+
+@app.route('/journal_save', methods=['POST'])
+def journal_save():
+    current_usr = request.cookies.get('current_usr')
+    entry = request.form['journal_entry']
+    if current_usr is not None:
+        user = mongo.db.journal.find_one({'Email': current_usr})
+        if user is not None:
+            mongo.db.journal.update({'Email': current_usr}, {'$push' : {'Entries': entry}})
+            return "Successfully saved"
+        if user is None:
+            mongo.db.journal.insert({"Email": current_usr}, {'Entries': [entry]})
+            return "Successfully created and saved entry"
+
+            
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="4000", debug=True)
