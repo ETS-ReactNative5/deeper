@@ -39,6 +39,9 @@ const Community = () => {
                                 placeholder="Search" />
                         </View>
                     </View>
+                    {/* Questions */}
+                    <View style={styles.questionsWrapper}>
+                    </View>
                 </ScrollView>
                 {/* Buttons */}
                 <TouchableOpacity style={styles.addButton}>
@@ -69,7 +72,7 @@ const styles = StyleSheet.create({
       headerTitle: {
         color: COLORS.primary,
         fontFamily: 'Avenir-Medium',
-        fontSize: SIZES.body1,
+        fontSize: 30,
         top: 6,
       },
       searchWrapper:
@@ -102,6 +105,10 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: '#747480',
       },
+      questionsWrapper:
+      {
+        height: Dimensions.get("window").height/1.48,
+      },
       addButton:
       {
         width: 60,
@@ -111,7 +118,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         position: 'absolute',
         bottom: 0,
-        right: 15,
+        right: 18,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 5,
       },
       addTitle:
       {

@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
       headerTitle: {
         color: COLORS.primary,
         fontFamily: 'Avenir-Medium',
-        fontSize: SIZES.body1,
+        fontSize: 30,
       },
       buttonsContainer: {
         flexDirection: 'column',
