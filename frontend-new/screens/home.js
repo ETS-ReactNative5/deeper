@@ -7,14 +7,16 @@ import {
     Image,
     TouchableOpacity,
     Dimensions,
-    Platform
+    Platform,
+    StackNavigator
 } from "react-native";
-import { FadeInRight } from "react-native-reanimated";
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { COLORS, SIZES, FONTS } from "../constants";
 
 // Functional component for home page
-const Home = () => {
+const Home = ({navigation}) => {
     return (
         <View style={StyleSheet.container}>
             <SafeAreaView>
@@ -33,7 +35,8 @@ const Home = () => {
                 </View>
                 {/* Buttons */}
                 <View style={styles.buttonsContainer}>
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={styles.button}
+                    onPress={() => navigation.navigate('DailyCheckUp')}>
                         <Text style={styles.buttonTitle}>
                             <Text>
                                 Daily Check-Up
