@@ -3,13 +3,15 @@ import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, TextInput, Imag
 import Constants from "expo-constants";
 import * as Permissions from "expo-permissions";
 import { Ionicons } from "@expo/vector-icons";
-import Fire from "../Fire";
+// import Fire from "../Fire";
 import * as ImagePicker from "expo-image-picker";
 
-const firebase = require("firebase");
-require("firebase/firestore");
+//const firebase = require("firebase");
+//require("firebase/firestore");
 
-export default class Post_Screen extends React.Component {
+Ionicons.loadFont().then();
+
+class Post_Screen extends React.Component {
     state = {
         text: "",
         image: null
@@ -89,6 +91,8 @@ export default class Post_Screen extends React.Component {
         );
     }
 }
+
+export default Post_Screen; 
 
 const styles = StyleSheet.create({
     container: {

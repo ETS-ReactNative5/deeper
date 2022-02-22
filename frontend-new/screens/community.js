@@ -9,13 +9,16 @@ import {
     Dimensions,
     TextInput,
     ScrollView,
-    Platform
+    Platform,
+    StackNavigator
 } from "react-native";
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { COLORS, SIZES, FONTS } from "../constants";
 
 // Functional component for community page
-const Community = () => {
+const Community = ({navigation}) => {
     return (
         <View style={StyleSheet.container}>
             <SafeAreaView>
@@ -44,7 +47,8 @@ const Community = () => {
                     </View>
                 </ScrollView>
                 {/* Buttons */}
-                <TouchableOpacity style={styles.addButton}>
+                <TouchableOpacity style={styles.addButton}
+                onPress={() => navigation.navigate('Post_Screen')}>
                     <Text style={styles.addTitle}>
                         <Text>
                             +
