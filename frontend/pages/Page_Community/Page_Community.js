@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { View, Text, Image, ScrollView, TextInput, StyleSheet, Animated, Dimensions, Vibration, Alert, KeyboardAvoidingView, Platform, StatusBar } from "react-native";
 import { Svg, Path } from "react-native-svg";
+import { SafeAreaView } from 'react-native';
+import { StreamApp } from 'expo-activity-feed';
 import axios from 'axios';
 import SwitchSZ from "../../customComponents/SwitchSZ.js";
 import Checkbox from "../../customComponents/Checkbox.js";
