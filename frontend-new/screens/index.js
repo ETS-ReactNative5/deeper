@@ -4,6 +4,8 @@ import Inbox from './inbox'
 import Journal from './journal'
 import DailyCheckUp from './dailycheckup'
 import Post_Screen from './postscreen'
+import Entries from './entries'
+import Messages from './messages'
 
 export {
     Home,
@@ -11,5 +13,7 @@ export {
     Inbox,
     Journal,
     DailyCheckUp,
-    Post_Screen
+    Post_Screen,
+    Entries,
+    Messages
 }

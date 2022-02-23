@@ -15,7 +15,7 @@ import {
 import { COLORS, SIZES, FONTS } from "../constants";
 
 // Functional component for inbox page
-const Inbox = () => {
+const Inbox = ({navigation}) => {
     return (
         <View style={StyleSheet.container}>
             <SafeAreaView>
@@ -27,7 +27,7 @@ const Inbox = () => {
                                 Inbox
                             </Text>
                         </Text>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.navigate('Messages')}>
                             <Image source={require('../assets/icons/list.png')}
                             style={styles.list}
                             />

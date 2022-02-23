@@ -3,7 +3,7 @@ import {createStackNavigator} from "@react-navigation/stack";
 import {NavigationContainer} from "@react-navigation/native";
 
 import Tabs from './navigation/tabs';
-import {Home, Community, Journal, Inbox, DailyCheckUp, Post_Screen} from './screens';
+import {Home, Community, Journal, Inbox, DailyCheckUp, Post_Screen, Entries, Messages} from './screens';
 
 const Stack = createStackNavigator();
 
@@ -21,7 +21,9 @@ const App = () => {
         <Stack.Screen name="Community" component={Community} />
         <Stack.Screen name="Post_Screen" component={Post_Screen} />
         <Stack.Screen name="Journal" component={Journal} />
+        <Stack.Screen name="Entries" component={Entries} />
         <Stack.Screen name="Inbox" component={Inbox} />
+        <Stack.Screen name="Messages" component={Messages} />
       </Stack.Navigator>
     </NavigationContainer>
   )

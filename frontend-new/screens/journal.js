@@ -17,7 +17,7 @@ import {
 import { COLORS, SIZES, FONTS } from "../constants";
 
 // Functional component for journal page
-const Journal = () => {
+const Journal = ({navigation}) => {
     return (
         <View style={StyleSheet.container}>
             <SafeAreaView>
@@ -28,7 +28,7 @@ const Journal = () => {
                             Journal
                         </Text>
                     </Text>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate('Entries')}>
                         <Image source={require('../assets/icons/list.png')}
                         style={styles.list}
                         />
