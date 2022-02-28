@@ -4,6 +4,29 @@ import {NavigationContainer} from "@react-navigation/native";
 
 import Tabs from './navigation/tabs';
 import {Home, Community, Journal, Inbox, DailyCheckUp, Post_Screen, Entries, Messages} from './screens';
+//import firebase from 'firebase/compat/app';
+//import firebase from 'firebase/app'
+//import * as firebase from 'firebase/app'
+//import firebase from 'firebase';
+//import { initializeApp } from 'firebase/app';
+import firebase from 'firebase/compat/app';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAMxiQ75hoPDy6Dk2itUiT186iB8CW59AI",
+  authDomain: "deeper-90de2.firebaseapp.com",
+  projectId: "deeper-90de2",
+  storageBucket: "deeper-90de2.appspot.com",
+  messagingSenderId: "213050818012",
+  appId: "1:213050818012:web:5b6f177c3772fe22662319",
+  measurementId: "G-4CZX8KE10C"
+};
+//firebase.initializeApp(firebaseConfig);
+//const app = initializeApp(firebaseConfig);
+if (firebase.apps.length === 0) {
+  app = firebase.initializeApp(firebaseConfig)
+} else {
+  app = firebase.app();
+}
 
 const Stack = createStackNavigator();
 

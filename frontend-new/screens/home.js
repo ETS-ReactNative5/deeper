@@ -17,6 +17,7 @@ import { COLORS, SIZES, FONTS } from "../constants";
 
 // Functional component for home page
 const Home = ({navigation}) => {
+    console.log('hello');
     return (
         <View style={StyleSheet.container}>
             <SafeAreaView>

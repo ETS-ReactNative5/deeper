@@ -3,11 +3,12 @@ import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, TextInput, Imag
 import Constants from "expo-constants";
 import * as Permissions from "expo-permissions";
 import { Ionicons } from "@expo/vector-icons";
-// import Fire from "../Fire";
+import Fire from "../Fire";
 import * as ImagePicker from "expo-image-picker";
 
-//const firebase = require("firebase");
-//require("firebase/firestore");
+const firebase = require("firebase");
+require("firebase/firestore");
+require("firebase/auth");
 
 Ionicons.loadFont().then();
 
@@ -32,7 +33,7 @@ class Post_Screen extends React.Component {
     };
 
     handlePost = () => {
-       /* Fire.shared
+        Fire.shared
             .addPost({ text: this.state.text.trim(), localUri: this.state.image })
             .then(ref => {
                 this.setState({ text: "", image: null });
@@ -40,7 +41,7 @@ class Post_Screen extends React.Component {
             })
             .catch(error => {
                 alert(error);
-            });*/
+            });
     };
 
     pickImage = async () => {
@@ -101,12 +102,14 @@ const styles = StyleSheet.create({
     header: {
         flexDirection: "row",
         justifyContent: "space-between",
-        paddingHorizontal: 32,
-        paddingVertical: 12,
+        marginTop: 50,
+        paddingHorizontal: 25,
+        paddingVertical: 1,
         borderBottomWidth: 1,
         borderBottomColor: "#D8D9DB"
     },
     inputContainer: {
+        marginTop: 5,
         margin: 32,
         flexDirection: "row"
     },
