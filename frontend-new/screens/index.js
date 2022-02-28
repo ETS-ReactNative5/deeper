@@ -6,6 +6,7 @@ import DailyCheckUp from './dailycheckup'
 import Post_Screen from './postscreen'
 import Entries from './entries'
 import Messages from './messages'
+import HealthIndex from './healthindex'
 
 export {
     Home,
@@ -15,5 +16,6 @@ export {
     DailyCheckUp,
     Post_Screen,
     Entries,
-    Messages
+    Messages,
+    HealthIndex
 }
