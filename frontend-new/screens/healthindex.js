@@ -13,12 +13,27 @@ import {
     Picker
 } from "react-native";
 
+import { Dropdown } from 'react-native-element-dropdown';
 import { COLORS, SIZES, FONTS } from "../constants";
 
+const data = [
+  { label: 'Daily', value: '1' },
+  { label: 'Weekly', value: '2' },
+  { label: 'Monthly', value: '3' },
+  { label: 'Yearly', value: '4' },
+];
+
 const HealthIndex = ({navigation}) => {
-  const [selectedValue, setSelectedValue] = useState("daily");
+  const [value, setValue] = useState(null);
+  const [isFocus, setIsFocus] = useState(false);
+
+  const renderLabel = () => {
+    return null;
+  };
+
     return (
         <View style={StyleSheet.container}>
+          {renderLabel()}
             <SafeAreaView>
               {/* Header */}
               <View style={styles.headerWrapper}>
@@ -47,16 +62,24 @@ const HealthIndex = ({navigation}) => {
                   <Image source={require('../assets/images/placeholder.png')}
                   style={styles.chartImage}
                   />
-                  <Picker
-                    selectedValue={selectedValue}
-                    style={{ height: 50, width: 150, alignSelf: 'flex-end', right: 10}}
-                    onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
-                  >
-                    <Picker.Item label="Daily" value="daily" />
-                    <Picker.Item label="Weekly" value="weekly" />
-                    <Picker.Item label="Monthly" value="monthly" />
-                    <Picker.Item label="Yearly" value="yearly" />
-                  </Picker>
+                  <Dropdown
+                    style={[styles.dropdown, isFocus && { borderColor: COLORS.primary }]}
+                    placeholderStyle={styles.placeholderStyle}
+                    selectedTextStyle={styles.selectedTextStyle}
+                    data={data}
+                    dropdownPosition='bottom'
+                    maxHeight={Dimensions.get("window").height/7}
+                    labelField="label"
+                    valueField="value"
+                    placeholder={!isFocus ? 'Select filter' : '...'}
+                    value={value}
+                    onFocus={() => setIsFocus(true)}
+                    onBlur={() => setIsFocus(false)}
+                    onChange={item => {
+                      setValue(item.value);
+                      setIsFocus(false);
+                    }}
+                  />
                 </View>
               </View>
             </SafeAreaView>
@@ -131,7 +154,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#EFEFEF',
         borderRadius: 25,
-        justifyContent: 'flex-start',
+        justifyContent: 'center',
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.1,
@@ -144,14 +167,25 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
         backgroundColor: '#EFEFEF',
         justifyContent: 'center',
+        bottom: 50,
       },
-      chartTitle: {
-        textAlign: 'left',
-        justifyContent: 'center',
-        alignItems: 'center',
-        color: COLORS.primary,
+      dropdown: {
+        width: Dimensions.get("window").width/3,
+        height: 50,
+        alignSelf: 'flex-end',
+        marginHorizontal: 30,
+        borderColor: 'gray',
+        borderWidth: 0.5,
+        borderRadius: 8,
+        paddingHorizontal: 10,
+        bottom: 50,
+      },
+      placeholderStyle: {
+        fontSize: 16,
         fontFamily: 'Avenir-Light',
-        fontSize: 20,
-        left: 20,
+      },
+      selectedTextStyle: {
+        fontSize: 16,
+        fontFamily: 'Avenir-Light',
       },
 })
