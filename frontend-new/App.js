@@ -3,7 +3,7 @@ import {createStackNavigator} from "@react-navigation/stack";
 import {NavigationContainer} from "@react-navigation/native";
 
 import Tabs from './navigation/tabs';
-import {Home, Community, Journal, Inbox, DailyCheckUp, Post_Screen, Entries, Messages, HealthIndex} from './screens';
+import {Home, Community, Journal, Inbox, DailyCheckUp, Post_Screen, Entries, Messages, HealthIndex, OnboardingScreen} from './screens';
 
 const Stack = createStackNavigator();
 
@@ -14,8 +14,9 @@ const App = () => {
         screenOptions={{
           headerShown: false
         }}
-        initialRouteName={'Home'}
+        initialRouteName={'OnboardingScreen'}
       >
+        <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
         <Stack.Screen name="Home" component={Tabs} />
         <Stack.Screen name="DailyCheckUp" component={DailyCheckUp} />
         <Stack.Screen name="HealthIndex" component={HealthIndex} />

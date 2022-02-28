@@ -1,3 +1,4 @@
+import OnboardingScreen from './onboardingscreen'
 import Home from './home'
 import Community from './community'
 import Inbox from './inbox'
@@ -9,6 +10,7 @@ import Messages from './messages'
 import HealthIndex from './healthindex'
 
 export {
+    OnboardingScreen,
     Home,
     Community,
     Inbox,

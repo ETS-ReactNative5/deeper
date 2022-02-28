@@ -146,16 +146,16 @@ const styles = StyleSheet.create({
       },
       buttonsContainer: {
         flexDirection: 'column',
-        justifyContent: 'center',
         alignItems: 'center',
+        justifyContent: 'space-between',
         width: '100%',
+        padding: 10,
         borderRadius: 15,
         backgroundColor: '#E2E0E9',
-        padding: 10,
       },
       surveyButton: {
         width: Dimensions.get("screen").width/1.08,
-        height: Platform.OS === 'android' ? Dimensions.get("window").height/4 : Dimensions.get("screen").height/4,
+        height: Platform.OS === 'android' ? Dimensions.get("window").height/3.7 : Dimensions.get("screen").height/3.7,
         alignItems: 'stretch',
         backgroundColor: '#EFEFEF',
         borderRadius: 25,
@@ -178,21 +178,20 @@ const styles = StyleSheet.create({
       },
       smiley: {
         flexDirection: 'row',
-        justifyContent: 'center',
         alignItems: 'center',
+        justifyContent: 'space-between',
         width: '100%',
-        top: 5
+        top: 5,
+        paddingHorizontal: 15,
       },
       lowest: {
         width: 60,
         height: 60,
-        right: 10,
         tintColor: '#8ce2ee',
       },
       low: {
         width: 60,
         height: 60,
-        right: 5,
         tintColor: '#93bae1',
       },
       mid: {
@@ -203,18 +202,16 @@ const styles = StyleSheet.create({
       high: {
         width: 60,
         height: 60,
-        left: 5,
         tintColor: '#7251b2',
       },
       highest: {
         width: 60,
         height: 60,
-        left: 10,
         tintColor: '#642e7c',
       },
       buttons: {
         width: Dimensions.get("screen").width/1.08,
-        height: Platform.OS === 'android' ? Dimensions.get("window").height/6.2 : Dimensions.get("screen").height/6.2,
+        height: Platform.OS === 'android' ? Dimensions.get("window").height/6.5 : Dimensions.get("screen").height/6.5,
         alignItems: 'stretch',
         backgroundColor: '#EFEFEF',
         borderRadius: 25,

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     View,
     Text,
@@ -9,12 +9,14 @@ import {
     Dimensions,
     TextInput,
     ScrollView,
-    Platform
+    Platform,
+    Picker
 } from "react-native";
 
 import { COLORS, SIZES, FONTS } from "../constants";
 
 const HealthIndex = ({navigation}) => {
+  const [selectedValue, setSelectedValue] = useState("daily");
     return (
         <View style={StyleSheet.container}>
             <SafeAreaView>
@@ -42,9 +44,19 @@ const HealthIndex = ({navigation}) => {
               {/* Chart */}
               <View style={styles.chartContainer}>
                 <View style={styles.chart}>
-                  <Text style={styles.chartTitle}>
-                    Daily
-                  </Text>
+                  <Image source={require('../assets/images/placeholder.png')}
+                  style={styles.chartImage}
+                  />
+                  <Picker
+                    selectedValue={selectedValue}
+                    style={{ height: 50, width: 150, alignSelf: 'flex-end', right: 10}}
+                    onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+                  >
+                    <Picker.Item label="Daily" value="daily" />
+                    <Picker.Item label="Weekly" value="weekly" />
+                    <Picker.Item label="Monthly" value="monthly" />
+                    <Picker.Item label="Yearly" value="yearly" />
+                  </Picker>
                 </View>
               </View>
             </SafeAreaView>
@@ -106,7 +118,6 @@ const styles = StyleSheet.create({
         height: 80,
       },
       chartContainer: {
-        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         width: '100%',
@@ -117,15 +128,22 @@ const styles = StyleSheet.create({
       chart: {
         width: Dimensions.get("screen").width/1.08,
         height: Platform.OS === 'android' ? Dimensions.get("window").height/1.68 : Dimensions.get("screen").height/1.68,
-        alignItems: 'stretch',
+        alignItems: 'center',
         backgroundColor: '#EFEFEF',
         borderRadius: 25,
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.1,
         shadowRadius: 5,
         marginVertical: 7,
+      },
+      chartImage: {
+        width: Dimensions.get("screen").width/1.5,
+        height: Platform.OS === 'android' ? Dimensions.get("window").height/3 : Dimensions.get("screen").height/3,
+        resizeMode: 'contain',
+        backgroundColor: '#EFEFEF',
+        justifyContent: 'center',
       },
       chartTitle: {
         textAlign: 'left',
