@@ -63,7 +63,7 @@ const HealthIndex = ({navigation}) => {
                   style={styles.chartImage}
                   />
                   <Dropdown
-                    style={[styles.dropdown, isFocus && { borderColor: COLORS.primary }]}
+                    style={[styles.dropdown, isFocus && { borderColor: COLORS.secondary }]}
                     placeholderStyle={styles.placeholderStyle}
                     selectedTextStyle={styles.selectedTextStyle}
                     data={data}
@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-end',
         marginHorizontal: 30,
         borderColor: 'gray',
-        borderWidth: 0.5,
+        borderWidth: 1,
         borderRadius: 8,
         paddingHorizontal: 10,
         bottom: 50,
