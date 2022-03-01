@@ -19,6 +19,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import moment from "moment";
 import Fire from "../Fire";
+import { useIsFocused } from '@react-navigation/native';
 
 import { COLORS, SIZES, FONTS } from "../constants";
 
@@ -100,9 +101,10 @@ const Community = ({navigation}) => {
 }
   //state = { postal: [] }
   //const posts = [];
+  const isFocused = useIsFocused();
   useEffect(() => {
   fetchData();
-    },[]);
+    },[isFocused]);
 
   //componentDidMount() {
   //fetchData();

@@ -4,7 +4,7 @@ import {NavigationContainer} from "@react-navigation/native";
 
 import Tabs from './navigation/tabs';
 
-import {Home, Community, Journal, Inbox, DailyCheckUp, Post_Screen, Entries, Messages} from './screens';
+//import {Home, Community, Journal, Inbox, DailyCheckUp, Post_Screen, Entries, Messages} from './screens';
 //import firebase from 'firebase/compat/app';
 //import firebase from 'firebase/app'
 //import * as firebase from 'firebase/app'
