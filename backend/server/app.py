@@ -84,8 +84,36 @@ def journal_save():
             mongo.db.journal.insert({"Email": current_usr}, {'Entries': [entry]})
             return "Successfully created and saved entry"
 
-            
 
+@app.route('/journal_read', methods=['GET'])
+def journal_read():
+    current_usr = request.cookies.get('current_usr')
+    if current_usr is not None:
+        user = mongo.db.journal.find_one({'Email': current_usr})
+        if user is None:
+            return "No journal retrieved"
+        else:
+            entries = mongo.db.journal.find({'Email': current_usr}, {"_id": 0, 'Entries': 1})
+            for i in entries:
+                pack = jsonify(i)
+            return pack
+    
+
+"""
+@app.route('community_read', methods=['GET'])
+def community_read():
+    all_journal = mongo.db.community.find({})
+    if all_journal is None:
+        return "No journal"
+    for post_id in mongo.db.community.find():
+
+    return jsonify(
+        post_id = 
+        )
+        
+    
+    return 0
+"""
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="4000", debug=True)
