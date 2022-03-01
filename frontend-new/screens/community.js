@@ -15,7 +15,8 @@ import {
 } from "react-native";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Ionicons } from "@expo/vector-icons";
+//import { Ionicons } from "@expo/vector-icons/Ionicons";
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import moment from "moment";
 import Fire from "../Fire";
 
@@ -87,17 +88,21 @@ const Community = ({navigation}) => {
     );
   }*/
 
-  state = { postal: [] }
-  const posts = [];
+  const [posts, setPosts] = useState(null);
+
+  const fetchData = async () => {
+    const query = await Fire.shared.firestore.collection("posts").orderBy('timestamp', 'desc').get();
+    const posts2 = [];
+    query.forEach(doc => posts2.push(doc.data()));
+    //this.setState({ postal: posts })
+    setPosts(posts2);
+    console.log(posts2);
+}
+  //state = { postal: [] }
+  //const posts = [];
   useEffect(() => {
-  fetchData = async () => {
-        const query = await Fire.shared.firestore.collection("posts").get();
-        //const posts = [];
-        query.forEach(doc => posts.push(doc.data()));
-        this.setState({ postal: posts })
-        console.log(posts);
-  }
-},[]);
+  fetchData();
+    },[]);
 
   //componentDidMount() {
   //fetchData();
@@ -106,7 +111,7 @@ const Community = ({navigation}) => {
   renderPost = post => {
     return (
         <View style={styles.feedItem}>
-            <Image source={post.image} style={styles.avatar} />
+            <Image source={{uri: post.image}} style={styles.avatar} />
             <View style={{ flex: 1 }}>
                 <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
                     <View>
@@ -117,7 +122,7 @@ const Community = ({navigation}) => {
                     <Ionicons name="ios-more" size={24} color="#73788B" />
                 </View>
                 <Text style={styles.post}>{post.text}</Text>
-                <Image source={post.image} style={styles.postImage} resizeMode="cover" />
+                <Image source={{uri: post.image}} style={styles.postImage} resizeMode="cover" />
                 <View style={{ flexDirection: "row" }}>
                     <Ionicons name="ios-heart-empty" size={24} color="#73788B" style={{ marginRight: 16 }} />
                     <Ionicons name="ios-chatboxes" size={24} color="#73788B" />
