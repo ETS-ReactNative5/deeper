@@ -8,7 +8,8 @@ import {
     TouchableOpacity,
     Dimensions,
     Platform,
-    StackNavigator
+    StackNavigator,
+    Linking
 } from "react-native";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -47,7 +48,8 @@ const Home = ({navigation}) => {
                             style={styles.buttonImage}
                         />
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={styles.button}
+                    onPress={() => navigation.navigate('HealthIndex')}>
                         <Text style={styles.buttonTitle}>
                             <Text>
                                 Health Index
@@ -67,7 +69,8 @@ const Home = ({navigation}) => {
                             style={styles.buttonImage}
                         />
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={styles.button}
+                    onPress={() => Linking.openURL('https://checkpoint.carrd.co/')}>
                         <Text style={styles.buttonTitle}>
                             <Text>
                                 Resources

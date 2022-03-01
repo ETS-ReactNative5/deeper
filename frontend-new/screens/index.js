@@ -1,3 +1,4 @@
+import OnboardingScreen from './onboardingscreen'
 import Home from './home'
 import Community from './community'
 import Inbox from './inbox'
@@ -6,8 +7,10 @@ import DailyCheckUp from './dailycheckup'
 import Post_Screen from './postscreen'
 import Entries from './entries'
 import Messages from './messages'
+import HealthIndex from './healthindex'
 
 export {
+    OnboardingScreen,
     Home,
     Community,
     Inbox,
@@ -15,5 +18,6 @@ export {
     DailyCheckUp,
     Post_Screen,
     Entries,
-    Messages
+    Messages,
+    HealthIndex
 }

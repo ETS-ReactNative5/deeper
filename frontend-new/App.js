@@ -3,6 +3,7 @@ import {createStackNavigator} from "@react-navigation/stack";
 import {NavigationContainer} from "@react-navigation/native";
 
 import Tabs from './navigation/tabs';
+
 import {Home, Community, Journal, Inbox, DailyCheckUp, Post_Screen, Entries, Messages} from './screens';
 //import firebase from 'firebase/compat/app';
 //import firebase from 'firebase/app'
@@ -28,6 +29,8 @@ if (firebase.apps.length === 0) {
   app = firebase.app();
 }
 
+import {Home, Community, Journal, Inbox, DailyCheckUp, Post_Screen, Entries, Messages, HealthIndex, OnboardingScreen} from './screens';
+
 const Stack = createStackNavigator();
 
 const App = () => {
@@ -37,10 +40,12 @@ const App = () => {
         screenOptions={{
           headerShown: false
         }}
-        initialRouteName={'Home'}
+        initialRouteName={'OnboardingScreen'}
       >
+        <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
         <Stack.Screen name="Home" component={Tabs} />
         <Stack.Screen name="DailyCheckUp" component={DailyCheckUp} />
+        <Stack.Screen name="HealthIndex" component={HealthIndex} />
         <Stack.Screen name="Community" component={Community} />
         <Stack.Screen name="Post_Screen" component={Post_Screen} />
         <Stack.Screen name="Journal" component={Journal} />
