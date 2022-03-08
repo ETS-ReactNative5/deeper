@@ -97,6 +97,8 @@ def journal_read():
             for i in entries:
                 pack = jsonify(i)
             return pack
+    else:
+        return "Login first"
     
 
 """
