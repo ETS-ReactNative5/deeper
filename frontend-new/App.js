@@ -12,6 +12,10 @@ import Tabs from './navigation/tabs';
 //import { initializeApp } from 'firebase/app';
 import firebase from 'firebase/compat/app';
 
+import { LogBox } from 'react-native';
+LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+LogBox.ignoreAllLogs();//Ignore all log notifications
+
 const firebaseConfig = {
   apiKey: "AIzaSyAMxiQ75hoPDy6Dk2itUiT186iB8CW59AI",
   authDomain: "deeper-90de2.firebaseapp.com",
