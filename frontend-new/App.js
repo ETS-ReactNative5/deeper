@@ -14,7 +14,7 @@ import firebase from 'firebase/compat/app';
 
 import { LogBox } from 'react-native';
 LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
-LogBox.ignoreAllLogs();//Ignore all log notifications
+LogBox.ignoreAllLogs(); // Ignore all log notifications
 
 const firebaseConfig = {
   apiKey: "AIzaSyAMxiQ75hoPDy6Dk2itUiT186iB8CW59AI",
@@ -33,7 +33,7 @@ if (firebase.apps.length === 0) {
   app = firebase.app();
 }
 
-import {Home, Community, Journal, Inbox, DailyCheckUp, Post_Screen, Entries, Messages, HealthIndex, OnboardingScreen} from './screens';
+import {Home, Community, Journal, Inbox, DailyCheckUp, Post_Screen, Entries, Messages, HealthIndex, OnboardingScreen, Splash, SignIn} from './screens';
 
 const Stack = createStackNavigator();
 
@@ -44,8 +44,10 @@ const App = () => {
         screenOptions={{
           headerShown: false
         }}
-        initialRouteName={'OnboardingScreen'}
+        initialRouteName={'Splash'}
       >
+        <Stack.Screen name="Splash" component={Splash} />
+        <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
         <Stack.Screen name="Home" component={Tabs} />
         <Stack.Screen name="DailyCheckUp" component={DailyCheckUp} />
