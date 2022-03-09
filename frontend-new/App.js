@@ -13,8 +13,8 @@ import Tabs from './navigation/tabs';
 import firebase from 'firebase/compat/app';
 
 import { LogBox } from 'react-native';
-LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
-LogBox.ignoreAllLogs(); // Ignore all log notifications
+//LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+//LogBox.ignoreAllLogs(); // Ignore all log notifications
 
 const firebaseConfig = {
   apiKey: "AIzaSyAMxiQ75hoPDy6Dk2itUiT186iB8CW59AI",

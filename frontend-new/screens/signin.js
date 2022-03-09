@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import {
     View,
@@ -18,6 +18,8 @@ import {
 import { COLORS, SIZES, FONTS } from "../constants";
 
 const SignIn = ({navigation}) => {
+    const [passwordVisible, setPasswordVisible] = useState(true);
+
     return (
         <View style={StyleSheet.container}>
             <SafeAreaView>
@@ -57,15 +59,18 @@ const SignIn = ({navigation}) => {
                                 <TextInput 
                                     style={styles.passwordText}
                                     placeholder="Password"
-                                    placeholderTextColor="#A095C1" />
-                            </View>
-                            <TouchableOpacity>
-                                <Image source={require('../assets/icons/passwordoff.png')}
-                                style={styles.passwordIcon}
+                                    placeholderTextColor="#A095C1"
+                                    secureTextEntry={passwordVisible}
                                 />
+                            </View>
+                            <TouchableOpacity onPress={() => setPasswordVisible(!passwordVisible)}>
+                                <Image source={passwordVisible ? require('../assets/icons/passwordon.png') : require('../assets/icons/passwordoff.png')}
+                                style={styles.passwordIcon}
+                                /> 
                             </TouchableOpacity>
                         </View>
-                        <TouchableOpacity style={styles.buttonWrapper}>
+                        <TouchableOpacity style={styles.buttonWrapper}
+                        onPress={() => navigation.navigate('OnboardingScreen')}>
                             <Text style={styles.buttonTitle}>
                                 <Text>
                                     Sign In
@@ -79,7 +84,7 @@ const SignIn = ({navigation}) => {
                                 </Text>
                             </Text>
                             <TouchableOpacity>
-                                <Text style={styles.signupnav}>
+                                <Text style={styles.signupnav }>
                                     <Text>
                                         Sign Up
                                     </Text>
