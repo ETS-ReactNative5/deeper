@@ -26,7 +26,8 @@ const Splash = ({navigation}) => {
                     <Image source={require('../assets/images/deeperlogo.png')}
                             style={styles.deeperImage}
                     />
-                    <TouchableOpacity style={styles.subutton}>
+                    <TouchableOpacity style={styles.subutton}
+                    onPress={() => navigation.navigate('SignUp')}>
                         <Text style={styles.subuttonTitle}>
                             <Text>
                                 Sign Up

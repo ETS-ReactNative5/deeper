@@ -17,7 +17,7 @@ import {
 
 import { COLORS, SIZES, FONTS } from "../constants";
 
-const SignIn = ({navigation}) => {
+const SignUp = ({navigation}) => {
     const [passwordVisible, setPasswordVisible] = useState(true);
 
     return (
@@ -38,7 +38,7 @@ const SignIn = ({navigation}) => {
                 {/* Sign-In Logo and Image */}
                 <Text style={styles.headerTitle}>
                         <Text>
-                            Sign In
+                            Sign Up
                         </Text>
                     </Text>
                     <Image source={require('../assets/images/login.png')}
@@ -46,6 +46,20 @@ const SignIn = ({navigation}) => {
                     />
                     {/* Sign-In Functionality */}
                     <View style={styles.signinWrapper}>
+                        <View style={styles.nameWrapper}>
+                            <View style={styles.name}>
+                                <TextInput 
+                                    style={styles.nameText}
+                                    placeholder="First Name"
+                                    placeholderTextColor="#A095C1" />
+                            </View>
+                            <View style={styles.name}>
+                                <TextInput 
+                                    style={styles.nameText}
+                                    placeholder="Last Name"
+                                    placeholderTextColor="#A095C1" />
+                            </View>
+                        </View>
                         <View style={styles.usernameWrapper}>
                             <View style={styles.username}>
                                 <TextInput 
@@ -73,21 +87,21 @@ const SignIn = ({navigation}) => {
                         onPress={() => navigation.navigate('OnboardingScreen')}>
                             <Text style={styles.buttonTitle}>
                                 <Text>
-                                    Sign In
+                                    Sign Up
                                 </Text>
                             </Text>
                         </TouchableOpacity>
                         <View style={styles.signupWrapper}>
                             <Text style={styles.signuptext}>
                                 <Text>
-                                    Don't have an account?
+                                    Already have an account?
                                 </Text>
                             </Text>
                             <TouchableOpacity
-                            onPress={() => navigation.navigate('SignUp')}>
+                            onPress={() => navigation.navigate('SignIn')}>
                                 <Text style={styles.signupnav}>
                                     <Text>
-                                        Sign Up
+                                        Sign In
                                     </Text>
                                 </Text>
                             </TouchableOpacity>
@@ -99,7 +113,7 @@ const SignIn = ({navigation}) => {
     )
 }
 
-export default SignIn;
+export default SignUp;
 
 const styles = StyleSheet.create({
     container: {
@@ -125,14 +139,38 @@ const styles = StyleSheet.create({
       },
       logoImage: {
         alignSelf: 'center',
-        width: Platform.OS === 'android' ? Dimensions.get("window").width/1.4 : Dimensions.get("screen").width/1.4,
-        height: Platform.OS === 'android' ? Dimensions.get("window").width/1.4 : Dimensions.get("screen").width/1.4,
-        top: Platform.OS === 'android' ? Dimensions.get("window").height/13 : Dimensions.get("screen").height/13,
+        width: Platform.OS === 'android' ? Dimensions.get("window").width/1.8 : Dimensions.get("screen").width/1.8,
+        height: Platform.OS === 'android' ? Dimensions.get("window").width/1.8 : Dimensions.get("screen").width/1.8,
+        top: Platform.OS === 'android' ? Dimensions.get("window").height/18 : Dimensions.get("screen").height/18,
         resizeMode: 'contain',
       },
       signinWrapper:
       {
         height: Platform.OS === 'android' ? Dimensions.get("window").height/2 : Dimensions.get("screen").height/2,
+      },
+      nameWrapper:
+      {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: Dimensions.get("window").width-40,
+        height: Dimensions.get("window").height/15,
+        marginHorizontal: 20,
+        borderColor: '#EAE9E9',
+        borderWidth: 2,
+        top: Dimensions.get("window").height/13,
+        borderRadius: 10,
+      },
+      name:
+      {
+        flex: 1,
+        marginLeft: 15,
+      },
+      nameText:
+      {
+        fontFamily: 'Arial',
+        fontSize: 16,
+        color: '#7B6BA8',
       },
       usernameWrapper:
       {

@@ -10,10 +10,12 @@ import Messages from './messages'
 import HealthIndex from './healthindex'
 import Splash from './splash'
 import SignIn from './signin'
+import SignUp from './signup'
 
 export {
     Splash,
     SignIn,
+    SignUp,
     OnboardingScreen,
     Home,
     Community,
