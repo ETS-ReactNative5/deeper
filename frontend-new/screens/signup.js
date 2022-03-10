@@ -139,8 +139,8 @@ const styles = StyleSheet.create({
       },
       logoImage: {
         alignSelf: 'center',
-        width: Platform.OS === 'android' ? Dimensions.get("window").width/1.7 : Dimensions.get("screen").width/1.7,
-        height: Platform.OS === 'android' ? Dimensions.get("window").width/1.7 : Dimensions.get("screen").width/1.7,
+        width: Platform.OS === 'android' ? Dimensions.get("window").width/1.67 : Dimensions.get("screen").width/1.67,
+        height: Platform.OS === 'android' ? Dimensions.get("window").width/1.67 : Dimensions.get("screen").width/1.67,
         top: Platform.OS === 'android' ? Dimensions.get("window").height/18 : Dimensions.get("screen").height/18,
         resizeMode: 'contain',
       },
