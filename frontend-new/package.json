@@ -17,7 +17,7 @@
     "expo": "^44.0.6",
     "expo-image-picker": "~12.0.1",
     "expo-permissions": "~13.1.0",
-    "firebase": "^9.6.7",
+    "firebase": "^9.6.8",
     "moment": "^2.29.1",
     "react": "17.0.2",
     "react-native": "0.64.3",

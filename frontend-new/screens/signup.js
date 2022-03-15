@@ -20,6 +20,11 @@ import { COLORS, SIZES, FONTS } from "../constants";
 const SignUp = ({navigation}) => {
     const [passwordVisible, setPasswordVisible] = useState(true);
 
+    //Handles sign up
+    const handleSubmit = async () => {
+    console.log("User signed up!")
+    };
+
     return (
         <View style={StyleSheet.container}>
             <SafeAreaView>
@@ -64,6 +69,7 @@ const SignUp = ({navigation}) => {
                             <View style={styles.username}>
                                 <TextInput 
                                     style={styles.usernameText}
+                                    returnKeyType="next"
                                     placeholder="Email"
                                     placeholderTextColor="#A095C1" />
                             </View>
