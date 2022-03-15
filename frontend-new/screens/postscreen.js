@@ -61,7 +61,7 @@ class Post_Screen extends React.Component {
             <SafeAreaView style={styles.container}>
                 <View style={styles.header}>
                     <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
-                        <Ionicons name="md-arrow-back" size={24} color="#D8D9DB"></Ionicons>
+                        <Image source={require('../assets/icons/back.png')} color="#73788B" style={styles.postIcon}></Image>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={this.handlePost}>
                         <Text style={{ fontWeight: "500" }}>Post</Text>
@@ -82,7 +82,7 @@ class Post_Screen extends React.Component {
                 </View>
 
                 <TouchableOpacity style={styles.photo} onPress={this.pickImage}>
-                    <Ionicons name="md-camera" size={32} color="#D8D9DB"></Ionicons>
+                    <Image source={require('../assets/icons/camera.png')} color="#73788B" style={styles.postIcon}></Image>
                 </TouchableOpacity>
 
                 <View style={{ marginHorizontal: 32, marginTop: 32, height: 150 }}>
@@ -122,5 +122,10 @@ const styles = StyleSheet.create({
     photo: {
         alignItems: "flex-end",
         marginHorizontal: 32
+    },
+    postIcon: {
+        width: 25,
+        height: 25,
+        borderRadius: 20,
     }
 });

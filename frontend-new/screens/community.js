@@ -17,9 +17,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 //import { Ionicons } from "@expo/vector-icons/Ionicons";
 import Ionicons from 'react-native-vector-icons/Ionicons';
+//import Icon from "react-native-vector-icons/Ionicons";
 import moment from "moment";
 import Fire from "../Fire";
 import { useIsFocused } from '@react-navigation/native';
+//import {Icon} from 'native-base';
+
 
 import { COLORS, SIZES, FONTS } from "../constants";
 
@@ -109,7 +112,7 @@ const Community = ({navigation}) => {
   //componentDidMount() {
   //fetchData();
   //}
-
+  //<Ionicons name="ios-more" size={24} color="#73788B" />
   renderPost = post => {
     return (
         <View style={styles.feedItem}>
@@ -120,14 +123,12 @@ const Community = ({navigation}) => {
                         <Text style={styles.name}>{post.text}</Text>
                         <Text style={styles.timestamp}>{moment(post.timestamp).fromNow()}</Text>
                     </View>
-
-                    <Ionicons name="ios-more" size={24} color="#73788B" />
                 </View>
                 <Text style={styles.post}>{post.text}</Text>
                 <Image source={{uri: post.image}} style={styles.postImage} resizeMode="cover" />
                 <View style={{ flexDirection: "row" }}>
-                    <Ionicons name="ios-heart-empty" size={24} color="#73788B" style={{ marginRight: 16 }} />
-                    <Ionicons name="ios-chatboxes" size={24} color="#73788B" />
+                    <Image source={require('../assets/icons/like.png')} color="#73788B" style={styles.postIcon} marginRight={16}/>
+                    <Image source={require('../assets/icons/comment.png')} color="#73788B" style={styles.postIcon}/>
                 </View>
             </View>
         </View>
@@ -218,6 +219,11 @@ const styles = StyleSheet.create({
         height: 25,
         borderRadius: 20,
         left: 10,
+      },
+      postIcon: {
+        width: 25,
+        height: 25,
+        borderRadius: 20,
       },
       search:
       {
