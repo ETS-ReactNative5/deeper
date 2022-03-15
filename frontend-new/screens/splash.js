@@ -27,7 +27,7 @@ const Splash = ({navigation}) => {
                             style={styles.deeperImage}
                     />
                     <TouchableOpacity style={styles.subutton}
-                    onPress={() => navigation.navigate('SignUp')}>
+                    onPress={() => navigation.navigate('Signup')}>
                         <Text style={styles.subuttonTitle}>
                             <Text>
                                 Sign Up
@@ -35,7 +35,7 @@ const Splash = ({navigation}) => {
                         </Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.sibutton}
-                    onPress={() => navigation.navigate('SignIn')}>
+                    onPress={() => navigation.navigate('Login')}>
                         <Text style={styles.sibuttonTitle}>
                             <Text>
                                 Sign In

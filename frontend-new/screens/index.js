@@ -29,4 +29,5 @@ export {
     Messages,
     HealthIndex,
     Login,
+    Signup,
 }
