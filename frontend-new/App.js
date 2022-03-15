@@ -13,7 +13,7 @@ import Tabs from './navigation/tabs';
 import firebase from 'firebase/compat/app';
 
 import { LogBox } from 'react-native';
-LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+//LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
 LogBox.ignoreAllLogs(); // Ignore all log notifications
 
 const firebaseConfig = {

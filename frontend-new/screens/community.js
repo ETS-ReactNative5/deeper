@@ -116,11 +116,11 @@ const Community = ({navigation}) => {
   renderPost = post => {
     return (
         <View style={styles.feedItem}>
-            <Image source={{uri: post.image}} style={styles.avatar} />
+            <Image source={require("../assets/images/profile.png")} style={styles.avatar} />
             <View style={{ flex: 1 }}>
                 <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
                     <View>
-                        <Text style={styles.name}>{post.text}</Text>
+                        <Text style={styles.name}>{"Kristen"}</Text>
                         <Text style={styles.timestamp}>{moment(post.timestamp).fromNow()}</Text>
                     </View>
                 </View>
@@ -128,7 +128,9 @@ const Community = ({navigation}) => {
                 <Image source={{uri: post.image}} style={styles.postImage} resizeMode="cover" />
                 <View style={{ flexDirection: "row" }}>
                     <Image source={require('../assets/icons/like.png')} color="#73788B" style={styles.postIcon} marginRight={16}/>
-                    <Image source={require('../assets/icons/comment.png')} color="#73788B" style={styles.postIcon}/>
+                    <TouchableOpacity onPress={() => navigation.navigate('Comments')}>
+                        <Image source={require('../assets/icons/comment.png')} color="#73788B" style={styles.postIcon}/>
+                    </TouchableOpacity>
                 </View>
             </View>
         </View>
