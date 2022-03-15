@@ -220,7 +220,7 @@ const Login  = ({navigation}) => {
 
                         <ExtraView>
                             <ExtraText>Don't have an account already? </ExtraText>
-                            <TextLink onPress={() => navigation.navigate("Singup")}>
+                            <TextLink onPress={() => navigation.navigate('Signup')}>
                                 <TextLinkContent>Signup</TextLinkContent>
                             </TextLink>
 

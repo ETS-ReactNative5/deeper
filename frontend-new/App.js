@@ -33,7 +33,7 @@ if (firebase.apps.length === 0) {
   app = firebase.app();
 }
 
-import {Home, Community, Journal, Inbox, DailyCheckUp, Post_Screen, Entries, Messages, HealthIndex, OnboardingScreen, Splash, SignIn, SignUp } from './screens';
+import {Home, Community, Journal, Inbox, DailyCheckUp, Post_Screen, Entries, Messages, HealthIndex, OnboardingScreen, Splash } from './screens';
 
 import Login from "./screens/login"
 import Signup from './screens/signup';
