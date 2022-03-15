@@ -116,11 +116,11 @@ const Community = ({navigation}) => {
   renderPost = post => {
     return (
         <View style={styles.feedItem}>
-            <Image source={{uri: post.image}} style={styles.avatar} />
+            <Image source={require("../assets/images/profile.png")} style={styles.avatar} />
             <View style={{ flex: 1 }}>
                 <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
                     <View>
-                        <Text style={styles.name}>{post.text}</Text>
+                        <Text style={styles.name}>{"Kristen"}</Text>
                         <Text style={styles.timestamp}>{moment(post.timestamp).fromNow()}</Text>
                     </View>
                 </View>
