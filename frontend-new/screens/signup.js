@@ -1,276 +1,241 @@
-import React, { useState, useEffect } from 'react';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import React, { useState, useContext } from "react";
+
+import { TouchableOpacity, Text, View, TextInput, Image, ActivityIndicator, Button, StyleSheet, Dimensions, Alert} from "react-native";
+
+// Byron added code
+import { StatusBar } from "expo-status-bar";
+
+// icons
+import { Octicons, Ionicons, Fontisto } from '@expo/vector-icons';
+
+// formik 
+import { Formik } from "formik";
+
+
 import {
-    View,
-    Text,
-    StyleSheet,
-    SafeAreaView,
-    TouchableOpacity,
-    Image,
-    Dimensions,
-    TextInput,
-    ScrollView,
-    Platform,
-    Keyboard,
-    KeyboardAvoidingView
-} from "react-native";
+    Colors,
+    StyledContainer,
+    InnerContainer,
+    PageLogo1,
+    PageTitle,
+    SubTitle,
+    StyledFormArea,
+    LeftIcon,
+    RightIcon,
+    StyledInputLabel,
+    StyledTextInput,
+    StyledButton,
+    ButtonText,
+    MsgBox,
+    Line,
+    ExtraText,
+    ExtraView,
+    TextLink,
+    TextLinkContent
 
-import { COLORS, SIZES, FONTS } from "../constants";
+} from "../components/styles";
 
-const SignUp = ({navigation}) => {
-    const [passwordVisible, setPasswordVisible] = useState(true);
+// colors
+const { brand, darkLight, primary } = Colors;
+
+import KeyboardAvoidingWrapper from "../components/keyboardavoid";
+
+// // Google
+import * as Google from 'expo-google-app-auth';
+
+// // authentication with firevbase
+// import auth from "../../firebase/config";
+// import * as firebase from 'firebase';
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { CredentialsContext } from "../components/CredentialContext";
+
+const Signup  = ({navigation}) => {
+
+	// Byron's Constants
+    const [hidePassword, setHidePassword] = useState(true);
+    const [message, setMessage] = useState();
+    const [messageType, setmessageType] = useState();
+    const {storedCredentials, setStoredCredentials} = useContext(CredentialsContext);
+
+	const handleMessage = (message, type = 'FAILED') => {
+        setMessage(message);
+        setmessageType(type);
+    }
+
+    // to be kept logged in 
+
+    // const persistLogin = (credentials, message, status) => {
+    //     AsyncStorage
+    //         .setItem('ScanToKnowCredentials', JSON.stringify(credentials))
+    //         .then(() => {
+    //             handleMessage(message, status);
+    //             setStoredCredentials(credentials);
+    //         })
+    //         .catch((error) => {
+    //             console.log(error);
+    //             handleMessage('Persisting Login failed');
+    //         })
+    // }
+
+	return (
+		<KeyboardAvoidingWrapper>
+			<StyledContainer>
+                <StatusBar style="dark" />
+                <InnerContainer>
+                    {/* <PageTitle> Account Signup </PageTitle> */}
+                    <PageLogo1 resizeMode='cover' source={require('../assets/images/deeperlogo.png')} />
+                    <SubTitle>Account Signup</SubTitle>
+
+                    <Formik
+                        initialValues={{email: '', password: '',confirm: '', firstName: '', lastName: ''}}
+
+                        onSubmit ={ (values) => {
+                            
+                            if (!values.firstName) {
+                                Alert.alert('Name is required');
+                            } else if (!values.email) {
+                                Alert.alert('Email field is required.');
+                            } else if (!values.password) {
+                                Alert.alert('Password field is required.');
+                            } else if (!values.confirm) {
+                                Alert.alert('Confirm password field is required.');
+                            } else if (values.password !== values.confirm) {
+                                Alert.alert('Password does not match!');
+                            } else {
+                                auth.createUserWithEmailAndPassword(values.email, values.password)
+                                .then( (userCredential) => {
+                                    // Signed in 
+                                    const user = userCredential.user;
+                                    // console.log(user);
+                                    persistLogin(userCredential, message, 'SUCCESS');
+                                    const db = firebase.firestore();
+                                    db.collection('users')
+                                        .doc(user.uid)
+                                        .set({
+                                            email: values.email,
+                                            name: values.firstName,
+                                            // lastName: values.lastName,
+                                        });
+                                    navigation.navigate("Page_Login_1")
+                                })
+                                .catch( (error) => {
+                                    const errorCode = error.code;
+                                    const errorMessage = error.message;
+                                    console.log(errorCode, errorMessage);
+                                    Alert.alert(
+                                        errorMessage,
+                                        'Please try again',
+                                        [{
+                                            text: 'Try Again',
+                                            onPress: () => console.log('error message displayed')
+                                        }]
+                                    )
+                                    // ..
+                                });
+                            }
+                        }}
+
+                    >{({handleChange, handleBlur, handleSubmit, values}) => (<StyledFormArea> 
+
+                        <MyTextInput 
+                            label="Name" 
+                            icon="person"
+                            autoCapitalize="none"
+                            placeholder="John Doe"
+                            placeholderTextColor={darkLight}
+                            onChangeText = {handleChange('firstName')}
+                            onBlur={handleBlur('firstName')}
+                            value={values.firstName}
+                            keyboardType="default"
+                        /> 
+
+                        <MyTextInput 
+                            label="Email Address" 
+                            icon="mail"
+                            autoCapitalize="none"
+                            placeholder="john@doe.com"
+                            placeholderTextColor={darkLight}
+                            onChangeText = {handleChange('email')}
+                            onBlur={handleBlur('email')}
+                            value={values.email}
+                            keyboardType="email-address"
+
+                        /> 
+
+                        <MyTextInput 
+                            label="Password" 
+                            icon="lock"
+                            placeholder="* * * * * * * * *"
+                            autoCapitalize="none"
+                            placeholderTextColor={darkLight}
+                            onChangeText = {handleChange('password')}
+                            onBlur={handleBlur('password')}
+                            value={values.password}
+                            secureTextEntry={hidePassword}
+                            isPassword={true}
+                            hidePassword={hidePassword}
+                            setHidePassword={setHidePassword}
+                        />
+
+                        <MyTextInput 
+                            label="Confirm Password" 
+                            icon="lock"
+                            placeholder="* * * * * * * * *"
+                            autoCapitalize="none"
+                            placeholderTextColor={darkLight}
+                            onChangeText = {handleChange('confirm')}
+                            onBlur={handleBlur('confirm')}
+                            value={values.confirm}
+                            secureTextEntry={hidePassword}
+                            isPassword={true}
+                            hidePassword={hidePassword}
+                            setHidePassword={setHidePassword}
+                        />
+
+                        <MsgBox type={messageType}>{message}</MsgBox>
+
+                        <StyledButton onPress={handleSubmit}>
+                            <ButtonText>Register</ButtonText>
+                        </StyledButton>
+
+                        <Line />
+
+                        <ExtraView>
+                            <ExtraText>Already have an account? </ExtraText>
+                            <TextLink onPress={() => navigation.navigate('Page_Login_1')}>
+                                <TextLinkContent>Login</TextLinkContent>
+                            </TextLink>
+
+                        </ExtraView>
+
+                    </StyledFormArea>)}
+                    </Formik>
+                </InnerContainer>
+            </StyledContainer>
+
+		</KeyboardAvoidingWrapper>
+	);
+}
+export default Signup
+
+const MyTextInput = ({ label, icon, isPassword, hidePassword, setHidePassword, ...props }) => {
 
     return (
-        <View style={StyleSheet.container}>
-            <SafeAreaView>
-                <KeyboardAwareScrollView
-                    onKeyboardWillShow={(frames: Object) => {
-                    console.log('Keyboard event', frames)
-                    }}>
-                {/* Header */}
-                <View style={styles.headerWrapper}>
-                    <TouchableOpacity onPress={() => navigation.goBack()}>
-                        <Image source={require('../assets/icons/back.png')}
-                        style={styles.back}
-                        />
-                    </TouchableOpacity>
-                </View>
-                {/* Sign-In Logo and Image */}
-                <Text style={styles.headerTitle}>
-                        <Text>
-                            Sign Up
-                        </Text>
-                    </Text>
-                    <Image source={require('../assets/images/login.png')}
-                            style={styles.logoImage}
-                    />
-                    {/* Sign-In Functionality */}
-                    <View style={styles.signinWrapper}>
-                        <View style={styles.nameWrapper}>
-                            <View style={styles.name}>
-                                <TextInput 
-                                    style={styles.nameText}
-                                    placeholder="First Name"
-                                    placeholderTextColor="#A095C1" />
-                            </View>
-                            <View style={styles.name}>
-                                <TextInput 
-                                    style={styles.nameText}
-                                    placeholder="Last Name"
-                                    placeholderTextColor="#A095C1" />
-                            </View>
-                        </View>
-                        <View style={styles.usernameWrapper}>
-                            <View style={styles.username}>
-                                <TextInput 
-                                    style={styles.usernameText}
-                                    placeholder="Email"
-                                    placeholderTextColor="#A095C1" />
-                            </View>
-                        </View>
-                        <View style={styles.passwordWrapper}>
-                            <View style={styles.password}>
-                                <TextInput 
-                                    style={styles.passwordText}
-                                    placeholder="Password"
-                                    placeholderTextColor="#A095C1"
-                                    secureTextEntry={passwordVisible}
-                                />
-                            </View>
-                            <TouchableOpacity onPress={() => setPasswordVisible(!passwordVisible)}>
-                                <Image source={passwordVisible ? require('../assets/icons/passwordon.png') : require('../assets/icons/passwordoff.png')}
-                                style={styles.passwordIcon}
-                                /> 
-                            </TouchableOpacity>
-                        </View>
-                        <TouchableOpacity style={styles.buttonWrapper}
-                        onPress={() => navigation.navigate('OnboardingScreen')}>
-                            <Text style={styles.buttonTitle}>
-                                <Text>
-                                    Sign Up
-                                </Text>
-                            </Text>
-                        </TouchableOpacity>
-                        <View style={styles.signupWrapper}>
-                            <Text style={styles.signuptext}>
-                                <Text>
-                                    Already have an account?
-                                </Text>
-                            </Text>
-                            <TouchableOpacity
-                            onPress={() => navigation.navigate('SignIn')}>
-                                <Text style={styles.signupnav}>
-                                    <Text>
-                                        Sign In
-                                    </Text>
-                                </Text>
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-                </KeyboardAwareScrollView>
-            </SafeAreaView>
+        <View>
+            <LeftIcon>
+                <Octicons name={icon} size={30} color={brand} />
+
+            </LeftIcon>
+            <StyledInputLabel>{label}</StyledInputLabel>
+            <StyledTextInput {...props} />
+            {isPassword && (
+                <RightIcon onPress={() => setHidePassword(!hidePassword)}>
+                    <Ionicons name={hidePassword ? 'md-eye-off' : 'md-eye'} size={30} color={darkLight} />
+                </RightIcon>
+            )}
+
         </View>
-    )
-}
 
-export default SignUp;
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-      },
-      headerWrapper: {
-        flexDirection: 'row',
-        alignItems: 'stretch',
-        paddingHorizontal: 20,
-        paddingTop: Platform.OS === 'android' ? 50 : 15,
-      },
-      back: {
-        top: 5,
-        width: 30,
-        height: 30,
-      },
-      headerTitle: {
-        textAlign: 'center',
-        color: COLORS.primary,
-        fontFamily: 'Avenir-Heavy',
-        fontSize: Platform.OS === 'android' ? Dimensions.get("window").height/25 : Dimensions.get("screen").height/25,
-        top: Platform.OS === 'android' ? Dimensions.get("window").height/28 : Dimensions.get("screen").height/28,
-      },
-      logoImage: {
-        alignSelf: 'center',
-        width: Platform.OS === 'android' ? Dimensions.get("window").width/1.67 : Dimensions.get("screen").width/1.67,
-        height: Platform.OS === 'android' ? Dimensions.get("window").width/1.67 : Dimensions.get("screen").width/1.67,
-        top: Platform.OS === 'android' ? Dimensions.get("window").height/18 : Dimensions.get("screen").height/18,
-        resizeMode: 'contain',
-      },
-      signinWrapper:
-      {
-        height: Platform.OS === 'android' ? Dimensions.get("window").height/2 : Dimensions.get("screen").height/2,
-      },
-      nameWrapper:
-      {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: Dimensions.get("window").width-40,
-        height: Dimensions.get("window").height/15,
-        marginHorizontal: 20,
-        borderColor: '#EAE9E9',
-        borderWidth: 2,
-        top: Dimensions.get("window").height/13,
-        borderRadius: 10,
-      },
-      name:
-      {
-        flex: 1,
-        marginLeft: 15,
-      },
-      nameText:
-      {
-        fontFamily: 'Arial',
-        fontSize: 16,
-        color: '#7B6BA8',
-      },
-      usernameWrapper:
-      {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: Dimensions.get("window").width-40,
-        height: Dimensions.get("window").height/15,
-        marginVertical: 10,
-        marginHorizontal: 20,
-        borderColor: '#EAE9E9',
-        borderWidth: 2,
-        top: Dimensions.get("window").height/13,
-        borderRadius: 10,
-      },
-      username:
-      {
-        flex: 1,
-        marginLeft: 15,
-      },
-      usernameText:
-      {
-        fontFamily: 'Arial',
-        fontSize: 16,
-        color: '#7B6BA8',
-      },
-      passwordWrapper:
-      {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: Dimensions.get("window").width-40,
-        height: Dimensions.get("window").height/15,
-        marginHorizontal: 20,
-        borderColor: '#EAE9E9',
-        borderWidth: 2,
-        top: Dimensions.get("window").height/13,
-        borderRadius: 10,
-      },
-      passwordIcon: {
-        width: 25,
-        height: 25,
-        borderRadius: 20,
-        right: 10,
-        tintColor: '#7B6BA8'
-      },
-      password:
-      {
-        flex: 1,
-        marginLeft: 15,
-      },
-      passwordText:
-      {
-        fontFamily: 'Arial',
-        fontSize: 16,
-        color: '#7B6BA8',
-      },
-      buttonWrapper:
-      {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: Dimensions.get("window").width-40,
-        height: Dimensions.get("window").height/15,
-        marginHorizontal: 20,
-        backgroundColor: '#432C81',
-        borderColor: '#432C81',
-        borderWidth: 2,
-        top: (Dimensions.get("window").height/9),
-        borderRadius: 10,
-      },
-      buttonTitle:
-      {
-        fontFamily: 'Arial',
-        fontSize: 16,
-        color: 'white',
-      },
-      signupWrapper:
-      {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: Dimensions.get("window").width-40,
-        height: Dimensions.get("window").height/12,
-        marginHorizontal: 20,
-        top: Dimensions.get("window").height/8.8,
-        borderRadius: 10,
-      },
-      signuptext:
-      {
-        fontFamily: 'Arial',
-        fontSize: 16,
-        color: '#A095C1',
-        right: 3,
-      },
-      signupnav:
-      {
-        fontFamily: 'Arial',
-        fontSize: 16,
-        color: '#432C81',
-        left: 3,
-      },
-})
+    );
+};

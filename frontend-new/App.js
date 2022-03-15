@@ -33,34 +33,41 @@ if (firebase.apps.length === 0) {
   app = firebase.app();
 }
 
-import {Home, Community, Journal, Inbox, DailyCheckUp, Post_Screen, Entries, Messages, HealthIndex, OnboardingScreen, Splash, SignIn, SignUp} from './screens';
+import {Home, Community, Journal, Inbox, DailyCheckUp, Post_Screen, Entries, Messages, HealthIndex, OnboardingScreen, Splash, SignIn, SignUp } from './screens';
+
+import Login from "./screens/login"
+import Signup from './screens/signup';
 
 const Stack = createStackNavigator();
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          headerShown: false
-        }}
-        initialRouteName={'Splash'}
-      >
-        <Stack.Screen name="Splash" component={Splash} />
-        <Stack.Screen name="SignIn" component={SignIn} />
-        <Stack.Screen name="SignUp" component={SignUp} />
-        <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
-        <Stack.Screen name="Home" component={Tabs} />
-        <Stack.Screen name="DailyCheckUp" component={DailyCheckUp} />
-        <Stack.Screen name="HealthIndex" component={HealthIndex} />
-        <Stack.Screen name="Community" component={Community} />
-        <Stack.Screen name="Post_Screen" component={Post_Screen} />
-        <Stack.Screen name="Journal" component={Journal} />
-        <Stack.Screen name="Entries" component={Entries} />
-        <Stack.Screen name="Inbox" component={Inbox} />
-        <Stack.Screen name="Messages" component={Messages} />
-      </Stack.Navigator>
-    </NavigationContainer>
+
+    <Login/>
+    // <Signup/>
+
+    // <NavigationContainer>
+    //   <Stack.Navigator
+    //     screenOptions={{
+    //       headerShown: false
+    //     }}
+    //     initialRouteName={'Splash'}
+    //   >
+    //     <Stack.Screen name="Splash" component={Splash} />
+    //     <Stack.Screen name="SignIn" component={SignIn} />
+    //     <Stack.Screen name="SignUp" component={SignUp} />
+    //     <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
+    //     <Stack.Screen name="Home" component={Tabs} />
+    //     <Stack.Screen name="DailyCheckUp" component={DailyCheckUp} />
+    //     <Stack.Screen name="HealthIndex" component={HealthIndex} />
+    //     <Stack.Screen name="Community" component={Community} />
+    //     <Stack.Screen name="Post_Screen" component={Post_Screen} />
+    //     <Stack.Screen name="Journal" component={Journal} />
+    //     <Stack.Screen name="Entries" component={Entries} />
+    //     <Stack.Screen name="Inbox" component={Inbox} />
+    //     <Stack.Screen name="Messages" component={Messages} />
+    //   </Stack.Navigator>
+    // </NavigationContainer>
   )
 }
 

@@ -9,8 +9,10 @@ import Entries from './entries'
 import Messages from './messages'
 import HealthIndex from './healthindex'
 import Splash from './splash'
-import SignIn from './signin'
-import SignUp from './signup'
+import SignIn from './N_signin'
+import SignUp from './N_signup'
+import Login from './login'
+import Signup from './signup'
 
 export {
     Splash,
@@ -26,4 +28,5 @@ export {
     Entries,
     Messages,
     HealthIndex,
+    Login,
 }
