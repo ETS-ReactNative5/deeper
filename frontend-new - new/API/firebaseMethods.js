@@ -2,7 +2,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/firestore';
 import {Alert} from 'react-native';
 
-export function submitJournal(content, data) {
+export function submitJournal(content, date) {
     try {
         firebase.firestore().collection('journal').add({
             content: content,
@@ -10,7 +10,7 @@ export function submitJournal(content, data) {
         })
 
     } catch (err) {
-        Alert.alert('There is something wrong!', err.messsage);
+        Alert.alert('There is something wrong!', err.message);
     }
 
 }

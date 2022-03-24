@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     View,
     Text,
@@ -14,10 +14,16 @@ import {
     Platform
 } from "react-native";
 
+import { submitJournal } from '../API/firebaseMethods'
 import { COLORS, SIZES, FONTS } from "../constants";
 
 // Functional component for journal page
-const Journal = ({navigation}) => {
+const Journal = ({ navigation }) => {
+    const [state, setState] = useState({
+        journalEntry: '',
+    });
+    
+    
     return (
         <View style={StyleSheet.container}>
             <SafeAreaView>
@@ -45,13 +51,24 @@ const Journal = ({navigation}) => {
                                 behavior={"position"}>
                                 <View style={styles.entry}>
                                     <TextInput 
-                                        multiline
-                                        style={styles.entryText}
-                                        placeholder="Start writing here..." />
+                                    multiline
+                                    value={state.journalEntry}
+                                    onChangeText={(text) => setState({ journalEntry: text })}
+                                    style={styles.entryText}
+                                    placeholder="Start writing here..." />
                                 </View>
                             </KeyboardAvoidingView>
                         </ScrollView>
-                    </TouchableOpacity>
+                </TouchableOpacity>
+                {/* Buttons */}
+                <TouchableOpacity style={styles.addButton}
+                    onPress={() => submitJournal(state.journalEntry, Date())}>
+                    <Text style={styles.addTitle}>
+                        <Text>
+                            Save
+                        </Text>
+                    </Text>
+                </TouchableOpacity>
             </SafeAreaView>
         </View>
     )
@@ -103,10 +120,25 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: '#747480',
       },
+      addButton:
+      {
+        width: 60,
+        height: 60,
+        backgroundColor: '#FEC62F',
+        borderRadius: 100,
+        justifyContent: 'center',
+        position: 'absolute',
+        bottom: 0,
+        right: 18,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 5,
+      },
       addTitle:
       {
         fontFamily: 'Avenir',
-        fontSize: 40,
+        fontSize: 25,
         bottom: 0, 
         alignSelf: 'center',
       },

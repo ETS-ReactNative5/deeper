@@ -9,16 +9,17 @@ import Entries from './entries'
 import Messages from './messages'
 import HealthIndex from './healthindex'
 import Splash from './splash'
-<<<<<<< Updated upstream
+// Updated upstream
 import SignIn from './N_signin'
 import SignUp from './N_signup'
 import Login from './login'
 import Signup from './signup'
-=======
+import Comments from './comments'
+/*=======
 import SignIn from './signin'
 import SignUp from './signup'
 import Comments from './comments'
->>>>>>> Stashed changes
+>>>>>>> Stashed changes*/
 
 export {
     Splash,
@@ -34,10 +35,7 @@ export {
     Entries,
     Messages,
     HealthIndex,
-<<<<<<< Updated upstream
     Login,
     Signup,
-=======
     Comments
->>>>>>> Stashed changes
 }

@@ -33,14 +33,14 @@ if (firebase.apps.length === 0) {
   app = firebase.app();
 }
 
-<<<<<<< Updated upstream
-import {Home, Community, Journal, Inbox, DailyCheckUp, Post_Screen, Entries, Messages, HealthIndex, OnboardingScreen, Splash } from './screens';
+//<<<<<<< Updated upstream
+import {Home, Community, Journal, Inbox, DailyCheckUp, Post_Screen, Entries, Messages, HealthIndex, OnboardingScreen, Splash, Comments } from './screens';
 
 import Login from "./screens/login"
 import Signup from './screens/signup';
-=======
-import {Home, Community, Journal, Inbox, DailyCheckUp, Post_Screen, Entries, Messages, HealthIndex, OnboardingScreen, Splash, SignIn, SignUp, Comments} from './screens';
->>>>>>> Stashed changes
+//=======
+//import {Home, Community, Journal, Inbox, DailyCheckUp, Post_Screen, Entries, Messages, HealthIndex, OnboardingScreen, Splash, SignIn, SignUp, Comments} from './screens';
+//>>>>>>> Stashed changes
 
 const Stack = createStackNavigator();
 
