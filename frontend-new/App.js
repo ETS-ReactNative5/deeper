@@ -33,10 +33,14 @@ if (firebase.apps.length === 0) {
   app = firebase.app();
 }
 
+<<<<<<< Updated upstream
 import {Home, Community, Journal, Inbox, DailyCheckUp, Post_Screen, Entries, Messages, HealthIndex, OnboardingScreen, Splash } from './screens';
 
 import Login from "./screens/login"
 import Signup from './screens/signup';
+=======
+import {Home, Community, Journal, Inbox, DailyCheckUp, Post_Screen, Entries, Messages, HealthIndex, OnboardingScreen, Splash, SignIn, SignUp, Comments} from './screens';
+>>>>>>> Stashed changes
 
 const Stack = createStackNavigator();
 
@@ -58,6 +62,7 @@ const App = () => {
         <Stack.Screen name="DailyCheckUp" component={DailyCheckUp} />
         <Stack.Screen name="HealthIndex" component={HealthIndex} />
         <Stack.Screen name="Community" component={Community} />
+        <Stack.Screen name="Comments" component={Comments} />
         <Stack.Screen name="Post_Screen" component={Post_Screen} />
         <Stack.Screen name="Journal" component={Journal} />
         <Stack.Screen name="Entries" component={Entries} />
