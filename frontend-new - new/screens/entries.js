@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
     View,
     Text,
@@ -9,12 +9,41 @@ import {
     Dimensions,
     TextInput,
     ScrollView,
-    Platform
+    Platform,
+    FlatList
 } from "react-native";
 
 import { COLORS, SIZES, FONTS } from "../constants";
+import Fire from '../Fire';
+import { useIsFocused } from '@react-navigation/native';
+//import { FlatList } from "../node_modules/react-native-gesture-handler/lib/typescript/index";
 
-const Entries = ({navigation}) => {
+
+
+
+const Entries = ({ navigation }) => {
+    const [entry, setEntry] = useState();
+    const journalFetch = async () => {
+        const query = await Fire.shared.firestore.collection("journal").orderBy('date', 'desc').get();
+        const entry = [];
+        query.forEach(doc => entry.push(doc.data()));
+        setEntry(entry);
+        console.log(entry);
+    }
+    const isFocused = useIsFocused();
+    useEffect(() => {
+        journalFetch();
+    }, [isFocused]);
+
+    renderEntry = entries => {
+        return (
+            <View style={styles.feedItem}>
+                <Text style={styles.entry}>{entries.content}</Text>
+                <Text style={styles.timestamp}>{entries.date}</Text>
+            </View>
+
+            )
+    }
     return (
         <View style={StyleSheet.container}>
             <SafeAreaView>
@@ -39,9 +68,17 @@ const Entries = ({navigation}) => {
                     />
                 </View>
               </View>
-              {/* Entries */}
-              <View style={styles.buttonsContainer}>
-              </View>
+                {/* Entries */}
+                <ScrollView>
+                <View style={styles.questionsWrapper}>
+                    <FlatList
+                        style={styles.feed}
+                        data={entry}
+                        renderItem={({ item }) => this.renderEntry(item)}
+                        keyExtractor={item => item.id}
+                        ></FlatList>
+                    </View>
+                </ScrollView>
             </SafeAreaView>
         </View>
     )
@@ -109,5 +146,29 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         backgroundColor: '#E2E0E9',
         padding: 10,
-      },
+    },
+    feedItem: {
+        backgroundColor: "#FFF",
+        borderRadius: 5,
+        padding: 8,
+        flexDirection: "row",
+        marginVertical: 8
+    },
+    timestamp: {
+        fontSize: 11,
+        color: "#C4C6CE",
+        marginTop: 4
+    },
+    entry: {
+        marginTop: 16,
+        fontSize: 14,
+        color: "#838899"
+    },
+    feed: {
+        marginHorizontal: 16
+    },
+    questionsWrapper:
+    {
+        height: Dimensions.get("window").height / 1.48,
+    }
 })
