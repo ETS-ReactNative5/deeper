@@ -13,12 +13,14 @@ import {
 } from "react-native";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+import { getAuth } from "firebase/auth";
 import { COLORS, SIZES, FONTS } from "../constants";
 
 // Functional component for home page
 const Home = ({navigation}) => {
-    console.log('hello');
+    const auth = getAuth();
+    const user = auth.currentUser;
+
     return (
         <View style={StyleSheet.container}>
             <SafeAreaView>
@@ -26,7 +28,7 @@ const Home = ({navigation}) => {
                 <View style={styles.headerWrapper}>
                     <Text style={styles.headerTitle}>
                         <Text>
-                            Hi, Kristen!
+                            Hi, {user.displayName}!
                         </Text>
                     </Text>
                     <TouchableOpacity>

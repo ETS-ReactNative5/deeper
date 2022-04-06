@@ -14,11 +14,24 @@ import {
     Keyboard,
     KeyboardAvoidingView
 } from "react-native";
-
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { COLORS, SIZES, FONTS } from "../constants";
 
 const SignIn = ({navigation}) => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [passwordVisible, setPasswordVisible] = useState(true);
+
+    const auth = getAuth();
+
+    const handleSignIn = () => {
+      signInWithEmailAndPassword(auth, email, password)
+        .then(userCredentials => {
+          const user = userCredentials.user;
+          navigation.replace('OnboardingScreen')
+        })
+        .catch(error => alert(error.message))
+    }
 
     return (
         <View style={StyleSheet.container}>
@@ -51,7 +64,8 @@ const SignIn = ({navigation}) => {
                                 <TextInput 
                                     style={styles.usernameText}
                                     placeholder="Email"
-                                    placeholderTextColor="#A095C1" />
+                                    placeholderTextColor="#A095C1"
+                                    onChangeText={text => setEmail(text)} />
                             </View>
                         </View>
                         <View style={styles.passwordWrapper}>
@@ -61,7 +75,7 @@ const SignIn = ({navigation}) => {
                                     placeholder="Password"
                                     placeholderTextColor="#A095C1"
                                     secureTextEntry={passwordVisible}
-                                />
+                                    onChangeText={text => setPassword(text)} />
                             </View>
                             <TouchableOpacity onPress={() => setPasswordVisible(!passwordVisible)}>
                                 <Image source={passwordVisible ? require('../assets/icons/passwordon.png') : require('../assets/icons/passwordoff.png')}
@@ -70,7 +84,7 @@ const SignIn = ({navigation}) => {
                             </TouchableOpacity>
                         </View>
                         <TouchableOpacity style={styles.buttonWrapper}
-                        onPress={() => navigation.navigate('OnboardingScreen')}>
+                        onPress={handleSignIn}>
                             <Text style={styles.buttonTitle}>
                                 <Text>
                                     Sign In

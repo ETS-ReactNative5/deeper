@@ -14,16 +14,35 @@ import {
     Keyboard,
     KeyboardAvoidingView
 } from "react-native";
-
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { COLORS, SIZES, FONTS } from "../constants";
 
 const SignUp = ({navigation}) => {
+    const [fname, setFname] = useState('');
+    const [lname, setLname] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [passwordVisible, setPasswordVisible] = useState(true);
+    const auth = getAuth();
 
-    //Handles sign up
-    const handleSubmit = async () => {
-    console.log("User signed up!")
-    };
+    const handleSignUp = () => {
+      createUserWithEmailAndPassword(auth, email, password)
+        .then(userCredentials => {
+          const user = userCredentials.user;
+          updateProfile(user, {
+            displayName: fname
+          }).then(() => {
+            navigation.replace('OnboardingScreen');
+            // Profile updated!
+            // ...
+          }).catch((error) => {
+            alert(error.message);
+            // An error occurred
+            // ...
+          });
+        })
+        .catch(error => alert(error.message))
+    } 
 
     return (
         <View style={StyleSheet.container}>
@@ -56,13 +75,15 @@ const SignUp = ({navigation}) => {
                                 <TextInput 
                                     style={styles.nameText}
                                     placeholder="First Name"
-                                    placeholderTextColor="#A095C1" />
+                                    placeholderTextColor="#A095C1" 
+                                    onChangeText={text => setFname(text)} />
                             </View>
                             <View style={styles.name}>
                                 <TextInput 
                                     style={styles.nameText}
                                     placeholder="Last Name"
-                                    placeholderTextColor="#A095C1" />
+                                    placeholderTextColor="#A095C1"
+                                    onChangeText={text => setLname(text)} />
                             </View>
                         </View>
                         <View style={styles.usernameWrapper}>
@@ -71,7 +92,8 @@ const SignUp = ({navigation}) => {
                                     style={styles.usernameText}
                                     returnKeyType="next"
                                     placeholder="Email"
-                                    placeholderTextColor="#A095C1" />
+                                    placeholderTextColor="#A095C1"
+                                    onChangeText={text => setEmail(text)} />
                             </View>
                         </View>
                         <View style={styles.passwordWrapper}>
@@ -81,7 +103,7 @@ const SignUp = ({navigation}) => {
                                     placeholder="Password"
                                     placeholderTextColor="#A095C1"
                                     secureTextEntry={passwordVisible}
-                                />
+                                    onChangeText={text => setPassword(text)} />
                             </View>
                             <TouchableOpacity onPress={() => setPasswordVisible(!passwordVisible)}>
                                 <Image source={passwordVisible ? require('../assets/icons/passwordon.png') : require('../assets/icons/passwordoff.png')}
@@ -90,7 +112,7 @@ const SignUp = ({navigation}) => {
                             </TouchableOpacity>
                         </View>
                         <TouchableOpacity style={styles.buttonWrapper}
-                        onPress={() => navigation.navigate('OnboardingScreen')}>
+                        onPress={handleSignUp}>
                             <Text style={styles.buttonTitle}>
                                 <Text>
                                     Sign Up
