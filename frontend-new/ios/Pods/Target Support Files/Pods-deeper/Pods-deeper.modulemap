@@ -1,6 +1,0 @@
-module Pods_deeper {
-  umbrella header "Pods-deeper-umbrella.h"
-
-  export *
-  module * { export * }
-}

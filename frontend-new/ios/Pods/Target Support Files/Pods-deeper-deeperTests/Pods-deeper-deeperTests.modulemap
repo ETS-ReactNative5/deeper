@@ -1,6 +1,0 @@
-module Pods_deeper_deeperTests {
-  umbrella header "Pods-deeper-deeperTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
