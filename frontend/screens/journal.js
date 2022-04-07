@@ -132,6 +132,7 @@ const styles = StyleSheet.create({
         borderRadius: 100,
         justifyContent: 'center',
         position: 'absolute',
+        marginVertical: -4,
         bottom: 0,
         right: 18,
         shadowColor: '#000',
@@ -142,7 +143,7 @@ const styles = StyleSheet.create({
       addTitle:
       {
         fontFamily: 'Avenir',
-        fontSize: 25,
+        fontSize: 40,
         bottom: 0, 
         alignSelf: 'center',
       },

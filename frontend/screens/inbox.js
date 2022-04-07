@@ -49,7 +49,7 @@ const Inbox = ({navigation}) => {
                     </View>
                 </ScrollView>
                 {/* Buttons */}
-                <TouchableOpacity style={styles.addButton}>
+                <TouchableOpacity style={styles.addButton} onPress={() => navigation.navigate('SendInbox')}>
                     <Text style={styles.addTitle}>
                         <Text>
                             +

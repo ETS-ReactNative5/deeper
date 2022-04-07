@@ -33,7 +33,7 @@ if (firebase.apps.length === 0) {
   app = firebase.app();
 }
 
-import {Home, Community, Journal, Inbox, DailyCheckUp, Post_Screen, Entries, Messages, HealthIndex, OnboardingScreen, Splash, SignIn, SignUp, Comments} from './screens';
+import {Home, Community, Journal, Inbox, DailyCheckUp, Post_Screen, Entries, Messages, HealthIndex, OnboardingScreen, Splash, SignIn, SignUp, Comments, SendInbox} from './screens';
 
 const Stack = createStackNavigator();
 
@@ -60,6 +60,7 @@ const App = () => {
         <Stack.Screen name="Entries" component={Entries} />
         <Stack.Screen name="Inbox" component={Inbox} />
         <Stack.Screen name="Messages" component={Messages} />
+        <Stack.Screen name="SendInbox" component={SendInbox} />
       </Stack.Navigator>
     </NavigationContainer>
   )
