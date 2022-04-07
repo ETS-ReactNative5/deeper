@@ -9,7 +9,7 @@ export function submitJournal(content, date, email) {
             date: date,
             email: email
         })
-
+        Alert.alert("Your journal entry has been successfully saved!");
     } catch (err) {
         Alert.alert('There is something wrong!', err.message);
     }

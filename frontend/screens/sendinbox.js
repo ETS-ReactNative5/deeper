@@ -4,7 +4,7 @@ import { Avatar } from 'react-native-elements';
 import { GiftedChat } from 'react-native-gifted-chat';
 import { getAuth } from "firebase/auth";
 import firebase from 'firebase/compat/app';
-import { collection, addDoc, initializeFirestore, query, onSnapshot, orderBy } from "firebase/firestore"; 
+import { collection, addDoc, getFirestore, query, onSnapshot, orderBy } from "firebase/firestore"; 
 
 // Functional component for inbox page
 const SendInbox = ({navigation}) => {
@@ -12,7 +12,7 @@ const SendInbox = ({navigation}) => {
     const auth = getAuth();
     const user = auth.currentUser;
     const app = firebase.app();
-    const db = initializeFirestore(app, {experimentalForceLongPolling: true});
+    const db = getFirestore(app, {experimentalForceLongPolling: true});
 
     useLayoutEffect(() => {
         navigation.setOptions({
