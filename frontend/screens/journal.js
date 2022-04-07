@@ -66,7 +66,10 @@ const Journal = ({ navigation }) => {
                 </TouchableOpacity>
                 {/* Buttons */}
                 <TouchableOpacity style={styles.addButton}
-                    onPress={() => submitJournal(state.journalEntry, Date(), user.email)}>
+                    onPress={ () => { 
+                        submitJournal(state.journalEntry, Date(), user.email); 
+                        setState({journalEntry: ''});
+                    }}>
                     <Text style={styles.addTitle}>
                         <Text>
                             +

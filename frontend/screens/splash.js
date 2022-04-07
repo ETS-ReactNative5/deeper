@@ -16,6 +16,38 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { COLORS, SIZES, FONTS } from "../constants";
 
+// import axios from "axios";
+
+// console.log("First")
+
+// const data = new FormData()
+// data.append('text', 'Contact rick(at)gmail(dot)com to have s_*_x');
+// data.append('lang', 'en');
+// data.append('opt_countries', 'us,gb,fr');
+// data.append('mode', 'standard');
+// data.append('api_user', '{api_user}');
+// data.append('api_secret', '{api_secret}');
+
+// console.log("Second")
+
+// axios.get('https://api.sightengine.com/1.0/check.json', {
+//   params: {
+//     'url': 'https://sightengine.com/assets/img/examples/example7.jpg',
+//     'models': 'nudity,wad,offensive,text-content,gore',
+//     'api_user': '711173260',
+//     'api_secret': 'wXbGmUoaFyYD5JdHauFV',
+//   }
+// })
+// .then(function (response) {
+//   // on success: handle response
+//   console.log(response.data);
+// })
+// .catch(function (error) {
+//   // handle error
+//   if (error.response) console.log(error.response.data);
+//   else console.log(error.message);
+// });
+
 // Functional component for splash page
 const Splash = ({navigation}) => {
     return (
