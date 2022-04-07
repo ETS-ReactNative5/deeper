@@ -90,6 +90,7 @@ const SignUp = ({navigation}) => {
                             <View style={styles.username}>
                                 <TextInput 
                                     style={styles.usernameText}
+                                    autoCapitalize="none"
                                     returnKeyType="next"
                                     placeholder="Email"
                                     placeholderTextColor="#A095C1"
@@ -100,6 +101,7 @@ const SignUp = ({navigation}) => {
                             <View style={styles.password}>
                                 <TextInput 
                                     style={styles.passwordText}
+                                    autoCapitalize="none"
                                     placeholder="Password"
                                     placeholderTextColor="#A095C1"
                                     secureTextEntry={passwordVisible}

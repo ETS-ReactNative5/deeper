@@ -21,13 +21,13 @@ const SignIn = ({navigation}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [passwordVisible, setPasswordVisible] = useState(true);
-
     const auth = getAuth();
 
     const handleSignIn = () => {
       signInWithEmailAndPassword(auth, email, password)
         .then(userCredentials => {
           const user = userCredentials.user;
+          console.log(user);
           navigation.replace('OnboardingScreen')
         })
         .catch(error => alert(error.message))
@@ -63,6 +63,7 @@ const SignIn = ({navigation}) => {
                             <View style={styles.username}>
                                 <TextInput 
                                     style={styles.usernameText}
+                                    autoCapitalize="none"
                                     placeholder="Email"
                                     placeholderTextColor="#A095C1"
                                     onChangeText={text => setEmail(text)} />
@@ -72,6 +73,7 @@ const SignIn = ({navigation}) => {
                             <View style={styles.password}>
                                 <TextInput 
                                     style={styles.passwordText}
+                                    autoCapitalize="none"
                                     placeholder="Password"
                                     placeholderTextColor="#A095C1"
                                     secureTextEntry={passwordVisible}

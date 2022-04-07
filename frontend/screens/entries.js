@@ -18,6 +18,7 @@ import Fire from '../Fire';
 import { useIsFocused } from '@react-navigation/native';
 //import { FlatList } from "../node_modules/react-native-gesture-handler/lib/typescript/index";
 import { getAuth } from "firebase/auth";
+import { QuerySnapshot } from "firebase/firestore";
 
 
 
@@ -26,12 +27,23 @@ const Entries = ({ navigation }) => {
     const user = auth.currentUser;
 
     const [entry, setEntry] = useState();
+    
     const journalFetch = async () => {
-        const query = await Fire.shared.firestore.collection("journal").orderBy('date', 'desc').get();
+
         const entry = [];
-        query.forEach(doc => entry.push(doc.data()));
+        const query = await Fire.shared.firestore.collection("journal").orderBy('date', 'desc').get().then(QuerySnapshot => {
+            if(!QuerySnapshot.empty){
+                QuerySnapshot.forEach(doc => {
+                    let data = doc.data()
+                    if (data.email == user.email){
+                        entry.push(doc.data())
+                    }
+                })
+            }
+        });
+        // query.forEach(doc => entry.push(doc.data()));
         setEntry(entry);
-        console.log(entry);
+        // console.log(entry);
     }
     const isFocused = useIsFocused();
     useEffect(() => {
