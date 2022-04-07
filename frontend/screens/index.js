@@ -12,6 +12,7 @@ import Splash from './splash'
 import SignIn from './signin'
 import SignUp from './signup'
 import Comments from './comments'
+import SendInbox from './sendinbox'
 
 export {
     Splash,
@@ -27,5 +28,6 @@ export {
     Entries,
     Messages,
     HealthIndex,
-    Comments
+    Comments,
+    SendInbox
 }
