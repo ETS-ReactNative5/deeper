@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useLayoutEffect } from 'react';
+import React, { useCallback, useState, useLayoutEffect, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Avatar } from 'react-native-elements';
 import { GiftedChat } from 'react-native-gifted-chat';
@@ -15,7 +15,7 @@ const SendInbox = ({navigation}) => {
     const db = getFirestore(app, {experimentalForceLongPolling: true});
 
     useLayoutEffect(() => {
-        navigation.setOptions({
+        navigation.setOptions({ headerShown: true }, {
             headerLeft: () => (
                 <View style={{ marginLeft: 20 }}>
                     <Avatar
@@ -38,13 +38,21 @@ const SendInbox = ({navigation}) => {
         })
         
         const q = query(collection(db, 'chats'), orderBy('createdAt', 'desc'));
-        const unsubscribe = onSnapshot(q, (snapshot) => setMessages(
-            snapshot.docs.map(doc => ({
+        const unsubscribe = onSnapshot(q, (snapshot) => 
+
+        setMessages(
+            snapshot.docs.map(doc => (
+            ((user.email == doc.data().user._id && global.sender == doc.data().sendTo) || ((user.email == doc.data().sendTo) &&  global.sender == doc.data().user._id)) ?
+            {
                 _id: doc.data()._id,
                 createdAt: doc.data().createdAt.toDate(),
                 text: doc.data().text,
                 user: doc.data().user,
-            }))
+                sendTo: doc.data().sendTo,
+            } :
+            [
+            ]
+            ))
         ));
 
         return () => {
@@ -52,12 +60,12 @@ const SendInbox = ({navigation}) => {
         };
 
     }, [navigation]);
-    
+
     const onSend = useCallback((messages = []) => {
     setMessages(previousMessages => GiftedChat.append(previousMessages, messages))
-    const { _id, createdAt, text, user,} = messages[0]
+    const { _id, createdAt, text, user, sendTo} = messages[0]
 
-    addDoc(collection(db, 'chats'), { _id, createdAt,  text, user });
+    addDoc(collection(db, 'chats'), { _id, createdAt,  text, user, sendTo: global.sender});
     }, []);
     return (
         <GiftedChat
