@@ -5,6 +5,7 @@ import * as Permissions from "expo-permissions";
 import { Ionicons } from "@expo/vector-icons";
 import Fire from "../Fire";
 import * as ImagePicker from "expo-image-picker";
+import { getAuth } from "firebase/auth";
 
 const firebase = require("firebase");
 require("firebase/firestore");
@@ -13,6 +14,10 @@ require("firebase/auth");
 Ionicons.loadFont().then();
 
 class Post_Screen extends React.Component {
+
+    auth = getAuth();
+    user = this.auth.currentUser;
+
     state = {
         text: "",
         image: null
@@ -34,7 +39,7 @@ class Post_Screen extends React.Component {
 
     handlePost = () => {
         Fire.shared
-            .addPost({ text: this.state.text.trim(), localUri: this.state.image })
+            .addPost({ text: this.state.text.trim(), localUri: this.state.image, name: this.user.displayName })
             .then(ref => {
                 this.setState({ text: "", image: null });
                 this.props.navigation.goBack();

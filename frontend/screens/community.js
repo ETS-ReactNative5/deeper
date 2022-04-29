@@ -26,46 +26,6 @@ import { useIsFocused } from '@react-navigation/native';
 
 import { COLORS, SIZES, FONTS } from "../constants";
 
-// temporary data until we pull from Firebase
-/*posts = [
-  {
-      id: "1",
-      name: "Joe McKay",
-      text:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      timestamp: 1569109273726,
-      //avatar: require("../assets/tempAvatar.jpg"),
-      //image: require("../assets/tempImage1.jpg")
-  },
-  {
-      id: "2",
-      name: "Karyn Kim",
-      text:
-          "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      timestamp: 1569109273726,
-      //avatar: require("../assets/tempAvatar.jpg"),
-      //image: require("../assets/tempImage2.jpg")
-  },
-  {
-      id: "3",
-      name: "Emerson Parsons",
-      text:
-          "Amet mattis vulputate enim nulla aliquet porttitor lacus luctus. Vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant.",
-      timestamp: 1569109273726,
-      //avatar: require("../assets/tempAvatar.jpg"),
-      //image: require("../assets/tempImage3.jpg")
-  },
-  {
-      id: "4",
-      name: "Kathie Malone",
-      text:
-          "At varius vel pharetra vel turpis nunc eget lorem. Lorem mollis aliquam ut porttitor leo a diam sollicitudin tempor. Adipiscing tristique risus nec feugiat in fermentum.",
-      timestamp: 1569109273726,
-     // avatar: require("../assets/tempAvatar.jpg"),
-      //image: require("../assets/tempImage4.jpg")
-  }
-];*/
-
 // Functional component for community page
 const Community = ({navigation}) => {
   /*renderPost = post => {
@@ -101,7 +61,7 @@ const Community = ({navigation}) => {
     //this.setState({ postal: posts })
     setPosts(posts2);
     console.log(posts2);
-}
+    }
   //state = { postal: [] }
   //const posts = [];
   const isFocused = useIsFocused();
@@ -120,7 +80,7 @@ const Community = ({navigation}) => {
             <View style={{ flex: 1 }}>
                 <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
                     <View>
-                        <Text style={styles.name}>{"Kristen"}</Text>
+                        <Text style={styles.name}>{post.name}</Text>
                         <Text style={styles.timestamp}>{moment(post.timestamp).fromNow()}</Text>
                     </View>
                 </View>
@@ -303,3 +263,46 @@ const styles = StyleSheet.create({
         marginVertical: 16
     }
 })
+
+
+
+
+// temporary data until we pull from Firebase
+/*posts = [
+  {
+      id: "1",
+      name: "Joe McKay",
+      text:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      timestamp: 1569109273726,
+      //avatar: require("../assets/tempAvatar.jpg"),
+      //image: require("../assets/tempImage1.jpg")
+  },
+  {
+      id: "2",
+      name: "Karyn Kim",
+      text:
+          "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      timestamp: 1569109273726,
+      //avatar: require("../assets/tempAvatar.jpg"),
+      //image: require("../assets/tempImage2.jpg")
+  },
+  {
+      id: "3",
+      name: "Emerson Parsons",
+      text:
+          "Amet mattis vulputate enim nulla aliquet porttitor lacus luctus. Vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant.",
+      timestamp: 1569109273726,
+      //avatar: require("../assets/tempAvatar.jpg"),
+      //image: require("../assets/tempImage3.jpg")
+  },
+  {
+      id: "4",
+      name: "Kathie Malone",
+      text:
+          "At varius vel pharetra vel turpis nunc eget lorem. Lorem mollis aliquam ut porttitor leo a diam sollicitudin tempor. Adipiscing tristique risus nec feugiat in fermentum.",
+      timestamp: 1569109273726,
+     // avatar: require("../assets/tempAvatar.jpg"),
+      //image: require("../assets/tempImage4.jpg")
+  }
+];*/

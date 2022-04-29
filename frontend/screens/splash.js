@@ -16,7 +16,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { COLORS, SIZES, FONTS } from "../constants";
 
-// import axios from "axios";
+import axios from "axios";
 
 // console.log("First")
 
@@ -25,17 +25,35 @@ import { COLORS, SIZES, FONTS } from "../constants";
 // data.append('lang', 'en');
 // data.append('opt_countries', 'us,gb,fr');
 // data.append('mode', 'standard');
-// data.append('api_user', '{api_user}');
-// data.append('api_secret', '{api_secret}');
+// data.append('api_user', '1229345789');
+// data.append('api_secret', '6foKYakwvCGDHuk9dsms');
 
-// console.log("Second")
+// console.log('Second')
+
+// axios({
+//   url: 'https://api.sightengine.com/1.0/text/check.json',
+//   method:'post',
+//   data: data,
+//   headers: { "Content-Type": "multipart/form-data" } //{'text': 'Contact rick(at)gmail(dot)com to have s_*_x', 'lang': 'en', 'opt_countries': 'us,gb,fr', 'mode': 'standard', 'api_user': '1229345789', 'api_secret': '6foKYakwvCGDHuk9dsms'}     // ['text', 'lang', 'opt_countries', 'mode', 'api_user', 'api_secret']
+// })
+// .then(function (response) {
+//   // on success: handle response
+//   console.log(response.data);
+// })
+// .catch(function (error) {
+//   // handle error
+//   if (error.response) console.log(error.response.data);
+//   else console.log(error.message);
+// });
+
+// console.log('Third')
 
 // axios.get('https://api.sightengine.com/1.0/check.json', {
 //   params: {
 //     'url': 'https://sightengine.com/assets/img/examples/example7.jpg',
 //     'models': 'nudity,wad,offensive,text-content,gore',
-//     'api_user': '711173260',
-//     'api_secret': 'wXbGmUoaFyYD5JdHauFV',
+//     'api_user': '1229345789',
+//     'api_secret': '6foKYakwvCGDHuk9dsms',
 //   }
 // })
 // .then(function (response) {

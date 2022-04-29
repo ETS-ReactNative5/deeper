@@ -9,7 +9,7 @@ class Fire {
         firebase.initializeApp(FirebaseKeys);
     }
 
-    addPost = async ({ text, localUri }) => {
+    addPost = async ({ text, localUri, name }) => {
         const remoteUri = await this.uploadPhotoAsync(localUri);
 
         return new Promise((res, rej) => {
@@ -19,7 +19,8 @@ class Fire {
                     text,
                     //uid: this.uid,
                     timestamp: this.timestamp,
-                    image: remoteUri
+                    image: remoteUri,
+                    name: name
                 })
                 .then(ref => {
                     res(ref);
