@@ -65,6 +65,8 @@ For our app, the different modules are stored in the frontend folder (and most w
 
 ## Flow Chart
 
+![plot](./docs/flowchart.png)
+
 ---
 
 [Back to the Top](#deeper)
