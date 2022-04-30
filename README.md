@@ -35,37 +35,37 @@ For our app, the different modules are stored in the frontend folder (and most w
 
 | Module | Overview |
 | --- | --- |
-| `firebaseMethods.js` | Located in the API subfolder, this is a POST API function that sends a journal entry and informs the user whether it has been successfully saved or not. |
+| `firebaseMethods.js` | Located in the API subfolder, this is a POST API function that sends a journal entry and informs the user whether it has been successfully saved or not through an alert. The fields for the document sent include content of what the user wrote, date of when the user saved the entry, and email of the user as the unique identifier. |
 | `icons.js` | Located in the constants folder, this exports the icons for use in the application. |
 | `images.js` | Located in the constants folder, this exports the images for use in the application. |
 | `index.js` | Located in the constants folder, this centralizes and exports all of the constants for use in the application. |
 | `theme.js` | Located in the constants folder, this exports different colors, sizes, and fonts for use in the application. |
 | `tabs.js` | Located in the navigation folder, this creates the navigation bar on the bottom of the screen that the user can see and use to move between pages and their different functionalities after signing in. |
-| `comments.js` | Located in the screens folder, this allows the user to comment under a post in the community forum screen. |
-| `community.js` | Located in the screens folder, this is in charge of the community forum page and contains a GET API to retrieve and show previous posts. |
-| `dailycheckup.js` | Located in the screens folder, this allows the user to complete a survey regarding their mental health and reminds them to write a journal entry. |
-| `entries.js` | Located in the screens folder, this allows the user to read their previous journal entries through a GET API. |
+| `comments.js` | Located in the screens folder, this allows the user to comment under a post in the community forum screen. This is followed by the user being able to submit it. |
+| `community.js` | Located in the screens folder, this is in charge of the community forum page and contains a GET API to retrieve and show previous posts. This involves calling the Firestore collection "posts" and displaying them on the app through the function renderPost. |
+| `dailycheckup.js` | Located in the screens folder, this allows the user to complete a survey regarding their mental health through smiley faces representing their mood, another survey that is more concrete and tangible, and reminds them to write a journal entry. |
+| `entries.js` | Located in the screens folder, this allows the user to read their previous journal entries through a GET API. Similar to the community functionality, this involves calling the Firestore collection "journal" and displaying them on the app through the function renderEntry. |
 | `Fire.js` | Located in the screens folder, this is in charge of initializing and retrieving the Firebase app. |
-| `healthindex.js` | Located in the screens folder, this allows the user to monitor their mental health through a graph. |
-| `home.js` | Located in the screens folder, this is in charge of the home page that highlights the daily check-up, mental health index, mediation, and mental health resources (redirects to a list of links). |
-| `inbox.js` | Located in the screens folder, this is in charge of the messaging system page that shows the different conversations that a user has and allows users to add new conversations. |
+| `healthindex.js` | Located in the screens folder, this allows the user to monitor their mental health through a graph. There is also a drop-down menu to filter the graph by different time intervals. |
+| `home.js` | Located in the screens folder, this is in charge of the home page that highlights the daily check-up, mental health index, mediation, and mental health resources (redirects to a list of links). These pages are navigated through hardcoded buttons (using TouchableOpacity instead of Button in CSS).
+| `inbox.js` | Located in the screens folder, this is in charge of the messaging system page that shows the different conversations that a user has and allows users to add new conversations through a GET API. It involves calling the Firestore collection "chats" and displaying them on the app through the function renderEntry. |
 | `index.js` | Located in the screens folder, this centralizes and exports all of the screens for use in the application. |
-| `journal.js` | Located in the screens folder, this is in charge of the journaling functionality that allows the user to write in a text field and save it through a POST API. |
+| `journal.js` | Located in the screens folder, this is in charge of the journaling functionality that allows the user to write in a text field and save it through a POST API. It involves calling the Firestore collection "journal" and saves them through the function from firebaseMethods.js. |
 | `messages.js` | Located in the screens folder, this is in charge of showing a user's favorite messages from the chat functionality. |
-| `onboardingscreen.js` | Located in the screens folder, this allows the user to learn more about the app after signing in or signing up. |
-| `postscreen.js` | Located in the screens folder, this allows the user to write and upload an image as a post for the community forum functionality. |
-| `sendinbox.js` | Located in the screens folder, this renders the specific messages of a conversation between two users through a GET API and allows the user to send a message through a POST API. |
-| `signin.js` | Located in the screens folder, this is in charge of the sign in functionality (requires the user's email and password) and connects to Firebase authentication. |
-| `signup.js` | Located in the screens folder, this is in charge of the sign up functionality (where the user inputs their name, email, and password and connects to Firebase authentication. |
-| `splash.js` | Located in the screens folder, this is the first page that the user is prompted to when opening the app and allows the user to sign in or sign up. |
-| `App.js` | This contains the page navigation and first initializes the splash screen. |
+| `onboardingscreen.js` | Located in the screens folder, this allows the user to learn more about the app after signing in or signing up. This is through the dependency react-native-onboarding-swiper, and the user can skip the onboarding entirely or swipe through the different pages. When the user is on the last page, the button "next" becomes into "done." |
+| `postscreen.js` | Located in the screens folder, this allows the user to write and upload an image as a post for the community forum functionality. The user is prompted to their camera roll through the built-in function launchImageLibraryAsync. |
+| `sendinbox.js` | Located in the screens folder, this renders the specific messages of a conversation between two users through a GET API and allows the user to send a message through a POST API. This involves retrieiving from the "chats" collection and utilizing the dependency react-native-gifted-chat to format the messages (specifically with the function GiftedChat.append). |
+| `signin.js` | Located in the screens folder, this is in charge of the sign in functionality (requires the user's email and password) and connects to Firebase authentication. This, as well as the user being able to hide or show the password, is possible through different states. When catching an error with signing in, the user is alerted. |
+| `signup.js` | Located in the screens folder, this is in charge of the sign up functionality (where the user inputs their name, email, and password and connects to Firebase authentication. This, as well as the user being able to hide or show the password, is possible through different states. When catching an error with signing up, the user is alerted. |
+| `splash.js` | Located in the screens folder, this is the first page that the user is prompted to when opening the app and allows the user to sign in or sign up. There is also the logo of our app positioned in the center of the screen. |
+| `App.js` | This contains the page navigation through a NavigationContainer, Stack.Navigator, and Stack.Screen and first initializes the splash screen. |
 
 
 ---
 
 ## Flow Chart
 
-![plot](./docs/flowchart.png)
+![flowchart](./docs/flowchart.png)
 
 ---
 
