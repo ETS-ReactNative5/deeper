@@ -1,6 +1,6 @@
 # deeper
 
-> This ReadMe details code documentation (the software report or README_SOFTWARE.md). 
+> This ReadMe details code documentation (the software report). 
 
 ---
 
