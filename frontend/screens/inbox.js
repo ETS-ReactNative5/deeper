@@ -36,7 +36,6 @@ const Inbox = ({navigation}) => {
             if(!QuerySnapshot.empty){
                 QuerySnapshot.forEach(doc => {
                     let data = doc.data();
-                    let counter = 0;
                     if (data.user._id == user.email || (data.user._id != user.email && data.sendTo.toString().toLowerCase() == user.email)){
                       entry.push(doc.data());
                     }
@@ -53,55 +52,25 @@ const Inbox = ({navigation}) => {
     }, [isFocused]);
 
     let array1 = [];
-    let array2 = [];
-    let counter = 0; 
     renderEntry = entries => {
-        /* if (array1.includes(entries.user._id.toLowerCase()) || array2.includes(entries.user._id.toLowerCase()))
+        if (array1.includes(entries.sendTo.toLowerCase()))
         {
           return; 
-        } */
-        if (entries.createdAt && (entries.sendTo.toLowerCase() != user.email))
-        {
-          array1[counter] = entries.sendTo.toLowerCase();
-          array2[counter] = entries.user._id.toLowerCase();
-          counter++;
-          return (
-            <TouchableOpacity style={styles.feedItem} onPress={() => { global.sender = entries.sendTo.toString().toLowerCase(); navigation.navigate('SendInbox'); }}>
-                <Text style={styles.entry}>{entries.sendTo.toString()}</Text>
-                <Text style={styles.timestamp}>{entries.createdAt.toDate().toString()}</Text>
-            </TouchableOpacity>
-            )
         }
-        else if (entries.sendTo.toLowerCase() != user.email)
+        else if (entries.user._id.toLowerCase() == user.email)
         {
-          array1[counter] = entries.sendTo.toLowerCase();
-          array2[counter] = entries.user._id.toLowerCase();
-          counter++;
+          array1.push(entries.sendTo.toLowerCase());
           return (
-            <TouchableOpacity style={styles.feedItem} onPress={() => {global.sender = entries.sendTo.toString().toLowerCase(); navigation.navigate('SendInbox');}}>
+            <TouchableOpacity style={styles.feedItem} onPress={() => {global.sender = entries.sendTo.toString().toLowerCase(); navigation.navigate('SendInbox'); array1 = []; array2 = [];}}>
                 <Text style={styles.entry}>{entries.sendTo.toString()}</Text>
-            </TouchableOpacity>
-            )
-        }
-        else if (entries.createdAt && (entries.sendTo.toLowerCase() == user.email))
-        {
-          array1[counter] = entries.sendTo.toLowerCase();
-          array2[counter] = entries.user._id.toLowerCase();
-          counter++;
-          return (
-            <TouchableOpacity style={styles.feedItem} onPress={() => { global.sender = entries.user._id.toString().toLowerCase(); navigation.navigate('SendInbox'); }}>
-                <Text style={styles.entry}>{entries.user._id.toString().toLowerCase()}</Text>
-                <Text style={styles.timestamp}>{entries.createdAt.toDate().toString()}</Text>
             </TouchableOpacity>
             )
         }
         else if (entries.sendTo.toLowerCase() == user.email)
         {
-          array1[counter] = entries.sendTo.toLowerCase();
-          array2[counter] = entries.user._id.toLowerCase();
-          counter++;
+          array1.push(entries.user._id.toLowerCase());
           return (
-            <TouchableOpacity style={styles.feedItem} onPress={() => {global.sender = entries.user._id.toString().toLowerCase(); navigation.navigate('SendInbox');}}>
+            <TouchableOpacity style={styles.feedItem} onPress={() => {global.sender = entries.user._id.toString().toLowerCase(); navigation.navigate('SendInbox'); array1 = []; array2 = [];}}>
                 <Text style={styles.entry}>{entries.user._id.toString().toLowerCase()}</Text>
             </TouchableOpacity>
             )
@@ -114,15 +83,21 @@ const Inbox = ({navigation}) => {
 
     const addUser = async () => {
       const query = await Fire.shared.firestore.collection("chats").orderBy('createdAt', 'desc').get().then(QuerySnapshot => {
-      let bool = true; 
+      let bool1 = true; 
+      let bool2 = true; 
         if(!QuerySnapshot.empty){
             QuerySnapshot.forEach(doc => {
                 let data = doc.data()
-                if (data.user._id.toLowerCase() == user.email && data.sendTo.toLowerCase() == send.toLowerCase()){
-                  bool = false; 
+                if (send.toLowerCase() == user.email)
+                {
+                  bool1 = false;
+                }
+                if (data.user._id.toLowerCase() == user.email && data.sendTo.toLowerCase() == send.toLowerCase())
+                {
+                  bool2 = false; 
                 }
             })
-            if (bool)
+            if (bool1 && bool2)
             {
               firebase.firestore().collection('chats').add({
                 _id: null,
@@ -133,18 +108,24 @@ const Inbox = ({navigation}) => {
                   avatar: null,
                   name: user.displayName
                 },
-                sendTo: send
+                sendTo: send.toLowerCase()
               })
             }
         }
-      if (bool)
+      if (bool1 && bool2)
       {
         alert('Added a conversation with ' + send + '!');
+      }
+      else if (!bool1)
+      {
+        alert('You cannot add yourself!');
       }
       else
       {
         alert('You already have a conversation with this user!');
       }
+      array1 = []; 
+      array2 = [];
       });
     };
 
