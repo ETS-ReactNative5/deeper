@@ -39,7 +39,6 @@ const SendInbox = ({navigation}) => {
         
         const q = query(collection(db, 'chats'), orderBy('createdAt', 'desc'));
         const unsubscribe = onSnapshot(q, (snapshot) => 
-
         setMessages(
             snapshot.docs.map(doc => (
             ((user.email == doc.data().user._id && global.sender == doc.data().sendTo) || ((user.email == doc.data().sendTo) &&  global.sender == doc.data().user._id)) ?
@@ -67,6 +66,7 @@ const SendInbox = ({navigation}) => {
 
     addDoc(collection(db, 'chats'), { _id, createdAt,  text, user, sendTo: global.sender});
     }, []);
+    
     return (
         <GiftedChat
             messages={messages}
